@@ -1,4 +1,5 @@
-export const input = `
+export const input = {
+  styles: `
   border: 0;
   border-bottom: 3px solid gray_border_light;
   width:'100%';
@@ -23,3 +24,4 @@ export const input = `
     border-bottom: 3px solid secondary;
   }
 `
+}

@@ -22,14 +22,20 @@ function createStyleString (palette, theme) {
 }
 
 function compilePalette (palette, theme) {
-  let newTheme = theme
+  let styles = theme.styles
   Object.keys(palette).forEach(key => {
-    const regex = new RegExp(key, 'g')
-    newTheme = newTheme.replace(regex, palette[key])
+    const regex = new RegExp(key + ';', 'g')
+    styles = styles.replace(regex, palette[key] + ';')
+    const regex2 = new RegExp(key + ' ', 'g')
+    styles = styles.replace(regex2, palette[key] + ' ')
   })
-  return newTheme
+  return {...theme, styles}
+}
+function getCurrentTheme (fromProps, fromContext) {
+  return fromProps ? fromProps : (fromContext ? fromContext : {})
 }
 export {
   createStyleString,
-  compilePalette
+  compilePalette,
+  getCurrentTheme
 }

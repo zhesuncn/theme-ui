@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useTheme } from '../ThemeContext'
+import { getCurrentTheme } from '../themes/util'
 
 
 const StyledButton = styled.button`
@@ -21,17 +22,17 @@ function Button(props) {
   } = props
   let classN = className || ''
   const themeContext = useTheme()
-  let myTheme = theme ? theme : themeContext.button
+  let myTheme = getCurrentTheme(theme, themeContext.button)
   if (href) {
     if(disabled) {
       classN += " disabled"
       delete otherProps.onClick
     }
-    return <StyledLink className={classN} href={disabled? null : href} {...otherProps} styles={myTheme}>{children}
+    return <StyledLink className={classN} href={disabled? null : href} {...otherProps} styles={myTheme.styles}>{children}
     </StyledLink>
   }
   return (
-    <StyledButton  className={classN}  {...otherProps} disabled={disabled} styles={myTheme}>{children}
+    <StyledButton  className={classN}  {...otherProps} disabled={disabled} styles={myTheme.styles}>{children}
     </StyledButton>
   )
 }

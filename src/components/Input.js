@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { formatValue } from '../util/util'
 import { useTheme } from '../ThemeContext'
+import { getCurrentTheme } from '../themes/util'
 
 const StyledInput = styled.input`
 ${props => props.styles}
@@ -20,13 +21,13 @@ const Input = ({format, className, value, onValueChanged, error, theme, ...props
     onValueChanged && onValueChanged(formatted, raw)
   }
   const themeContext = useTheme()
-  let myTheme = theme ? theme : themeContext.input
+  let myTheme = getCurrentTheme(theme, themeContext.input)
 
   return <StyledInput
         className={classN}
         value={formatted}
         onChange={valueChanged}
-        styles={myTheme}
+        styles={myTheme.styles}
         {...props}
       />
 }

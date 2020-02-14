@@ -3,6 +3,7 @@ import './App.css'
 import ThemeContextProvider from './ThemeContext'
 import Button from './components/Button'
 import Input from './components/Input'
+import Uploader from './components/Uploader'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
     <div>
       <Button className='clear top'>A button</Button>
       <Input/>
+      <Uploader onFileDelete={() => {console.log('delete')}}/>
     </div>
      <style>{`
         .top {

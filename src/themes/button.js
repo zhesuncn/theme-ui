@@ -1,4 +1,5 @@
-export const button = `
+export const button = {
+  styles: `
   display: inline-block;
   border: 1px solid secondary;
   border-radius: 10px;
@@ -27,3 +28,4 @@ export const button = `
     color: secondary;
   }
 `
+}
