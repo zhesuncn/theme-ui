@@ -5,6 +5,7 @@ import Button from './components/Button'
 import Input from './components/Input'
 import Uploader from './components/Uploader'
 import HtmlEditor from './components/HtmlEditor'
+import Switcher from './components/Switcher'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Input/>
       <Uploader onFileDelete={() => {console.log('delete')}}/>
       <HtmlEditor/>
+      <Switcher>Open</Switcher>
     </div>
      <style>{`
         .top {
