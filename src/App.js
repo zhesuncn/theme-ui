@@ -15,7 +15,8 @@ function App() {
     <div>
       <Notification>Some thing is successful</Notification>
       <Notification type='error' autohide={false}>Some thing is wrong !!!!!</Notification>
-      <Button className='clear top'>A button</Button>
+      <Button>A button</Button>
+      <Button className='clear top'>clear button</Button>
       <Input/>
       <Uploader onFileDelete={() => {console.log('delete')}}/>
       <HtmlEditor/>
