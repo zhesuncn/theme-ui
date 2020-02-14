@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { StyledSelect } from './Styled'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
-import svgs, { getSrc } from '../svg'
+import { getSrc } from '../svg'
 
 const Selector = ({options, placeholder, onChange, children, value, getValue, getLabel, className, theme, ...props}) => {
   const [current, setCurrent] = useState(value || '')

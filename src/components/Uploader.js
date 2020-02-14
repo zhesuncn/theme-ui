@@ -7,7 +7,7 @@ import { StyledDiv } from './Styled'
 
 
 const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value, className, style, maxSize, theme, ...props}) => {
-  const [error, setError] = useState(null)
+  // const [error, setError] = useState(null)
   const [loading, setLoading] = useState(null)
   const [current, setCurrent] = useState(value)
 
@@ -25,7 +25,7 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
   const onDrop = async acceptedFiles => {
     const file = acceptedFiles[0]
     if (maxSize && file.size > maxSize * 1048576) {
-      setError(`File max size is ${maxSize} mb`)
+      // setError(`File max size is ${maxSize} mb`)
       onError && onError(`File max size is ${maxSize} mb`)
       return
     }
@@ -35,7 +35,7 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
         await onFileUpload(file)
         onSuccess && onSuccess()
       }catch (e) {
-        setError(e.message)
+        // setError(e.message)
         onError && onError(e.message)
       }
     }
@@ -48,12 +48,12 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
       <div className="input">
         {title && <div className="label">{title}</div>}
         {
-          current ? <img src={validateImage}/> :
-            (loading ? <img src={loadingImage}/> :
+          current ? <img src={validateImage} alt='success'/> :
+            (loading ? <img src={loadingImage} alt='loading'/> :
              <Dropzone onDrop={onDrop}>
                 {({getRootProps, getInputProps}) =>
                   <div {...getRootProps()} className="btn">
-                    <img src={addImage}/>
+                    <img src={addImage} alt='add'/>
                     Ajouter un fichier
                     <input {...getInputProps()} type="file" {...props} multiple={false}/>
                   </div>
@@ -63,13 +63,8 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
       </div>
       {current && <div className="file_name">
         {current.name}
-        {onFileDelete && <img src={deleteImage} onClick={onFileDelete}/>}
+        {onFileDelete && <img src={deleteImage} onClick={onFileDelete} alt='delete'/>}
       </div>}
-      {/*{*/}
-      {/*  error && <Error>*/}
-      {/*    {error}*/}
-      {/*  </Error>*/}
-      {/*}*/}
     </StyledDiv>
   )
 }
