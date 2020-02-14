@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { formatValue } from '../util/util'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
+import { StyledInput } from './Styled'
 
-const StyledInput = styled.input`
-${props => props.styles}
-`
 
 const Input = ({format, className, value, onValueChanged, error, theme, ...props}) => {
   const [current, setCurrent] = useState('')

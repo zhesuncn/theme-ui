@@ -1,15 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
+import { StyledButton, StyledLink } from './Styled'
 
-
-const StyledButton = styled.button`
-${props => props.styles}
-`
-const StyledLink =  styled.a`
-${props => props.styles}
-`
 
 function Button(props) {
   const {
