@@ -4,6 +4,7 @@ import ThemeContextProvider from './ThemeContext'
 import Button from './components/Button'
 import Input from './components/Input'
 import Uploader from './components/Uploader'
+import HtmlEditor from './components/HtmlEditor'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Button className='clear top'>A button</Button>
       <Input/>
       <Uploader onFileDelete={() => {console.log('delete')}}/>
+      <HtmlEditor/>
     </div>
      <style>{`
         .top {

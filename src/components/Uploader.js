@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Dropzone from 'react-dropzone'
 import { useTheme } from '../ThemeContext'
-import svgs, { getSrc } from '../svg'
+import { getSrc } from '../svg'
 import styled from 'styled-components'
 import { getCurrentTheme } from '../themes/util'
 
@@ -9,7 +9,7 @@ const StyledUploader =  styled.div`
   ${props => props.styles}
 `
 
-const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value, className, style, maxSize, theme, ... props}) => {
+const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value, className, style, maxSize, theme, ...props}) => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(null)
   const [current, setCurrent] = useState(value)
