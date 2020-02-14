@@ -2,6 +2,7 @@ import { button } from './button'
 import { input } from './input'
 import { uploader } from './uploader'
 import { switcher } from './switcher'
+import { selector } from './selector'
 
 const defaultTheme = {
   palette: {
@@ -21,6 +22,7 @@ const defaultTheme = {
     input,
     uploader,
     switcher,
+    selector,
   }
 }
 

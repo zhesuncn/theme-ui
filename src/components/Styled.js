@@ -14,9 +14,15 @@ const StyledLink =  styled.a`
 ${props => props.styles}
 `
 
+const StyledSelect =  styled.select`
+  background-image: url(${props => props.open_icon});
+  ${props => props.styles}
+`
+
 export {
   StyledDiv,
   StyledInput,
   StyledButton,
-  StyledLink
+  StyledLink,
+  StyledSelect
 }
