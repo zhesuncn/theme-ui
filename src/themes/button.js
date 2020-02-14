@@ -1,6 +1,7 @@
 export const button = {
+  loading_icon: 'loading',
   styles: `
-  display: inline-block;
+  display: inline-flex;
   border: 1px solid secondary;
   border-radius: 10px;
   padding: 10px 20px;
@@ -10,6 +11,10 @@ export const button = {
   background: secondary;
   color: inverse;
   outline: none;
+  svg {
+    margin-left: 10px;
+    fill: inverse;
+  }
   &:hover{
    opacity: 0.8;
   }
@@ -26,6 +31,9 @@ export const button = {
     display: flex;
     align-items: center;
     color: secondary;
+  }
+  &.clear svg{
+    fill: secondary;
   }
 `
 }

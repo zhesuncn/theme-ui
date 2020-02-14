@@ -10,13 +10,16 @@ import Selector from './components/Selector'
 import Notification from './components/Notification'
 
 function App() {
+  const onClickPromise = () => {return new Promise((resolve, reject) => {
+    setTimeout(() => {resolve()}, 2000)
+  })}
   return (
    <ThemeContextProvider>
     <div>
       <Notification>Some thing is successful</Notification>
       <Notification type='error' autohide={false}>Some thing is wrong !!!!!</Notification>
-      <Button>A button</Button>
-      <Button className='clear top'>clear button</Button>
+      <Button onClick={onClickPromise}>A button</Button>
+      <Button className='clear top' onClick={onClickPromise}>clear button</Button>
       <Input/>
       <Uploader onFileDelete={() => {console.log('delete')}}/>
       <HtmlEditor/>
