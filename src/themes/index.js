@@ -3,6 +3,7 @@ import { input } from './input'
 import { uploader } from './uploader'
 import { switcher } from './switcher'
 import { selector } from './selector'
+import { notification } from './notification'
 
 const defaultTheme = {
   palette: {
@@ -23,6 +24,7 @@ const defaultTheme = {
     uploader,
     switcher,
     selector,
+    notification,
   }
 }
 
