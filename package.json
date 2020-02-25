@@ -17,10 +17,10 @@
     "draftjs-to-html": "^0.9.1"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "start-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,5 +36,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/addon-options": "^5.3.13",
+    "@storybook/react": "^5.3.13",
+    "babel-loader": "^8.0.6"
   }
 }

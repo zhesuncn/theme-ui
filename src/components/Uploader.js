@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Dropzone from 'react-dropzone'
 import { useTheme } from '../ThemeContext'
-import { getSrc } from '../svg'
 import { getCurrentTheme } from '../themes/util'
 import { StyledDiv } from './Styled'
+import Icon from './Icon'
 
 
 const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value, className, style, maxSize, theme, ...props}) => {
@@ -13,10 +13,6 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
 
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.uploader)
-  const validateImage = getSrc(myTheme.validate_icon)
-  const addImage = getSrc(myTheme.add_icon)
-  const loadingImage = getSrc(myTheme.loading_icon)
-  const deleteImage = getSrc(myTheme.delete_icon)
 
   useEffect(()=> {
     setCurrent(value)
@@ -48,12 +44,12 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
       <div className="input">
         {title && <div className="label">{title}</div>}
         {
-          current ? <img src={validateImage} alt='success'/> :
-            (loading ? <img src={loadingImage} alt='loading'/> :
+          current ? <Icon name={myTheme.validate_icon} alt='success'/> :
+            (loading ? <Icon name={myTheme.loading_icon} alt='loading'/> :
              <Dropzone onDrop={onDrop}>
                 {({getRootProps, getInputProps}) =>
                   <div {...getRootProps()} className="btn">
-                    <img src={addImage} alt='add'/>
+                    <Icon name={myTheme.add_icon} alt='add'/>
                     Ajouter un fichier
                     <input {...getInputProps()} type="file" {...props} multiple={false}/>
                   </div>
@@ -63,7 +59,7 @@ const Uploader = ({title, onFileUpload, onFileDelete, onSuccess, onError, value,
       </div>
       {current && <div className="file_name">
         {current.name}
-        {onFileDelete && <img src={deleteImage} onClick={onFileDelete} alt='delete'/>}
+        {onFileDelete && <Icon name={myTheme.delete_icon} onClick={onFileDelete} alt='delete'/>}
       </div>}
     </StyledDiv>
   )
