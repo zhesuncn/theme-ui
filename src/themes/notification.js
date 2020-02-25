@@ -11,6 +11,11 @@ export const notification = {
       outline: none;
       width: 12px;
     }
+    svg {
+      cursor: pointer;
+      outline: none;
+      width: 12px;
+    }
     &.info{
       border-color: secondary;
       color: secondary;

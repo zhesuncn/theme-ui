@@ -24,10 +24,10 @@ export const uploader = {
       cursor: pointer;
       outline: none;
     }
-    .file_name img {
+    .file_name img, .file_name svg {
       cursor: pointer;
     }
-    .btn img {
+    .btn img, .btn svg {
       margin-right: 15px;
     }
     .file_name {

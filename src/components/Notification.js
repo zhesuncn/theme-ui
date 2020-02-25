@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
 import { StyledDiv } from './Styled'
-import { getSrc } from '../svg'
+import Icon from './Icon'
 
 const Notification = ({children, type = 'info', autohide = 5, show = true, onHide, theme, ...props}) =>{
   const [isShow, setIsShow] = useState(show)
@@ -25,7 +25,7 @@ const Notification = ({children, type = 'info', autohide = 5, show = true, onHid
 
   return isShow ? <StyledDiv className={classN} styles={myTheme.styles} {...props}>
     {children}
-    {myTheme.close_icon && <img src={getSrc(myTheme.close_icon)} onClick={hide}/>}
+    {myTheme.close_icon && <Icon name={myTheme.close_icon} onClick={hide}/>}
   </StyledDiv>: null
 }
 
