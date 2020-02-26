@@ -14,7 +14,8 @@
     "styled-components": "^5.0.1",
     "react-dropzone": "^10.2.1",
     "react-draft-wysiwyg": "^1.14.4",
-    "draftjs-to-html": "^0.9.1"
+    "draftjs-to-html": "^0.9.1",
+    "react-modal": "^3.11.1"
   },
   "scripts": {
     "build": "react-scripts build",

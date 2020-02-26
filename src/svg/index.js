@@ -6,6 +6,7 @@ import { ReactComponent as Loading } from './loading.svg'
 import { ReactComponent as LoadingWhite } from './loading-white.svg'
 import { ReactComponent as Arrow } from './arrow.svg'
 import { ReactComponent as Close } from './close.svg'
+import { ReactComponent as Edit } from './edit.svg'
 
 const svgs = {
   check: Check,
@@ -15,7 +16,8 @@ const svgs = {
   loading_inverse: LoadingWhite,
   check_circle: CheckCircle,
   arrow: Arrow,
-  close: Close
+  close: Close,
+  edit: Edit
 }
 
 const getSrc = (key) => {

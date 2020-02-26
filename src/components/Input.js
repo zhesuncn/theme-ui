@@ -6,20 +6,21 @@ import { StyledInput } from './Styled'
 
 
 const Input = ({format, className, value, onValueChanged, error, theme, ...props}) => {
-  const [current, setCurrent] = useState('')
+  const [current, setCurrent] = useState(value)
+  const [formatted, setFormatted] = useState(format ? formatValue(value, format): value)
   let classN = className || ''
   useEffect(() => {
     setCurrent(value)
+    setFormatted(format ? formatValue(value, format): value)
   }, [value])
 
   classN += error ? ' error': (current ? ' validate': '')
-
-  const { formatted }  = format ? formatValue(current, format) : { formatted: current }
   const valueChanged = (e) => {
     const inputValue = e.target.value
-    const { formatted, raw } = format ? formatValue(inputValue, format) : { formatted: current, raw: current }
-    setCurrent(raw)
-    onValueChanged && onValueChanged(formatted, raw)
+    const result = format ? formatValue(inputValue, format) : { formatted: inputValue, raw: inputValue }
+    setCurrent(result.raw)
+    setFormatted(result.formatted)
+    onValueChanged && onValueChanged(result.formatted, result.raw)
   }
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.input)

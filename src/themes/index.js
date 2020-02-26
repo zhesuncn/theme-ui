@@ -4,6 +4,7 @@ import { uploader } from './uploader'
 import { switcher } from './switcher'
 import { selector } from './selector'
 import { notification } from './notification'
+import { editable, editableInput } from './editable'
 
 const defaultTheme = {
   palette: {
@@ -25,6 +26,8 @@ const defaultTheme = {
     switcher,
     selector,
     notification,
+    editable,
+    editableInput
   }
 }
 
