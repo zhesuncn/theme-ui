@@ -7,6 +7,10 @@ import Selector from './components/Selector'
 import Switcher from './components/Switcher'
 import Uploader from './components/Uploader'
 import ThemeContextProvider, {useTheme} from './ThemeContext'
+import Editable from './components/Editable'
+import EditableInput from './components/EditableInput'
+import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
+import ModalEditionContainer from './components/Editable/ModalEditionContainer'
 
 export {
   Button,
@@ -17,6 +21,10 @@ export {
   Selector,
   Switcher,
   Uploader,
+  Editable,
+  EditableInput,
+  DefaultEditionContainer,
+  ModalEditionContainer,
   ThemeContextProvider,
   useTheme
 }
