@@ -7,11 +7,11 @@ import { StyledInput } from './Styled'
 
 const Input = ({format, className, value, onValueChanged, error, theme, ...props}) => {
   const [current, setCurrent] = useState(value)
-  const [formatted, setFormatted] = useState(format ? formatValue(value, format): value)
+  const [formatted, setFormatted] = useState(format ? formatValue(value, format).formatted: value)
   let classN = className || ''
   useEffect(() => {
     setCurrent(value)
-    setFormatted(format ? formatValue(value, format): value)
+    setFormatted(format ? formatValue(value, format).formatted: value)
   }, [value])
 
   classN += error ? ' error': (current ? ' validate': '')

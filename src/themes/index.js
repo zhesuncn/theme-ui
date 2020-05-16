@@ -5,6 +5,7 @@ import { switcher } from './switcher'
 import { selector } from './selector'
 import { notification } from './notification'
 import { editable, editableInput } from './editable'
+import { label, error } from './text'
 
 const defaultTheme = {
   palette: {
@@ -27,7 +28,9 @@ const defaultTheme = {
     selector,
     notification,
     editable,
-    editableInput
+    editableInput,
+    label,
+    error
   }
 }
 

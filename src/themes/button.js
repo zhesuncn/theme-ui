@@ -18,7 +18,7 @@ export const button = {
   &:hover{
    opacity: 0.8;
   }
-  &.disabled &:disabled{
+  &.disabled, &:disabled{
     opacity: 0.2;
   }
   &.clear {

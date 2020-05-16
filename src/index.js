@@ -6,11 +6,12 @@ import Notification from './components/Notification'
 import Selector from './components/Selector'
 import Switcher from './components/Switcher'
 import Uploader from './components/Uploader'
-import ThemeContextProvider, {useTheme} from './ThemeContext'
+import ThemeContextProvider, {useTheme, usePalette} from './ThemeContext'
 import Editable from './components/Editable'
 import EditableInput from './components/EditableInput'
 import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
 import ModalEditionContainer from './components/Editable/ModalEditionContainer'
+import { Label, Error } from './components/Text'
 
 export {
   Button,
@@ -25,6 +26,9 @@ export {
   EditableInput,
   DefaultEditionContainer,
   ModalEditionContainer,
+  Label,
+  Error,
   ThemeContextProvider,
-  useTheme
+  useTheme,
+  usePalette
 }

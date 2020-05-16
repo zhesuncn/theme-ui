@@ -27,5 +27,9 @@ function ThemeContextProvider (props) {
 const useTheme = () => {
   return useContext(ThemeContext).theme
 }
+const usePalette = () => {
+  return useContext(ThemeContext).palette
+}
+
 export default ThemeContextProvider
-export {useTheme}
+export {useTheme, usePalette}
