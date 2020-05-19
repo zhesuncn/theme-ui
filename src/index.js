@@ -12,7 +12,7 @@ import EditableInput from './components/EditableInput'
 import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
 import ModalEditionContainer from './components/Editable/ModalEditionContainer'
 import { Label, Error } from './components/Text'
-
+import Field from './components/Field'
 export {
   Button,
   Input,
@@ -28,6 +28,7 @@ export {
   ModalEditionContainer,
   Label,
   Error,
+  Field,
   ThemeContextProvider,
   useTheme,
   usePalette

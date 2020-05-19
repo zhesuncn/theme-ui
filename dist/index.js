@@ -107,6 +107,12 @@ Object.defineProperty(exports, "Error", {
     return _Text.Error;
   }
 });
+Object.defineProperty(exports, "Field", {
+  enumerable: true,
+  get: function get() {
+    return _Field.default;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./components/Button"));
 
@@ -135,6 +141,8 @@ var _DefaultEditionContainer = _interopRequireDefault(require("./components/Edit
 var _ModalEditionContainer = _interopRequireDefault(require("./components/Editable/ModalEditionContainer"));
 
 var _Text = require("./components/Text");
+
+var _Field = _interopRequireDefault(require("./components/Field"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

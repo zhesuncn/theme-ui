@@ -24,3 +24,4 @@ export const error = {
       color: ${props => props.palette.red};
     `
 }
+
