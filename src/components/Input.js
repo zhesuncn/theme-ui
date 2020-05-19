@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { formatValue } from '../util/util'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
-import { StyledInput } from './Styled'
+import styled from 'styled-components'
+import ThemeComponent from './ThemeComponent'
+import Field from './Field'
 
+const defaultContainer = styled.input
 
-const Input = ({format, className, value, onValueChanged, error, theme, ...props}) => {
+const Input = ({format, className, value, onValueChanged, error, label, direction, ...props}) => {
   const [current, setCurrent] = useState(value)
   const [formatted, setFormatted] = useState(format ? formatValue(value, format).formatted: value)
   let classN = className || ''
@@ -22,16 +25,19 @@ const Input = ({format, className, value, onValueChanged, error, theme, ...props
     setFormatted(result.formatted)
     onValueChanged && onValueChanged(result.formatted, result.raw)
   }
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.input)
-
-  return <StyledInput
+  return <Field
+        label={label}
+        direction={direction}
         className={classN}
+      >
+      <ThemeComponent
+        name="input"
+        defaultContainer={defaultContainer}
         value={formatted}
         onChange={valueChanged}
-        styles={myTheme.styles}
         {...props}
       />
+  </Field>
 }
 
 export default Input

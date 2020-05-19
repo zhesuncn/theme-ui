@@ -1,5 +1,7 @@
+import styled from 'styled-components'
+
 export const switcher = {
-  styles: `
+  container: styled.div`
       .title {
         margin-right: 10px;
       }
@@ -19,7 +21,7 @@ export const switcher = {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #ccc;
+          background-color: ${props => props.palette.white};
           -webkit-transition: 0.4s;
           transition: 0.4s;
       }
@@ -31,17 +33,17 @@ export const switcher = {
           width: 20px;
           left: 4px;
           bottom: 3px;
-          background-color: white;
+          background-color: ${props => props.palette.white};
           -webkit-transition: 0.4s;
           transition: 0.4s;
       }
   
       label[data-value='true'] .slider {
-          background-color: secondary;
+          background-color: ${props => props.palette.green};
       }
       
       label[data-value='false'] .slider {
-          background-color: gray_border_active;
+          background-color: ${props => props.palette.gray_border_active};
       }
   
       label[data-value='true'] .slider:before {

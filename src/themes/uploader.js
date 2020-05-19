@@ -1,15 +1,17 @@
+import styled from 'styled-components'
+
 export const uploader = {
   validate_icon: 'check_circle',
   add_icon: 'plus_circle',
   loading_icon: 'loading',
   delete_icon: 'trash',
-  styles: `
+  container: styled.div`
     .input {
       height: 50px;
-      background: gray_background;
+      background: ${props => props.palette.gray_background};
       border-radius: 5px;
       padding: 0 20px;
-      color: text_black;
+      color: ${props => props.palette.black_grey};
       font-size: 14px;
       font-weight: 300;
       display: flex;
@@ -32,7 +34,7 @@ export const uploader = {
     }
     .file_name {
       height: 40px;
-      background: gray_background_light;
+      background: ${props => props.palette.gray_background_light};
       border-radius: 5px;
       padding: 0 20px;
       margin: 0 10px;

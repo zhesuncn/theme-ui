@@ -1,5 +1,7 @@
+import styled from 'styled-components'
+
 export const queue = {
-  styles: `
+  container: styled.div`
     .actions {
     }
   `

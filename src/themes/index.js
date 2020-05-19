@@ -6,19 +6,28 @@ import { selector } from './selector'
 import { notification } from './notification'
 import { editable, editableInput } from './editable'
 import { label, error } from './text'
+import { field } from './field'
 
 const defaultTheme = {
   palette: {
-    primary: '#003F90',
+    blue: '#016db8',
+    blue_dark: '#14489f',
+    white: '#FFFFFF',
+    grey_light: '#d0d0d0',
+    green: '#009c67',
+    red: '#ff4646',
+    yellow: '#ffcd00',
+    blue_grey: '#555d6c',
+    green_jade: '#00b59b',
+    black_grey: '#1f1f1f',
+    black_grey_3: 'rgb(31,31,31,0.3)',
+
     secondary: '#27A893',
     inverse: '#FFFFFF',
-    error: '#ff4646',
     gray_border_light: '#F3F3F3',
     gray_border_active: '#AFAFAF',
     gray_background: '#F0F0F0',
     gray_background_light: '#F6F6F6',
-    text_light: '#212121',
-    text_black: '#000000'
   },
   component: {
     button,
@@ -30,7 +39,8 @@ const defaultTheme = {
     editable,
     editableInput,
     label,
-    error
+    error,
+    field
   }
 }
 

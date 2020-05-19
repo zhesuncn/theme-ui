@@ -15,8 +15,6 @@ var _ThemeContext = require("../../ThemeContext");
 
 var _util = require("../../themes/util");
 
-var _Styled = require("../Styled");
-
 var _DefaultEditionContainer = _interopRequireDefault(require("./DefaultEditionContainer"));
 
 var _lodash = require("lodash");
@@ -76,6 +74,7 @@ var Editable = function Editable(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
+  var Container = myTheme.Container;
 
   var reset = function reset() {
     if (value) {
@@ -148,9 +147,8 @@ var Editable = function Editable(_ref) {
     }));
   }
 
-  return _react.default.createElement(_Styled.StyledDiv, _extends({
-    className: 'editable ' + className,
-    styles: myTheme.styles
+  return _react.default.createElement(Container, _extends({
+    className: 'editable ' + className
   }, props), displayComponent, editionMode);
 };
 

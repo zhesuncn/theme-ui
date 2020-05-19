@@ -1,24 +1,26 @@
+import styled from 'styled-components'
+
 export const text = {
   label: {
-    styles: `
+    container: styled.span`
       font-weight: bold;
     `
   },
   error: {
-    styles: `
-      color: error;
+    container: styled.span`
+      color: ${props => props.palette.red};
     `
   }
 }
 
 export const label = {
-  styles: `
+  container: styled.span`
       font-weight: bold;
     `
 }
 
 export const error = {
-  styles: `
-      color: error;
+  container: styled.span`
+      color: ${props => props.palette.red};
     `
 }

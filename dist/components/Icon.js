@@ -25,9 +25,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 var Icon = function Icon(_ref) {
   var name = _ref.name,
-      props = _objectWithoutProperties(_ref, ["name"]);
+      svg = _ref.svg,
+      props = _objectWithoutProperties(_ref, ["name", "svg"]);
 
-  console.log(name, _svg.default[name], _svg.default);
+  if (svg) {
+    return _react.default.createElement(svg, _objectSpread({}, props));
+  }
 
   if (_svg.default[name]) {
     return _react.default.createElement(_svg.default[name], _objectSpread({}, props));

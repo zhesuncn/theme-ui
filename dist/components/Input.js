@@ -15,7 +15,13 @@ var _ThemeContext = require("../ThemeContext");
 
 var _util2 = require("../themes/util");
 
-var _Styled = require("./Styled");
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
+
+var _Field = _interopRequireDefault(require("./Field"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -35,14 +41,17 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+var defaultContainer = _styledComponents.default.input;
+
 var Input = function Input(_ref) {
   var format = _ref.format,
       className = _ref.className,
       value = _ref.value,
       onValueChanged = _ref.onValueChanged,
       error = _ref.error,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["format", "className", "value", "onValueChanged", "error", "theme"]);
+      label = _ref.label,
+      direction = _ref.direction,
+      props = _objectWithoutProperties(_ref, ["format", "className", "value", "onValueChanged", "error", "label", "direction"]);
 
   var _useState = (0, _react.useState)(value),
       _useState2 = _slicedToArray(_useState, 2),
@@ -72,14 +81,16 @@ var Input = function Input(_ref) {
     onValueChanged && onValueChanged(result.formatted, result.raw);
   };
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util2.getCurrentTheme)(theme, themeContext.input);
-  return _react.default.createElement(_Styled.StyledInput, _extends({
-    className: classN,
+  return _react.default.createElement(_Field.default, {
+    label: label,
+    direction: direction,
+    className: classN
+  }, _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "input",
+    defaultContainer: defaultContainer,
     value: formatted,
-    onChange: valueChanged,
-    styles: myTheme.styles
-  }, props));
+    onChange: valueChanged
+  }, props)));
 };
 
 var _default = Input;

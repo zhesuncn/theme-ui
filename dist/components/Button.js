@@ -9,13 +9,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Icon = _interopRequireDefault(require("./Icon"));
+
+var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
+
 var _ThemeContext = require("../ThemeContext");
 
 var _util = require("../themes/util");
-
-var _Styled = require("./Styled");
-
-var _Icon = _interopRequireDefault(require("./Icon"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,10 +29,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -41,31 +37,35 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function Button(props) {
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function Button(_ref) {
+  var disabled = _ref.disabled,
+      children = _ref.children,
+      href = _ref.href,
+      theme = _ref.theme,
+      className = _ref.className,
+      onClick = _ref.onClick,
+      props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "theme", "className", "onClick"]);
+
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       loading = _useState2[0],
       setLoading = _useState2[1];
 
-  var disabled = props.disabled,
-      children = props.children,
-      href = props.href,
-      theme = props.theme,
-      className = props.className,
-      onClick = props.onClick,
-      otherProps = _objectWithoutProperties(props, ["disabled", "children", "href", "theme", "className", "onClick"]);
-
   var classN = className || '';
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.button);
-  var Contrainer = myTheme.container;
 
   var buttonClicked =
   /*#__PURE__*/
   function () {
-    var _ref = _asyncToGenerator(
+    var _ref2 = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
+      var result;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -81,17 +81,26 @@ function Button(props) {
               setLoading(true);
 
               if (!onClick) {
-                _context.next = 6;
+                _context.next = 7;
                 break;
               }
 
-              _context.next = 6;
-              return onClick();
+              result = onClick();
 
-            case 6:
-              setLoading(false);
+              if (!(result instanceof Promise)) {
+                _context.next = 7;
+                break;
+              }
+
+              return _context.abrupt("return", result.then(function (resp) {
+                setLoading(false);
+                return resp;
+              }));
 
             case 7:
+              setLoading(false);
+
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -100,31 +109,22 @@ function Button(props) {
     }));
 
     return function buttonClicked() {
-      return _ref.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   }();
 
   if (href) {
     if (disabled) {
-      classN += " disabled";
+      classN += ' disabled';
     }
-
-    return _react.default.createElement(_Styled.StyledLink, _extends({
-      className: classN,
-      href: disabled || loading ? null : href,
-      styles: myTheme.styles,
-      onClick: buttonClicked
-    }, otherProps), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon
-    }));
   }
 
-  return _react.default.createElement(_Styled.StyledButton, _extends({
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "button",
     className: classN,
-    disabled: disabled || loading,
-    styles: myTheme.styles,
+    href: disabled || loading ? null : href,
     onClick: buttonClicked
-  }, otherProps), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
+  }, props), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
     name: myTheme.loading_icon
   }));
 }

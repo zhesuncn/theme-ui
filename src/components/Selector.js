@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { StyledSelect } from './Styled'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
 import { getSrc } from '../svg'
+import styled from 'styled-components'
+import ThemeComponent from './ThemeComponent'
+import Field from './Field'
 
-const Selector = ({options, placeholder, onChange, children, value, getValue, getLabel, className, theme, ...props}) => {
+const defaultContainer = styled.select
+
+const Selector = ({options, placeholder, onChange, children, value, getValue, getLabel, className, theme, label, direction, ...props}) => {
   const [current, setCurrent] = useState(value || '')
   useEffect(() => {
     setCurrent(value)
@@ -19,17 +23,23 @@ const Selector = ({options, placeholder, onChange, children, value, getValue, ge
 
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.selector)
-
   const selectChanged = (e) => {
     setCurrent(e.target.value)
     onChange && onChange(e.target.value)
   }
-  return <StyledSelect className={classN}
-                       onChange={selectChanged}
-                       value={current}
-                       styles={myTheme.styles}
-                       open_icon={getSrc(myTheme.open_icon)}
-                       {...props}>
+  return <Field
+    label={label}
+    direction={direction}
+    className={classN}
+  >
+    <ThemeComponent
+    theme={theme}
+    name="selector"
+    defaultContainer={defaultContainer}
+   onChange={selectChanged}
+   value={current}
+   open_icon={getSrc(myTheme.open_icon)}
+   {...props}>
         {placeholder && <option value="" disabled hidden>{placeholder}</option> }
         {Array.isArray(options)&& options.map((item, index) => {
           let value, label
@@ -44,7 +54,8 @@ const Selector = ({options, placeholder, onChange, children, value, getValue, ge
         })
         }
         {children}
-      </StyledSelect>
+      </ThemeComponent>
+  </Field>
 }
 
 export default Selector

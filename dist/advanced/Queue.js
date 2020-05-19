@@ -17,8 +17,6 @@ var _ThemeContext = require("../ThemeContext");
 
 var _util = require("../themes/util");
 
-var _Styled = require("../components/Styled");
-
 var _Icon = _interopRequireDefault(require("../components/Icon"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -57,14 +55,14 @@ var Queue = function Queue(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.queue);
+  var Container = myTheme.Container;
 
   var formateDate = function formateDate(date) {
     return (0, _moment.default)(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss');
   };
 
-  return _react.default.createElement(_Styled.StyledDiv, _extends({
-    className: "queue",
-    styles: myTheme.styles
+  return _react.default.createElement(Container, _extends({
+    className: "queue"
   }, props), _react.default.createElement("div", {
     class: "title"
   }, queue.name), _react.default.createElement("div", null, "Started at: ", formateDate(queue.start)), _react.default.createElement("div", {

@@ -37,17 +37,17 @@ function ThemeContextProvider(props) {
 
   var config = props.config ? props.config : _themes.defaultTheme;
   var myContext = {
-    theme: theme,
+    theme: config.component,
     palette: config.palette
-  };
-  (0, _react.useEffect)(function () {
-    var config = props.config ? props.config : _themes.defaultTheme;
-    var t = {};
-    Object.keys(config.component).forEach(function (key) {
-      t[key] = (0, _util.compilePalette)(config.palette, config.component[key]);
-    });
-    setTheme(t);
-  }, [props.config]);
+  }; // useEffect(() => {
+  //   const config = props.config ? props.config : defaultTheme
+  //   const t = {}
+  //   Object.keys(config.component).forEach(key => {
+  //     t[key] = compilePalette(config.palette, config.component[key])
+  //   })
+  //   setTheme(t)
+  // }, [props.config])
+
   return _react.default.createElement(ThemeContext.Provider, {
     value: myContext
   }, props.children);

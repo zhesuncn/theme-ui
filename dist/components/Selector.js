@@ -9,13 +9,19 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Styled = require("./Styled");
-
 var _ThemeContext = require("../ThemeContext");
 
 var _util = require("../themes/util");
 
 var _svg = require("../svg");
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
+
+var _Field = _interopRequireDefault(require("./Field"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -35,6 +41,8 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+var defaultContainer = _styledComponents.default.select;
+
 var Selector = function Selector(_ref) {
   var options = _ref.options,
       placeholder = _ref.placeholder,
@@ -45,7 +53,9 @@ var Selector = function Selector(_ref) {
       getLabel = _ref.getLabel,
       className = _ref.className,
       theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme"]);
+      label = _ref.label,
+      direction = _ref.direction,
+      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme", "label", "direction"]);
 
   var _useState = (0, _react.useState)(value || ''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -71,11 +81,16 @@ var Selector = function Selector(_ref) {
     onChange && onChange(e.target.value);
   };
 
-  return _react.default.createElement(_Styled.StyledSelect, _extends({
-    className: classN,
+  return _react.default.createElement(_Field.default, {
+    label: label,
+    direction: direction,
+    className: classN
+  }, _react.default.createElement(_ThemeComponent.default, _extends({
+    theme: theme,
+    name: "selector",
+    defaultContainer: defaultContainer,
     onChange: selectChanged,
     value: current,
-    styles: myTheme.styles,
     open_icon: (0, _svg.getSrc)(myTheme.open_icon)
   }, props), placeholder && _react.default.createElement("option", {
     value: "",
@@ -96,7 +111,7 @@ var Selector = function Selector(_ref) {
       key: index,
       value: value
     }, label);
-  }), children);
+  }), children));
 };
 
 var _default = Selector;

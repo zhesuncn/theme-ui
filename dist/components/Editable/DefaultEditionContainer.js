@@ -13,8 +13,6 @@ var _ThemeContext = require("../../ThemeContext");
 
 var _util = require("../../themes/util");
 
-var _Styled = require("../Styled");
-
 var _lodash = require("lodash");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -33,8 +31,8 @@ var DefaultEditionContainer = function DefaultEditionContainer(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
-  console.log(myTheme);
-  return _react.default.createElement(_Styled.StyledDiv, {
+  var Container = myTheme.EditionContainer;
+  return _react.default.createElement(Container, {
     className: "default-edition",
     styles: (0, _lodash.get)(myTheme, 'edition_styles', '')
   }, label && _react.default.createElement("div", {

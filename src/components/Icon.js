@@ -1,7 +1,10 @@
 import React from 'react'
 import svgs from '../svg'
 
-const Icon = ({name, ...props}) => {
+const Icon = ({name, svg, ...props}) => {
+  if(svg) {
+    return React.createElement(svg, {...props})
+  }
   if(svgs[name]) {
     return React.createElement(svgs[name], {...props})
   }

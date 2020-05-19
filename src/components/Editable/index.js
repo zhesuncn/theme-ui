@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Icon from '../Icon'
 import { useTheme } from '../../ThemeContext'
 import { getCurrentTheme } from '../../themes/util'
-import { StyledDiv } from '../Styled'
 import DefaultEditionContainer from './DefaultEditionContainer'
 import { get } from 'lodash'
 
@@ -14,7 +13,7 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
 
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.editable)
-
+  const Container = myTheme.Container
   const reset = () => {
     if(value) { //Set props.value to currentValue
       setCurrentValue(value)
@@ -69,10 +68,10 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
       {component && React.createElement(component, {value})}
     </React.Fragment>
   }
-  return <StyledDiv className={'editable ' + className} styles={myTheme.styles} {...props}>
+  return <Container className={'editable ' + className} {...props}>
     {displayComponent}
     {editionMode}
-  </StyledDiv>
+  </Container>
 }
 
 export default Editable

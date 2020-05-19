@@ -1,9 +1,11 @@
+import styled from 'styled-components'
+
 export const editable = {
   confirm_icon: 'check',
   cancel_icon: 'close',
   edit_icon: 'edit',
   delete_icon: 'trash',
-  styles: `
+  container: styled.div`
    .btns {
       display: inline-flex;
     }
@@ -19,7 +21,7 @@ export const editableInput = {
   cancel_icon: 'close',
   edit_icon: 'edit',
   delete_icon: 'trash',
-  styles: `
+  container: styled.div`
     display: flex;
     align-items: center;
     .btns{
@@ -32,8 +34,10 @@ export const editableInput = {
       cursor: pointer;
     }
   `,
-  edition_styles: `
+  edition: {
+    container: styled.div`
     display: flex;
     align-items: center;
   `
+  }
 }

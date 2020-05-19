@@ -9,11 +9,15 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _Styled = require("./Styled");
-
 var _util = require("../themes/util");
 
 var _ThemeContext = require("../ThemeContext");
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -32,6 +36,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+var defaultContainer = _styledComponents.default.div;
 
 var Switcher = function Switcher(_ref) {
   var children = _ref.children,
@@ -56,11 +62,10 @@ var Switcher = function Switcher(_ref) {
     onChange && onChange(!current);
   };
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.switcher);
-  return _react.default.createElement(_Styled.StyledDiv, _extends({}, props, {
-    styles: myTheme.styles
-  }), children && _react.default.createElement("span", {
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "switcher",
+    defaultContainer: defaultContainer
+  }, props), children && _react.default.createElement("span", {
     className: "title"
   }, children), _react.default.createElement("label", {
     "data-print": "hide",

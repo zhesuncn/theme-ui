@@ -1,18 +1,15 @@
 import React from 'react'
-import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
-import { StyledDiv, StyledSelect } from './Styled'
+import ThemeComponent from './ThemeComponent'
+import styled from 'styled-components'
 
-const Label = ({theme, children, ...props}) => {
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.label)
-  return <StyledDiv styles={myTheme.styles} {...props}>{children}</StyledDiv>
+const defaultContainer = styled.span
+
+const Label = ({children, ...props}) => {
+  return <ThemeComponent name="label" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
 }
 
-const Error = ({theme, children, ...props}) => {
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.error)
-  return <StyledDiv styles={myTheme.styles} {...props}>{children}</StyledDiv>
+const Error = ({ children, ...props}) => {
+  return <ThemeComponent name="error" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
 }
 
 

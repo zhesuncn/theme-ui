@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
-import { StyledDiv } from './Styled'
 import Icon from './Icon'
+import ThemeComponent from './ThemeComponent'
+import styled from 'styled-components'
+
+const defaultContainer = styled.div
 
 const Notification = ({children, type = 'info', autohide = 5, show = true, onHide, theme, ...props}) =>{
   const [isShow, setIsShow] = useState(show)
@@ -23,10 +26,13 @@ const Notification = ({children, type = 'info', autohide = 5, show = true, onHid
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.notification)
 
-  return isShow ? <StyledDiv className={classN} styles={myTheme.styles} {...props}>
+  return isShow ? <ThemeComponent
+    name="notification"
+    defaultContainer={defaultContainer}
+    className={classN} {...props}>
     {children}
     {myTheme.close_icon && <Icon name={myTheme.close_icon} onClick={hide}/>}
-  </StyledDiv>: null
+  </ThemeComponent>: null
 }
 
 export default Notification

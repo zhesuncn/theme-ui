@@ -21,18 +21,27 @@ var _editable = require("./editable");
 
 var _text = require("./text");
 
+var _field = require("./field");
+
 var defaultTheme = {
   palette: {
-    primary: '#003F90',
+    blue: '#016db8',
+    blue_dark: '#14489f',
+    white: '#FFFFFF',
+    grey_light: '#d0d0d0',
+    green: '#009c67',
+    red: '#ff4646',
+    yellow: '#ffcd00',
+    blue_grey: '#555d6c',
+    green_jade: '#00b59b',
+    black_grey: '#1f1f1f',
+    black_grey_3: 'rgb(31,31,31,0.3)',
     secondary: '#27A893',
     inverse: '#FFFFFF',
-    error: '#ff4646',
     gray_border_light: '#F3F3F3',
     gray_border_active: '#AFAFAF',
     gray_background: '#F0F0F0',
-    gray_background_light: '#F6F6F6',
-    text_light: '#212121',
-    text_black: '#000000'
+    gray_background_light: '#F6F6F6'
   },
   component: {
     button: _button.button,
@@ -44,7 +53,8 @@ var defaultTheme = {
     editable: _editable.editable,
     editableInput: _editable.editableInput,
     label: _text.label,
-    error: _text.error
+    error: _text.error,
+    field: _field.field
   }
 };
 exports.defaultTheme = defaultTheme;

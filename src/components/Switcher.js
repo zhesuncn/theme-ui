@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { StyledDiv } from './Styled'
 import { getCurrentTheme } from '../themes/util'
 import { useTheme } from '../ThemeContext'
+import styled from 'styled-components'
+import ThemeComponent from './ThemeComponent'
 
+const defaultContainer = styled.div
 
 const Switcher = ({children, value, label, onChange, style, theme, ...props }) => {
   const [current, setCurrent] = useState(value || false)
@@ -14,10 +16,10 @@ const Switcher = ({children, value, label, onChange, style, theme, ...props }) =
     setCurrent(!current)
     onChange && onChange(!current)
   }
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.switcher)
-
-  return <StyledDiv {...props} styles={myTheme.styles}>
+  return <ThemeComponent
+    name="switcher"
+    defaultContainer={defaultContainer}
+    {...props}>
     {children && <span className='title'>{children}</span>}
     <label
         data-print="hide"
@@ -27,7 +29,7 @@ const Switcher = ({children, value, label, onChange, style, theme, ...props }) =
         <span className="slider round" />
     </label>
     {label &&  <span>{label(current)}</span>}
-  </StyledDiv>
+  </ThemeComponent>
 }
 
 export default Switcher

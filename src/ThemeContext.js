@@ -7,18 +7,18 @@ function ThemeContextProvider (props) {
   const [theme, setTheme] = useState({})
   const config = props.config ? props.config : defaultTheme
   const myContext = {
-    theme,
+    theme: config.component,
     palette: config.palette
   }
 
-  useEffect(() => {
-    const config = props.config ? props.config : defaultTheme
-    const t = {}
-    Object.keys(config.component).forEach(key => {
-      t[key] = compilePalette(config.palette, config.component[key])
-    })
-    setTheme(t)
-  }, [props.config])
+  // useEffect(() => {
+  //   const config = props.config ? props.config : defaultTheme
+  //   const t = {}
+  //   Object.keys(config.component).forEach(key => {
+  //     t[key] = compilePalette(config.palette, config.component[key])
+  //   })
+  //   setTheme(t)
+  // }, [props.config])
   return <ThemeContext.Provider value={myContext}>
     { props.children }
   </ThemeContext.Provider>
