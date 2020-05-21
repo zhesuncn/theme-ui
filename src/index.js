@@ -11,8 +11,10 @@ import Editable from './components/Editable'
 import EditableInput from './components/EditableInput'
 import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
 import ModalEditionContainer from './components/Editable/ModalEditionContainer'
-import { Label, Error } from './components/Text'
+import { Label, Error, H1 } from './components/Text'
 import Field from './components/Field'
+import { TabPanel, TabItem} from './components/TabPanel'
+
 export {
   Button,
   Input,
@@ -28,7 +30,10 @@ export {
   ModalEditionContainer,
   Label,
   Error,
+  H1,
   Field,
+  TabPanel,
+  TabItem,
   ThemeContextProvider,
   useTheme,
   usePalette

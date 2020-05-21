@@ -107,10 +107,28 @@ Object.defineProperty(exports, "Error", {
     return _Text.Error;
   }
 });
+Object.defineProperty(exports, "H1", {
+  enumerable: true,
+  get: function get() {
+    return _Text.H1;
+  }
+});
 Object.defineProperty(exports, "Field", {
   enumerable: true,
   get: function get() {
     return _Field.default;
+  }
+});
+Object.defineProperty(exports, "TabPanel", {
+  enumerable: true,
+  get: function get() {
+    return _TabPanel.TabPanel;
+  }
+});
+Object.defineProperty(exports, "TabItem", {
+  enumerable: true,
+  get: function get() {
+    return _TabPanel.TabItem;
   }
 });
 
@@ -143,6 +161,8 @@ var _ModalEditionContainer = _interopRequireDefault(require("./components/Editab
 var _Text = require("./components/Text");
 
 var _Field = _interopRequireDefault(require("./components/Field"));
+
+var _TabPanel = require("./components/TabPanel");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

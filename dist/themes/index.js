@@ -23,6 +23,8 @@ var _text = require("./text");
 
 var _field = require("./field");
 
+var _tabpanel = require("./tabpanel");
+
 var defaultTheme = {
   palette: {
     blue: '#016db8',
@@ -54,7 +56,9 @@ var defaultTheme = {
     editableInput: _editable.editableInput,
     label: _text.label,
     error: _text.error,
-    field: _field.field
+    h1: _text.h1,
+    field: _field.field,
+    tabpanel: _tabpanel.tabpanel
   }
 };
 exports.defaultTheme = defaultTheme;

@@ -25,3 +25,10 @@ export const error = {
     `
 }
 
+export const h1 = {
+  container: styled.h1`
+      font-size: 24px;
+      font-weight: bold
+    `
+}
+

@@ -12,8 +12,12 @@ const Error = ({ children, ...props}) => {
   return <ThemeComponent name="error" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
 }
 
+const H1 = ({ children, ...props}) => {
+  return <ThemeComponent name="h1" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
+}
 
 export {
   Label,
-  Error
+  Error,
+  H1
 }

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Error = exports.Label = void 0;
+exports.H1 = exports.Error = exports.Label = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -44,3 +44,15 @@ var Error = function Error(_ref2) {
 };
 
 exports.Error = Error;
+
+var H1 = function H1(_ref3) {
+  var children = _ref3.children,
+      props = _objectWithoutProperties(_ref3, ["children"]);
+
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "h1",
+    defaultContainer: defaultContainer
+  }, props), children);
+};
+
+exports.H1 = H1;

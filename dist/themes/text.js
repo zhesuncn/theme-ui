@@ -3,11 +3,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.error = exports.label = exports.text = void 0;
+exports.h1 = exports.error = exports.label = exports.text = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n      font-size: 24px;\n      font-weight: bold\n    "]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject4() {
   var data = _taggedTemplateLiteral(["\n      color: ", ";\n    "]);
@@ -72,3 +82,7 @@ var error = {
   })
 };
 exports.error = error;
+var h1 = {
+  container: _styledComponents.default.h1(_templateObject5())
+};
+exports.h1 = h1;
