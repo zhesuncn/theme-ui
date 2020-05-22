@@ -32,3 +32,20 @@ export const h1 = {
     `
 }
 
+export const tag = {
+  container: styled.div`
+    font-size: 14px;
+    background:  ${props => props.palette.grey_light};
+    padding: 5px 10px;
+    display: inline-block;
+    font-weight: 600;
+    border-radius: 5px;
+    & > .btn {
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    & > .btn:hover {
+      opacity: 0.5;
+    }
+  `
+}

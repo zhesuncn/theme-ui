@@ -11,7 +11,7 @@ import Editable from './components/Editable'
 import EditableInput from './components/EditableInput'
 import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
 import ModalEditionContainer from './components/Editable/ModalEditionContainer'
-import { Label, Error, H1 } from './components/Text'
+import { Label, Error, H1, Tag } from './components/Text'
 import Field from './components/Field'
 import { TabPanel, TabItem} from './components/TabPanel'
 
@@ -31,6 +31,7 @@ export {
   Label,
   Error,
   H1,
+  Tag,
   Field,
   TabPanel,
   TabItem,

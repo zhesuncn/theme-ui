@@ -57,6 +57,7 @@ var defaultTheme = {
     label: _text.label,
     error: _text.error,
     h1: _text.h1,
+    tag: _text.tag,
     field: _field.field,
     tabpanel: _tabpanel.tabpanel
   }

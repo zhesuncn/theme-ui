@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.H1 = exports.Error = exports.Label = void 0;
+exports.Tag = exports.H1 = exports.Error = exports.Label = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -27,6 +27,7 @@ var Label = function Label(_ref) {
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
     name: "label",
+    className: "label",
     defaultContainer: defaultContainer
   }, props), children);
 };
@@ -39,6 +40,7 @@ var Error = function Error(_ref2) {
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
     name: "error",
+    className: "error",
     defaultContainer: defaultContainer
   }, props), children);
 };
@@ -51,8 +53,30 @@ var H1 = function H1(_ref3) {
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
     name: "h1",
+    className: "h1",
     defaultContainer: defaultContainer
   }, props), children);
 };
 
 exports.H1 = H1;
+
+var Tag = function Tag(_ref4) {
+  var children = _ref4.children,
+      onClose = _ref4.onClose,
+      onClick = _ref4.onClick,
+      _ref4$className = _ref4.className,
+      className = _ref4$className === void 0 ? '' : _ref4$className,
+      props = _objectWithoutProperties(_ref4, ["children", "onClose", "onClick", "className"]);
+
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "tag",
+    className: 'tag ' + className
+  }, props), _react.default.createElement("span", {
+    onClick: onClick
+  }, children), onClose && _react.default.createElement("span", {
+    className: "btn",
+    onClick: onClose
+  }, " x"));
+};
+
+exports.Tag = Tag;

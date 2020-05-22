@@ -113,6 +113,12 @@ Object.defineProperty(exports, "H1", {
     return _Text.H1;
   }
 });
+Object.defineProperty(exports, "Tag", {
+  enumerable: true,
+  get: function get() {
+    return _Text.Tag;
+  }
+});
 Object.defineProperty(exports, "Field", {
   enumerable: true,
   get: function get() {
