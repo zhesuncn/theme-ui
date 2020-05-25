@@ -4,8 +4,11 @@ import { useTheme } from '../../ThemeContext'
 import { getCurrentTheme } from '../../themes/util'
 import DefaultEditionContainer from './DefaultEditionContainer'
 import { get } from 'lodash'
+import Field from '../Field'
+import ThemeComponent from '../ThemeComponent'
 
-const Editable = ({className = '', value, defaultEdition = false, onChanged, onDelete, editRender, label,
+
+const Editable = ({className = '', value, defaultEdition = false, onChanged, onDelete, editRender, label, direction,
                     onCancel, children, editContainerOptions, editComponent, component, theme, ...props}) => {
   const [edition, setEdition] = useState(defaultEdition)
   const [currentValue, setCurrentValue] = useState(value)
@@ -13,7 +16,6 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
 
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.editable)
-  const Container = myTheme.Container
   const reset = () => {
     if(value) { //Set props.value to currentValue
       setCurrentValue(value)
@@ -48,12 +50,10 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
       {editContent}
     </EditionC>
   }
-
   let displayComponent = null
   if(!edition) {
     displayComponent = <React.Fragment>
       <div className='btns'>
-        {label && <div className='label' style={{marginRight: '10px'}}>{label}</div>}
         {
           onChanged && <Icon name={myTheme.edit_icon} onClick={()=> {
             reset()
@@ -68,10 +68,14 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
       {component && React.createElement(component, {value})}
     </React.Fragment>
   }
-  return <Container className={'editable ' + className} {...props}>
-    {displayComponent}
-    {editionMode}
-  </Container>
+  return <Field label={label} direction={direction} className={className}>
+    <ThemeComponent name="editable"
+                    theme={theme}
+        {...props}>
+      {displayComponent}
+      {editionMode}
+    </ThemeComponent>
+  </Field>
 }
 
 export default Editable

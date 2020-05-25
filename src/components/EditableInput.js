@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Editable from './Editable'
 import Input from './Input'
@@ -29,16 +29,13 @@ const EditableInput = ({value, label, theme, ...props}) => {
     }
     editRender={({onChanged, value}) => {
       return <React.Fragment>
-        {label && <span>{label}: </span>}
-        <Input value={value} onValueChanged={(formatted, raw) => {
-          console.log(formatted, raw)
+        <Input label={label} value={value} onValueChanged={(formatted, raw) => {
           onChanged(raw)}}/>
       </React.Fragment>
     }}
     theme={myTheme}
     {...props}
   >
-    {label && <span>{label}: </span>}
     {current}
   </Editable>
 }

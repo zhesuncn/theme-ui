@@ -14,3 +14,13 @@ export const selector = () => (
     </Selector>
   </ThemeContextProvider>)
 
+export const selectorWithLabel = () => (
+  <ThemeContextProvider>
+    <Selector
+      label="Language"
+      placeholder={'Choose a language'}>
+      <option value='cn'>中文</option>
+      <option value='fr'>Français</option>
+      <option value='en'>English</option>
+    </Selector>
+  </ThemeContextProvider>)

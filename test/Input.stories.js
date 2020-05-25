@@ -6,3 +6,5 @@ export default { title: 'Input'}
 
 export const input = () => <ThemeContextProvider><Input/></ThemeContextProvider>
 
+
+export const labelInput = () => <ThemeContextProvider><Input label='name'/></ThemeContextProvider>

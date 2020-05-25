@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import svgs from '../svg'
 
 export const editable = {
   confirm_icon: 'check',
@@ -13,7 +14,11 @@ export const editable = {
       margin-right: 10px;
       width: 16px;
     }
-  `
+  `,
+  edition: {
+    container: styled.div`
+    `
+  }
 }
 
 export const editableInput = {

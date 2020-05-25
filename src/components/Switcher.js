@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { getCurrentTheme } from '../themes/util'
-import { useTheme } from '../ThemeContext'
-import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 
-const defaultContainer = styled.div
 
-const Switcher = ({children, value, label, onChange, style, theme, ...props }) => {
+const Switcher = ({children, value, label, onChange, style, ...props }) => {
   const [current, setCurrent] = useState(value || false)
   useEffect(() => {
     setCurrent(value)
@@ -18,7 +14,6 @@ const Switcher = ({children, value, label, onChange, style, theme, ...props }) =
   }
   return <ThemeComponent
     name="switcher"
-    defaultContainer={defaultContainer}
     {...props}>
     {children && <span className='title'>{children}</span>}
     <label

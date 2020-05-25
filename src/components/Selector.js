@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 import Field from './Field'
 
-const defaultContainer = styled.select
+const defaultContainer = styled.select``
 
 const Selector = ({options, placeholder, onChange, children, value, getValue, getLabel, className, theme, label, direction, ...props}) => {
   const [current, setCurrent] = useState(value || '')

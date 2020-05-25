@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { formatValue } from '../util/util'
-import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 import Field from './Field'
 
-const defaultContainer = styled.input
+const defaultContainer = styled.input``
 
 const Input = ({format, className, value, onValueChanged, error, label, direction, ...props}) => {
   const [current, setCurrent] = useState(value)
