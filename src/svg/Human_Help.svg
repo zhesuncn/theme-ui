@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>human-greeting</title>
+    <desc>Created with Sketch.</desc>
+    <g id="WIREFRAME" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DEDO_V02.2_InfosBancaire" transform="translate(-1288.000000, -40.000000)" stroke="#00B198" stroke-width="2">
+            <g id="SideBar">
+                <g id="FAQ" transform="translate(1291.000000, 45.000000)">
+                    <g id="human-greeting">
+                        <path d="M0,0 L0,1.875 C0,7.0625 2.69512195,11.6 6.70731707,14.125 L6.70731707,20 L25,20 L25,17.5 C25,14.175 18.5,12.5 15.2439024,12.5 C15.2439024,12.5 15.0365854,12.5 14.9390244,12.5 C9.14634146,12.5 4.26829268,7.5 4.26829268,1.875 L4.26829268,0 L0,0 Z M15.2439024,0 C12.5498305,0 10.3658537,2.23857625 10.3658537,5 C10.3658537,7.76142375 12.5498305,10 15.2439024,10 C17.9379744,10 20.1219512,7.76142375 20.1219512,5 C20.1219512,2.23857625 17.9379744,0 15.2439024,0 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
