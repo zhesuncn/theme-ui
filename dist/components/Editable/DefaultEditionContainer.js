@@ -13,7 +13,7 @@ var _ThemeContext = require("../../ThemeContext");
 
 var _util = require("../../themes/util");
 
-var _lodash = require("lodash");
+var _ThemeComponent = _interopRequireDefault(require("../ThemeComponent"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,19 +31,23 @@ var DefaultEditionContainer = function DefaultEditionContainer(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
-  var Container = myTheme.EditionContainer;
-  return _react.default.createElement(Container, {
-    className: "default-edition",
-    styles: (0, _lodash.get)(myTheme, 'edition_styles', '')
-  }, label && _react.default.createElement("div", {
-    className: "label"
-  }, label), _react.default.createElement(_Icon.default, {
-    name: myTheme.confirm_icon,
-    onClick: onConfirm
-  }), _react.default.createElement(_Icon.default, {
-    name: myTheme.cancel_icon,
-    onClick: onCancel
-  }), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      name: "editable.edition",
+      className: "default-edition"
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.confirm_icon,
+      onClick: onConfirm
+    }),
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.cancel_icon,
+      onClick: onCancel
+    }), children)
+  );
 };
 
 var _default = DefaultEditionContainer;

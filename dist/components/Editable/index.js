@@ -19,6 +19,10 @@ var _DefaultEditionContainer = _interopRequireDefault(require("./DefaultEditionC
 
 var _lodash = require("lodash");
 
+var _Field = _interopRequireDefault(require("../Field"));
+
+var _ThemeComponent = _interopRequireDefault(require("../ThemeComponent"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -49,13 +53,14 @@ var Editable = function Editable(_ref) {
       onDelete = _ref.onDelete,
       editRender = _ref.editRender,
       label = _ref.label,
+      direction = _ref.direction,
       onCancel = _ref.onCancel,
       children = _ref.children,
       editContainerOptions = _ref.editContainerOptions,
       editComponent = _ref.editComponent,
       component = _ref.component,
       theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "onCancel", "children", "editContainerOptions", "editComponent", "component", "theme"]);
+      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "direction", "onCancel", "children", "editContainerOptions", "editComponent", "component", "theme"]);
 
   var _useState = (0, _react.useState)(defaultEdition),
       _useState2 = _slicedToArray(_useState, 2),
@@ -74,7 +79,6 @@ var Editable = function Editable(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
-  var Container = myTheme.Container;
 
   var reset = function reset() {
     if (value) {
@@ -114,7 +118,9 @@ var Editable = function Editable(_ref) {
     };
 
     var containerProps = (0, _lodash.get)(editContainerOptions, 'props', {});
-    editionMode = _react.default.createElement(EditionC, _extends({
+    editionMode =
+    /*#__PURE__*/
+    _react.default.createElement(EditionC, _extends({
       onConfirm: onEditionConfirm,
       onCancel: onEditionCancel,
       label: label
@@ -124,20 +130,23 @@ var Editable = function Editable(_ref) {
   var displayComponent = null;
 
   if (!edition) {
-    displayComponent = _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    displayComponent =
+    /*#__PURE__*/
+    _react.default.createElement(_react.default.Fragment, null,
+    /*#__PURE__*/
+    _react.default.createElement("div", {
       className: "btns"
-    }, label && _react.default.createElement("div", {
-      className: "label",
-      style: {
-        marginRight: '10px'
-      }
-    }, label), onChanged && _react.default.createElement(_Icon.default, {
+    }, onChanged &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
       name: myTheme.edit_icon,
       onClick: function onClick() {
         reset();
         setEdition(true);
       }
-    }), onDelete && _react.default.createElement(_Icon.default, {
+    }), onDelete &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
       name: myTheme.delete_icon,
       onClick: function onClick() {
         onDelete(value);
@@ -147,9 +156,19 @@ var Editable = function Editable(_ref) {
     }));
   }
 
-  return _react.default.createElement(Container, _extends({
-    className: 'editable ' + className
-  }, props), displayComponent, editionMode);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: className
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "editable",
+      theme: theme
+    }, props), displayComponent, editionMode))
+  );
 };
 
 var _default = Editable;

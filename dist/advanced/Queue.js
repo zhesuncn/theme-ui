@@ -19,6 +19,8 @@ var _util = require("../themes/util");
 
 var _Icon = _interopRequireDefault(require("../components/Icon"));
 
+var _ThemeComponent = _interopRequireDefault(require("../components/ThemeComponent"));
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -55,51 +57,86 @@ var Queue = function Queue(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.queue);
-  var Container = myTheme.Container;
 
   var formateDate = function formateDate(date) {
     return (0, _moment.default)(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss');
   };
 
-  return _react.default.createElement(Container, _extends({
-    className: "queue"
-  }, props), _react.default.createElement("div", {
-    class: "title"
-  }, queue.name), _react.default.createElement("div", null, "Started at: ", formateDate(queue.start)), _react.default.createElement("div", {
-    className: "status"
-  }, "Status:\xA0\xA0", _react.default.createElement("span", null, queue.status), queue.status === "RUNNING" && _react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon
-  })), _react.default.createElement(_Button.default, {
-    size: 150,
-    className: "underline",
-    color: "text",
-    onClick: function onClick() {
-      setOpen(!open);
-    }
-  }, open ? "Hide" : "More..."), open && _react.default.createElement("div", {
-    className: 'detail'
-  }, queue.events && _react.default.createElement("div", null, _react.default.createElement("div", {
-    className: "sub-title"
-  }, "Events"), queue.events.map(function (ev, i) {
-    return _react.default.createElement("div", {
-      key: i,
-      className: "event"
-    }, formateDate(ev.date), " : ", _react.default.createElement("span", null, ev.name), ev.msg && _react.default.createElement("div", null, ev.msg));
-  })), children, _react.default.createElement("div", {
-    className: "actions"
-  }, onStop && queue.status !== 'SUCCESS' && queue.status !== 'FAILED' && _react.default.createElement(_Button.default, {
-    size: 150,
-    className: "clear",
-    onClick: onStop
-  }, "Stop"), onFollow && _react.default.createElement(_Button.default, {
-    size: 150,
-    className: "underline",
-    color: "text",
-    style: {
-      marginLeft: '20px'
-    },
-    onClick: onFollow
-  }, "Follow"))));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "queue"
+    }, props, {
+      theme: theme
+    }),
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      class: "title"
+    }, queue.name),
+    /*#__PURE__*/
+    _react.default.createElement("div", null, "Started at: ", formateDate(queue.start)),
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "status"
+    }, "Status:\xA0\xA0",
+    /*#__PURE__*/
+    _react.default.createElement("span", null, queue.status), queue.status === "RUNNING" &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.loading_icon
+    })),
+    /*#__PURE__*/
+    _react.default.createElement(_Button.default, {
+      size: 150,
+      className: "underline",
+      color: "text",
+      onClick: function onClick() {
+        setOpen(!open);
+      }
+    }, open ? "Hide" : "More..."), open &&
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: 'detail'
+    }, queue.events &&
+    /*#__PURE__*/
+    _react.default.createElement("div", null,
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "sub-title"
+    }, "Events"), queue.events.map(function (ev, i) {
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("div", {
+          key: i,
+          className: "event"
+        }, formateDate(ev.date), " : ",
+        /*#__PURE__*/
+        _react.default.createElement("span", null, ev.name), ev.msg &&
+        /*#__PURE__*/
+        _react.default.createElement("div", null, ev.msg))
+      );
+    })), children,
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "actions"
+    }, onStop && queue.status !== 'SUCCESS' && queue.status !== 'FAILED' &&
+    /*#__PURE__*/
+    _react.default.createElement(_Button.default, {
+      size: 150,
+      className: "clear",
+      onClick: onStop
+    }, "Stop"), onFollow &&
+    /*#__PURE__*/
+    _react.default.createElement(_Button.default, {
+      size: 150,
+      className: "underline",
+      color: "text",
+      style: {
+        marginLeft: '20px'
+      },
+      onClick: onFollow
+    }, "Follow"))))
+  );
 };
 
 var _default = Queue;

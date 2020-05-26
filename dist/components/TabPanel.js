@@ -13,8 +13,6 @@ var _reactRouter = require("react-router");
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -35,8 +33,6 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
-
 var TabItem = function TabItem(_ref) {
   var children = _ref.children,
       active = _ref.active,
@@ -54,11 +50,14 @@ var TabItem = function TabItem(_ref) {
     classN += ' disabled';
   }
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: 'tabpanel.tabitem',
-    className: classN,
-    onClick: onClick
-  }, props), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: 'tabpanel.tabitem',
+      className: classN,
+      onClick: onClick
+    }, props), children)
+  );
 };
 
 exports.TabItem = TabItem;
@@ -83,38 +82,39 @@ var TabPanel = function TabPanel(_ref2) {
 
   var history = (0, _reactRouter.useHistory)();
   var location = (0, _reactRouter.useLocation)();
-  return _react.default.createElement(_ThemeComponent.default, {
-    name: "tabpanel",
-    className: "tab-items",
-    style: style,
-    theme: theme,
-    defaultContainer: defaultContainer
-  }, _react.default.Children.map(children, function (child, index) {
-    var isActive = index === active;
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      name: "tabpanel",
+      className: "tab-items",
+      style: style,
+      theme: theme
+    }, _react.default.Children.map(children, function (child, index) {
+      var isActive = index === active;
 
-    if (isActive && location && child.props.path && location.pathname !== child.props.path) {
-      history.push(child.props.path);
-    }
-
-    return _react.default.cloneElement(child, {
-      theme: theme,
-      defaultContainer: defaultContainer,
-      active: isActive,
-      key: index,
-      onClick: function onClick() {
-        setActive(index);
-        onTabChanged && onTabChanged(child.props.path, index);
-
-        if (history && child.props.path) {
-          history.push(child.props.path);
-        }
-
-        if (child.props.component) {
-          setComponent(child.props.component);
-        }
+      if (isActive && location && child.props.path && location.pathname !== child.props.path) {
+        history.push(child.props.path);
       }
-    });
-  }), component && _react.default.createElement(component, props));
+
+      return _react.default.cloneElement(child, {
+        theme: theme,
+        active: isActive,
+        key: index,
+        onClick: function onClick() {
+          setActive(index);
+          onTabChanged && onTabChanged(child.props.path, index);
+
+          if (history && child.props.path) {
+            history.push(child.props.path);
+          }
+
+          if (child.props.component) {
+            setComponent(child.props.component);
+          }
+        }
+      });
+    }), component && _react.default.createElement(component, props))
+  );
 };
 
 exports.TabPanel = TabPanel;

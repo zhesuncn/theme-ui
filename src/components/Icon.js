@@ -11,6 +11,7 @@ const Icon = ({name, ...props}) => {
     }
     return React.createElement(name, {...props})
   }
+  return null
 }
 
 export default Icon

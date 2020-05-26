@@ -10,7 +10,7 @@ var _styledComponents = _interopRequireDefault(require("styled-components"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: ", ";\n  ", "\n  .label {\n    ", ";\n  }\n  .underline {\n    width: 62px;\n    height: 2px;\n    background-color: ", ";\n    margin-bottom: 10px;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: ", ";\n  ", "\n  & .label {\n    ", "\n  }\n  & .underline {\n    width: 62px;\n    height: 2px;\n    background-color: ", ";\n    margin-bottom: 10px;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -27,7 +27,7 @@ var field = {
   }, function (props) {
     return props.direction === 'column' ? '' : 'align-items: center;';
   }, function (props) {
-    return props.direction === 'column' ? 'margin-bottom: 5px' : 'margin-right: 10px';
+    return props.direction === 'column' ? 'margin-bottom: 5px;' : 'margin-right: 10px;';
   }, function (props) {
     return props.palette.blue_dark;
   })

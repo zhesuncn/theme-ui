@@ -9,12 +9,12 @@ function Button({
                   children,
                   href,
                   theme,
-                  className,
+                  className= '',
                   onClick,
                   ...props
                 }) {
   const [loading, setLoading] = useState(false)
-  let classN = className || ''
+  let classN = 'button ' +  className
   const themeContext = useTheme()
   const myTheme = getCurrentTheme(theme, themeContext.button)
   const buttonClicked = async () => {

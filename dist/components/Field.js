@@ -21,8 +21,6 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
-
 var Field = function Field(_ref) {
   var label = _ref.label,
       children = _ref.children,
@@ -32,14 +30,19 @@ var Field = function Field(_ref) {
       className = _ref$className === void 0 ? '' : _ref$className,
       props = _objectWithoutProperties(_ref, ["label", "children", "direction", "className"]);
 
-  return label ? _react.default.createElement(_ThemeComponent.default, _extends({
+  return label ?
+  /*#__PURE__*/
+  _react.default.createElement(_ThemeComponent.default, _extends({
     name: "field",
-    defaultContainer: defaultContainer,
     direction: direction,
     className: 'field ' + className
-  }, props), _react.default.createElement(_Text.Label, {
+  }, props),
+  /*#__PURE__*/
+  _react.default.createElement(_Text.Label, {
     className: 'label'
-  }, label), direction === 'column' && _react.default.createElement("div", {
+  }, label), direction === 'column' &&
+  /*#__PURE__*/
+  _react.default.createElement("div", {
     className: "underline"
   }), children) : children;
 };

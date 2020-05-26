@@ -48,9 +48,12 @@ function ThemeContextProvider(props) {
   //   setTheme(t)
   // }, [props.config])
 
-  return _react.default.createElement(ThemeContext.Provider, {
-    value: myContext
-  }, props.children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(ThemeContext.Provider, {
+      value: myContext
+    }, props.children)
+  );
 }
 
 var useTheme = function useTheme() {

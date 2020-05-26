@@ -46,7 +46,8 @@ function Button(_ref) {
       children = _ref.children,
       href = _ref.href,
       theme = _ref.theme,
-      className = _ref.className,
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
       onClick = _ref.onClick,
       props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "theme", "className", "onClick"]);
 
@@ -55,7 +56,7 @@ function Button(_ref) {
       loading = _useState2[0],
       setLoading = _useState2[1];
 
-  var classN = className || '';
+  var classN = 'button ' + className;
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.button);
 
@@ -119,14 +120,19 @@ function Button(_ref) {
     }
   }
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "button",
-    className: classN,
-    href: disabled || loading ? null : href,
-    onClick: buttonClicked
-  }, props), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon
-  }));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "button",
+      className: classN,
+      href: disabled || loading ? null : href,
+      onClick: buttonClicked
+    }, props), children, myTheme.loading_icon && loading &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.loading_icon
+    }))
+  );
 }
 
 var _default = Button;

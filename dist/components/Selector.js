@@ -41,7 +41,19 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.select;
+function _templateObject() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var defaultContainer = _styledComponents.default.select(_templateObject());
 
 var Selector = function Selector(_ref) {
   var options = _ref.options,
@@ -81,37 +93,47 @@ var Selector = function Selector(_ref) {
     onChange && onChange(e.target.value);
   };
 
-  return _react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: classN
-  }, _react.default.createElement(_ThemeComponent.default, _extends({
-    theme: theme,
-    name: "selector",
-    defaultContainer: defaultContainer,
-    onChange: selectChanged,
-    value: current,
-    open_icon: (0, _svg.getSrc)(myTheme.open_icon)
-  }, props), placeholder && _react.default.createElement("option", {
-    value: "",
-    disabled: true,
-    hidden: true
-  }, placeholder), Array.isArray(options) && options.map(function (item, index) {
-    var value, label;
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: classN
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      theme: theme,
+      name: "selector",
+      defaultContainer: defaultContainer,
+      onChange: selectChanged,
+      value: current,
+      open_icon: (0, _svg.getSrc)(myTheme.open_icon)
+    }, props), placeholder &&
+    /*#__PURE__*/
+    _react.default.createElement("option", {
+      value: "",
+      disabled: true,
+      hidden: true
+    }, placeholder), Array.isArray(options) && options.map(function (item, index) {
+      var value, label;
 
-    if (item instanceof Object) {
-      value = getValue ? getValue(item) : item.code;
-      label = getLabel ? getLabel(item) : item.name;
-    } else {
-      value = item;
-      label = item;
-    }
+      if (item instanceof Object) {
+        value = getValue ? getValue(item) : item.code;
+        label = getLabel ? getLabel(item) : item.name;
+      } else {
+        value = item;
+        label = item;
+      }
 
-    return _react.default.createElement("option", {
-      key: index,
-      value: value
-    }, label);
-  }), children));
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("option", {
+          key: index,
+          value: value
+        }, label)
+      );
+    }), children))
+  );
 };
 
 var _default = Selector;

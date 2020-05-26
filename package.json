@@ -21,7 +21,8 @@
     "build-webpack": "webpack --mode production --display-modules",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "start-storybook"
+    "start": "start-storybook",
+    "build-storybook": "build-storybook -c .storybook -o .out"
   },
   "eslintConfig": {
     "extends": "react-app"

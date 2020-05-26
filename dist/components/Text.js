@@ -25,11 +25,14 @@ var Label = function Label(_ref) {
   var children = _ref.children,
       props = _objectWithoutProperties(_ref, ["children"]);
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "label",
-    className: "label",
-    defaultContainer: defaultContainer
-  }, props), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "label",
+      className: "label",
+      defaultContainer: defaultContainer
+    }, props), children)
+  );
 };
 
 exports.Label = Label;
@@ -38,11 +41,14 @@ var Error = function Error(_ref2) {
   var children = _ref2.children,
       props = _objectWithoutProperties(_ref2, ["children"]);
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "error",
-    className: "error",
-    defaultContainer: defaultContainer
-  }, props), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "error",
+      className: "error",
+      defaultContainer: defaultContainer
+    }, props), children)
+  );
 };
 
 exports.Error = Error;
@@ -51,11 +57,14 @@ var H1 = function H1(_ref3) {
   var children = _ref3.children,
       props = _objectWithoutProperties(_ref3, ["children"]);
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "h1",
-    className: "h1",
-    defaultContainer: defaultContainer
-  }, props), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "h1",
+      className: "h1",
+      defaultContainer: defaultContainer
+    }, props), children)
+  );
 };
 
 exports.H1 = H1;
@@ -68,15 +77,22 @@ var Tag = function Tag(_ref4) {
       className = _ref4$className === void 0 ? '' : _ref4$className,
       props = _objectWithoutProperties(_ref4, ["children", "onClose", "onClick", "className"]);
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "tag",
-    className: 'tag ' + className
-  }, props), _react.default.createElement("span", {
-    onClick: onClick
-  }, children), onClose && _react.default.createElement("span", {
-    className: "btn",
-    onClick: onClose
-  }, " x"));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "tag",
+      className: 'tag ' + className
+    }, props),
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      onClick: onClick
+    }, children), onClose &&
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      className: "btn",
+      onClick: onClose
+    }, " x"))
+  );
 };
 
 exports.Tag = Tag;

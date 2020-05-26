@@ -9,12 +9,6 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _util = require("../themes/util");
-
-var _ThemeContext = require("../ThemeContext");
-
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37,16 +31,13 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
-
 var Switcher = function Switcher(_ref) {
   var children = _ref.children,
       value = _ref.value,
       label = _ref.label,
       onChange = _ref.onChange,
       style = _ref.style,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["children", "value", "label", "onChange", "style", "theme"]);
+      props = _objectWithoutProperties(_ref, ["children", "value", "label", "onChange", "style"]);
 
   var _useState = (0, _react.useState)(value || false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -62,18 +53,28 @@ var Switcher = function Switcher(_ref) {
     onChange && onChange(!current);
   };
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "switcher",
-    defaultContainer: defaultContainer
-  }, props), children && _react.default.createElement("span", {
-    className: "title"
-  }, children), _react.default.createElement("label", {
-    "data-print": "hide",
-    "data-value": '' + !!current,
-    onClick: onClick
-  }, _react.default.createElement("span", {
-    className: "slider round"
-  })), label && _react.default.createElement("span", null, label(current)));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "switcher"
+    }, props), children &&
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      className: "title"
+    }, children),
+    /*#__PURE__*/
+    _react.default.createElement("label", {
+      "data-print": "hide",
+      "data-value": '' + !!current,
+      onClick: onClick
+    },
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      className: "slider round"
+    })), label &&
+    /*#__PURE__*/
+    _react.default.createElement("span", null, label(current)))
+  );
 };
 
 var _default = Switcher;
