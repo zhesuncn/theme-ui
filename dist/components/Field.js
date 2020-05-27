@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _Text = require("./Text");
@@ -38,9 +36,7 @@ var Field = function Field(_ref) {
     className: 'field ' + className
   }, props),
   /*#__PURE__*/
-  _react.default.createElement(_Text.Label, {
-    className: 'label'
-  }, label), direction === 'column' &&
+  _react.default.createElement(_Text.Label, null, label), direction === 'column' &&
   /*#__PURE__*/
   _react.default.createElement("div", {
     className: "underline"

@@ -4,22 +4,25 @@ import styled from 'styled-components'
 
 const defaultContainer = styled.span
 
-const Label = ({children, ...props}) => {
-  return <ThemeComponent name="label" className="label" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
+const Label = ({ children, className = '', ...props }) => {
+  return <ThemeComponent name="label" className={ className + ' label' }
+                         defaultContainer={ defaultContainer } { ...props }>{ children }</ThemeComponent>
 }
 
-const Error = ({ children, ...props}) => {
-  return <ThemeComponent name="error" className="error" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
+const Error = ({ children, className = '', ...props }) => {
+  return <ThemeComponent name="error" className={ className + 'error' }
+                         defaultContainer={ defaultContainer } { ...props }>{ children }</ThemeComponent>
 }
 
-const H1 = ({ children, ...props}) => {
-  return <ThemeComponent name="h1" className="h1" defaultContainer={defaultContainer} {...props}>{children}</ThemeComponent>
+const H1 = ({ children, className = '', ...props }) => {
+  return <ThemeComponent name="h1" className={ className + ' h1' }
+                         defaultContainer={ defaultContainer } { ...props }>{ children }</ThemeComponent>
 }
 
-const Tag = ({children, onClose, onClick, className = '', ...props}) => {
-  return <ThemeComponent name="tag" className={'tag ' + className} {...props}>
-    <span onClick={onClick}>{children}</span>
-    {onClose && <span className='btn' onClick={onClose}> x</span>}
+const Tag = ({ children, onClose, onClick, className = '', ...props }) => {
+  return <ThemeComponent name="tag" className={ className + ' tag' } { ...props }>
+    <span onClick={ onClick }>{ children }</span>
+    { onClose && <span className='btn' onClick={ onClose }> x</span> }
   </ThemeComponent>
 }
 

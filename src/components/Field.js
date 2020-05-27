@@ -1,6 +1,5 @@
-import styled from 'styled-components'
 import React from 'react'
-import { Label, SubLabel } from './Text'
+import { Label } from './Text'
 import ThemeComponent from './ThemeComponent'
 
 const Field = ({ label, children, direction = 'column', className = '', ...props }) => {
@@ -8,7 +7,7 @@ const Field = ({ label, children, direction = 'column', className = '', ...props
     name="field"
     direction={ direction }
     className={ 'field ' + className } { ...props } >
-    <Label className={ 'label' }>{ label }</Label>
+    <Label>{ label }</Label>
     { direction === 'column' && <div className="underline"/> }
     { children }
   </ThemeComponent> : children

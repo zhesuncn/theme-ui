@@ -23,13 +23,15 @@ var defaultContainer = _styledComponents.default.span;
 
 var Label = function Label(_ref) {
   var children = _ref.children,
-      props = _objectWithoutProperties(_ref, ["children"]);
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
+      props = _objectWithoutProperties(_ref, ["children", "className"]);
 
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
       name: "label",
-      className: "label",
+      className: className + ' label',
       defaultContainer: defaultContainer
     }, props), children)
   );
@@ -39,13 +41,15 @@ exports.Label = Label;
 
 var Error = function Error(_ref2) {
   var children = _ref2.children,
-      props = _objectWithoutProperties(_ref2, ["children"]);
+      _ref2$className = _ref2.className,
+      className = _ref2$className === void 0 ? '' : _ref2$className,
+      props = _objectWithoutProperties(_ref2, ["children", "className"]);
 
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
       name: "error",
-      className: "error",
+      className: className + 'error',
       defaultContainer: defaultContainer
     }, props), children)
   );
@@ -55,13 +59,15 @@ exports.Error = Error;
 
 var H1 = function H1(_ref3) {
   var children = _ref3.children,
-      props = _objectWithoutProperties(_ref3, ["children"]);
+      _ref3$className = _ref3.className,
+      className = _ref3$className === void 0 ? '' : _ref3$className,
+      props = _objectWithoutProperties(_ref3, ["children", "className"]);
 
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
       name: "h1",
-      className: "h1",
+      className: className + ' h1',
       defaultContainer: defaultContainer
     }, props), children)
   );
@@ -81,7 +87,7 @@ var Tag = function Tag(_ref4) {
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
       name: "tag",
-      className: 'tag ' + className
+      className: className + ' tag'
     }, props),
     /*#__PURE__*/
     _react.default.createElement("span", {
