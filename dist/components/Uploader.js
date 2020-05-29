@@ -77,12 +77,8 @@ var Uploader = function Uploader(_ref) {
     setCurrent(value);
   }, [value]);
 
-  var onDrop =
-  /*#__PURE__*/
-  function () {
-    var _ref2 = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee(acceptedFiles) {
+  var onDrop = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(acceptedFiles) {
       var file;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {

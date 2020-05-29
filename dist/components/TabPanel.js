@@ -79,13 +79,18 @@ var TabPanel = function TabPanel(_ref2) {
 
   var history = (0, _reactRouter.useHistory)();
   var location = (0, _reactRouter.useLocation)();
+  var isKnownPath = _react.default.Children.map(children, function (child) {
+    return child.props.path === location.pathname;
+  }).filter(function (b) {
+    return b;
+  }).length > 0;
   return _react.default.createElement(_ThemeComponent.default, {
     name: "tabpanel",
     className: "tab-items",
     style: style,
     theme: theme
   }, _react.default.Children.map(children, function (child, index) {
-    var isActive = index === active;
+    var isActive = index === active && isKnownPath;
 
     if (isActive && location && child.props.path && location.pathname !== child.props.path) {
       history.push(child.props.path);

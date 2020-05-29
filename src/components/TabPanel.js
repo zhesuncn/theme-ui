@@ -20,10 +20,13 @@ const TabPanel = ({ defaultIndex, onTabChanged, children, style, theme, ...props
   const [component, setComponent] = useState(null)
   const history = useHistory()
   const location = useLocation()
+  const isKnownPath = React.Children.map(children, (child => child.props.path === location.pathname)).filter(b => b).length > 0
+
   return (<ThemeComponent name="tabpanel" className='tab-items' style={ style } theme={ theme }>
       {
+
         React.Children.map(children, (child, index) => {
-          const isActive = index === active
+          const isActive = index === active && isKnownPath
           if (isActive && location && child.props.path && location.pathname !== child.props.path) {
             history.push(child.props.path)
           }
