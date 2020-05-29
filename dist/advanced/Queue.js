@@ -62,81 +62,47 @@ var Queue = function Queue(_ref) {
     return (0, _moment.default)(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss');
   };
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "queue"
-    }, props, {
-      theme: theme
-    }),
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      class: "title"
-    }, queue.name),
-    /*#__PURE__*/
-    _react.default.createElement("div", null, "Started at: ", formateDate(queue.start)),
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: "status"
-    }, "Status:\xA0\xA0",
-    /*#__PURE__*/
-    _react.default.createElement("span", null, queue.status), queue.status === "RUNNING" &&
-    /*#__PURE__*/
-    _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon
-    })),
-    /*#__PURE__*/
-    _react.default.createElement(_Button.default, {
-      size: 150,
-      className: "underline",
-      color: "text",
-      onClick: function onClick() {
-        setOpen(!open);
-      }
-    }, open ? "Hide" : "More..."), open &&
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: 'detail'
-    }, queue.events &&
-    /*#__PURE__*/
-    _react.default.createElement("div", null,
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: "sub-title"
-    }, "Events"), queue.events.map(function (ev, i) {
-      return (
-        /*#__PURE__*/
-        _react.default.createElement("div", {
-          key: i,
-          className: "event"
-        }, formateDate(ev.date), " : ",
-        /*#__PURE__*/
-        _react.default.createElement("span", null, ev.name), ev.msg &&
-        /*#__PURE__*/
-        _react.default.createElement("div", null, ev.msg))
-      );
-    })), children,
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: "actions"
-    }, onStop && queue.status !== 'SUCCESS' && queue.status !== 'FAILED' &&
-    /*#__PURE__*/
-    _react.default.createElement(_Button.default, {
-      size: 150,
-      className: "clear",
-      onClick: onStop
-    }, "Stop"), onFollow &&
-    /*#__PURE__*/
-    _react.default.createElement(_Button.default, {
-      size: 150,
-      className: "underline",
-      color: "text",
-      style: {
-        marginLeft: '20px'
-      },
-      onClick: onFollow
-    }, "Follow"))))
-  );
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "queue"
+  }, props, {
+    theme: theme
+  }), _react.default.createElement("div", {
+    class: "title"
+  }, queue.name), _react.default.createElement("div", null, "Started at: ", formateDate(queue.start)), _react.default.createElement("div", {
+    className: "status"
+  }, "Status:\xA0\xA0", _react.default.createElement("span", null, queue.status), queue.status === "RUNNING" && _react.default.createElement(_Icon.default, {
+    name: myTheme.loading_icon
+  })), _react.default.createElement(_Button.default, {
+    size: 150,
+    className: "underline",
+    color: "text",
+    onClick: function onClick() {
+      setOpen(!open);
+    }
+  }, open ? "Hide" : "More..."), open && _react.default.createElement("div", {
+    className: 'detail'
+  }, queue.events && _react.default.createElement("div", null, _react.default.createElement("div", {
+    className: "sub-title"
+  }, "Events"), queue.events.map(function (ev, i) {
+    return _react.default.createElement("div", {
+      key: i,
+      className: "event"
+    }, formateDate(ev.date), " : ", _react.default.createElement("span", null, ev.name), ev.msg && _react.default.createElement("div", null, ev.msg));
+  })), children, _react.default.createElement("div", {
+    className: "actions"
+  }, onStop && queue.status !== 'SUCCESS' && queue.status !== 'FAILED' && _react.default.createElement(_Button.default, {
+    size: 150,
+    className: "clear",
+    onClick: onStop
+  }, "Stop"), onFollow && _react.default.createElement(_Button.default, {
+    size: 150,
+    className: "underline",
+    color: "text",
+    style: {
+      marginLeft: '20px'
+    },
+    onClick: onFollow
+  }, "Follow"))));
 };
 
 var _default = Queue;

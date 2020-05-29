@@ -79,13 +79,10 @@ var HtmlEditor = function HtmlEditor(props) {
     onStateChanged && onStateChanged(s);
   };
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_reactDraftWysiwyg.Editor, _extends({
-      editorState: state || editorState,
-      onEditorStateChange: onEditorStateChange
-    }, otherProps))
-  );
+  return _react.default.createElement(_reactDraftWysiwyg.Editor, _extends({
+    editorState: state || editorState,
+    onEditorStateChange: onEditorStateChange
+  }, otherProps));
 };
 
 var _default = HtmlEditor;

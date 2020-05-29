@@ -33,12 +33,9 @@ var Icon = function Icon(_ref) {
         return _react.default.createElement(_svg.default[name], _objectSpread({}, props));
       }
 
-      return (
-        /*#__PURE__*/
-        _react.default.createElement("img", _extends({
-          src: name
-        }, props))
-      );
+      return _react.default.createElement("img", _extends({
+        src: name
+      }, props));
     }
 
     return _react.default.createElement(name, _objectSpread({}, props));

@@ -28,17 +28,11 @@ var Field = function Field(_ref) {
       className = _ref$className === void 0 ? '' : _ref$className,
       props = _objectWithoutProperties(_ref, ["label", "children", "direction", "className"]);
 
-  return label ?
-  /*#__PURE__*/
-  _react.default.createElement(_ThemeComponent.default, _extends({
+  return label ? _react.default.createElement(_ThemeComponent.default, _extends({
     name: "field",
     direction: direction,
     className: 'field ' + className
-  }, props),
-  /*#__PURE__*/
-  _react.default.createElement(_Text.Label, null, label), direction === 'column' &&
-  /*#__PURE__*/
-  _react.default.createElement("div", {
+  }, props), _react.default.createElement(_Text.Label, null, label), direction === 'column' && _react.default.createElement("div", {
     className: "underline"
   }), children) : children;
 };

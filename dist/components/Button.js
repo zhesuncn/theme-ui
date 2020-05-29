@@ -120,19 +120,14 @@ function Button(_ref) {
     }
   }
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "button",
-      className: classN,
-      href: disabled || loading ? null : href,
-      onClick: buttonClicked
-    }, props), children, myTheme.loading_icon && loading &&
-    /*#__PURE__*/
-    _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon
-    }))
-  );
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "button",
+    className: classN,
+    href: disabled || loading ? null : href,
+    onClick: buttonClicked
+  }, props), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
+    name: myTheme.loading_icon
+  }));
 }
 
 var _default = Button;

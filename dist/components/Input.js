@@ -89,21 +89,16 @@ var Input = function Input(_ref) {
     onValueChanged && onValueChanged(result.formatted, result.raw);
   };
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_Field.default, {
-      label: label,
-      direction: direction,
-      className: classN
-    },
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "input",
-      defaultContainer: defaultContainer,
-      value: formatted,
-      onChange: valueChanged
-    }, props)))
-  );
+  return _react.default.createElement(_Field.default, {
+    label: label,
+    direction: direction,
+    className: classN
+  }, _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "input",
+    defaultContainer: defaultContainer,
+    value: formatted,
+    onChange: valueChanged
+  }, props)));
 };
 
 var _default = Input;

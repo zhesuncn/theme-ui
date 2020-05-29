@@ -42,35 +42,24 @@ var ModalEditionContainer = function ModalEditionContainer(_ref) {
       cancelTxt = _ref.cancelTxt,
       props = _objectWithoutProperties(_ref, ["children", "edition", "label", "onConfirm", "confirmTxt", "onCancel", "cancelTxt"]);
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_reactModal.default, {
-      isOpen: edition,
-      style: customStyles
-    }, label &&
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: "label"
-    }, label), children,
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      className: "actions"
+  return _react.default.createElement(_reactModal.default, {
+    isOpen: edition,
+    style: customStyles
+  }, label && _react.default.createElement("div", {
+    className: "label"
+  }, label), children, _react.default.createElement("div", {
+    className: "actions"
+  }, _react.default.createElement(_Button.default, {
+    className: "narrow",
+    onClick: onConfirm
+  }, confirmTxt || 'Confirm'), _react.default.createElement(_Button.default, {
+    className: "narrow",
+    color: "inverse",
+    style: {
+      marginLeft: '20px'
     },
-    /*#__PURE__*/
-    _react.default.createElement(_Button.default, {
-      className: "narrow",
-      onClick: onConfirm
-    }, confirmTxt || 'Confirm'),
-    /*#__PURE__*/
-    _react.default.createElement(_Button.default, {
-      className: "narrow",
-      color: "inverse",
-      style: {
-        marginLeft: '20px'
-      },
-      onClick: onCancel
-    }, cancelTxt || 'Cancel')))
-  );
+    onClick: onCancel
+  }, cancelTxt || 'Cancel')));
 };
 
 var _default = ModalEditionContainer;
