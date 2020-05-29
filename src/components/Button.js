@@ -26,8 +26,9 @@ function Button({
       const result = onClick()
       if (result instanceof Promise) {
         return result.then(resp => {
-          setLoading(false)
-          return resp
+          if(!resp) {
+            setLoading(false)
+          }
         })
       }
     }

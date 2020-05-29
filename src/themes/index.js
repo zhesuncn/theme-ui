@@ -5,7 +5,7 @@ import { switcher } from './switcher'
 import { selector } from './selector'
 import { notification } from './notification'
 import { editable, editableInput } from './editable'
-import { label, error, h1, tag } from './text'
+import { label, error, h1, tag, h2 } from './text'
 import { field } from './field'
 import { tabpanel } from './tabpanel'
 
@@ -42,6 +42,7 @@ const defaultTheme = {
     label,
     error,
     h1,
+    h2,
     tag,
     field,
     tabpanel

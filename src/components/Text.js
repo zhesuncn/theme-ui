@@ -19,6 +19,11 @@ const H1 = ({ children, className = '', ...props }) => {
                          defaultContainer={ defaultContainer } { ...props }>{ children }</ThemeComponent>
 }
 
+const H2 = ({ children, className = '', ...props }) => {
+  return <ThemeComponent name="h2" className={ className + ' h2' }
+                         defaultContainer={ defaultContainer } { ...props }>{ children }</ThemeComponent>
+}
+
 const Tag = ({ children, onClose, onClick, className = '', ...props }) => {
   return <ThemeComponent name="tag" className={ className + ' tag' } { ...props }>
     <span onClick={ onClick }>{ children }</span>

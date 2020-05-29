@@ -90,8 +90,9 @@ function Button(_ref) {
               }
 
               return _context.abrupt("return", result.then(function (resp) {
-                setLoading(false);
-                return resp;
+                if (!resp) {
+                  setLoading(false);
+                }
               }));
 
             case 7:

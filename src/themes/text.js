@@ -32,6 +32,13 @@ export const h1 = {
     `
 }
 
+export const h2 = {
+  container: styled.h2`
+      font-size: 22px;
+      font-weight: bold
+    `
+}
+
 export const tag = {
   container: styled.div`
     font-size: 14px;

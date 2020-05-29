@@ -66,13 +66,26 @@ var H1 = function H1(_ref3) {
 
 exports.H1 = H1;
 
-var Tag = function Tag(_ref4) {
+var H2 = function H2(_ref4) {
   var children = _ref4.children,
-      onClose = _ref4.onClose,
-      onClick = _ref4.onClick,
       _ref4$className = _ref4.className,
       className = _ref4$className === void 0 ? '' : _ref4$className,
-      props = _objectWithoutProperties(_ref4, ["children", "onClose", "onClick", "className"]);
+      props = _objectWithoutProperties(_ref4, ["children", "className"]);
+
+  return _react.default.createElement(_ThemeComponent.default, _extends({
+    name: "h2",
+    className: className + ' h2',
+    defaultContainer: defaultContainer
+  }, props), children);
+};
+
+var Tag = function Tag(_ref5) {
+  var children = _ref5.children,
+      onClose = _ref5.onClose,
+      onClick = _ref5.onClick,
+      _ref5$className = _ref5.className,
+      className = _ref5$className === void 0 ? '' : _ref5$className,
+      props = _objectWithoutProperties(_ref5, ["children", "onClose", "onClick", "className"]);
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
     name: "tag",
