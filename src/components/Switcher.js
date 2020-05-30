@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ThemeComponent from './ThemeComponent'
 
 
-const Switcher = ({children, value, label, onChange, style, ...props }) => {
+const Switcher = ({children, value, getLabel, onChange, className='', ...props }) => {
   const [current, setCurrent] = useState(value || false)
   useEffect(() => {
     setCurrent(value)
@@ -14,6 +14,7 @@ const Switcher = ({children, value, label, onChange, style, ...props }) => {
   }
   return <ThemeComponent
     name="switcher"
+    className={'switcher ' + className}
     {...props}>
     {children && <span className='title'>{children}</span>}
     <label
@@ -23,7 +24,7 @@ const Switcher = ({children, value, label, onChange, style, ...props }) => {
     >
         <span className="slider round" />
     </label>
-    {label &&  <span>{label(current)}</span>}
+    {getLabel &&  <span>{getLabel(current)}</span>}
   </ThemeComponent>
 }
 

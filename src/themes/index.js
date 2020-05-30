@@ -1,5 +1,5 @@
 import { button } from './button'
-import { input } from './input'
+import { input, textarea } from './input'
 import { uploader } from './uploader'
 import { switcher } from './switcher'
 import { selector } from './selector'
@@ -30,9 +30,15 @@ const defaultTheme = {
     gray_background: '#F0F0F0',
     gray_background_light: '#F6F6F6',
   },
+  variable: {
+    padding: 10,
+    radius: 0,
+    border_weight: 1
+  },
   component: {
     button,
     input,
+    textarea,
     uploader,
     switcher,
     selector,

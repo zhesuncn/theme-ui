@@ -34,10 +34,11 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 var Switcher = function Switcher(_ref) {
   var children = _ref.children,
       value = _ref.value,
-      label = _ref.label,
+      getLabel = _ref.getLabel,
       onChange = _ref.onChange,
-      style = _ref.style,
-      props = _objectWithoutProperties(_ref, ["children", "value", "label", "onChange", "style"]);
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
+      props = _objectWithoutProperties(_ref, ["children", "value", "getLabel", "onChange", "className"]);
 
   var _useState = (0, _react.useState)(value || false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -54,7 +55,8 @@ var Switcher = function Switcher(_ref) {
   };
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "switcher"
+    name: "switcher",
+    className: 'switcher ' + className
   }, props), children && _react.default.createElement("span", {
     className: "title"
   }, children), _react.default.createElement("label", {
@@ -63,7 +65,7 @@ var Switcher = function Switcher(_ref) {
     onClick: onClick
   }, _react.default.createElement("span", {
     className: "slider round"
-  })), label && _react.default.createElement("span", null, label(current)));
+  })), getLabel && _react.default.createElement("span", null, getLabel(current)));
 };
 
 var _default = Switcher;

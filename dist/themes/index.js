@@ -45,9 +45,15 @@ var defaultTheme = {
     gray_background: '#F0F0F0',
     gray_background_light: '#F6F6F6'
   },
+  variable: {
+    padding: 10,
+    radius: 0,
+    border_weight: 1
+  },
   component: {
     button: _button.button,
     input: _input.input,
+    textarea: _input.textarea,
     uploader: _uploader.uploader,
     switcher: _switcher.switcher,
     selector: _selector.selector,

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tag = exports.H1 = exports.Error = exports.Label = void 0;
+exports.Tag = exports.H2 = exports.H1 = exports.Error = exports.Label = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -78,6 +78,8 @@ var H2 = function H2(_ref4) {
     defaultContainer: defaultContainer
   }, props), children);
 };
+
+exports.H2 = H2;
 
 var Tag = function Tag(_ref5) {
   var children = _ref5.children,

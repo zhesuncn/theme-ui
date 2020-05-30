@@ -17,6 +17,12 @@ Object.defineProperty(exports, "Input", {
     return _Input.default;
   }
 });
+Object.defineProperty(exports, "TextArea", {
+  enumerable: true,
+  get: function get() {
+    return _TextArea.default;
+  }
+});
 Object.defineProperty(exports, "HtmlEditor", {
   enumerable: true,
   get: function get() {
@@ -147,6 +153,8 @@ Object.defineProperty(exports, "TabItem", {
 var _Button = _interopRequireDefault(require("./components/Button"));
 
 var _Input = _interopRequireDefault(require("./components/Input"));
+
+var _TextArea = _interopRequireDefault(require("./components/TextArea"));
 
 var _HtmlEditor = _interopRequireDefault(require("./components/HtmlEditor"));
 

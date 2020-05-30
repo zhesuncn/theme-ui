@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const switcher = {
   container: styled.div`
+  display: flex;
       .title {
         margin-right: 10px;
       }
@@ -39,11 +40,11 @@ export const switcher = {
       }
   
       label[data-value='true'] .slider {
-          background-color: ${props => props.palette.green};
+          background-color: ${props => props.colorTrue ? props.colorTrue : props.palette.green};
       }
       
       label[data-value='false'] .slider {
-          background-color: ${props => props.palette.gray_border_active};
+          background-color: ${props => props.colorFalse ? props.colorFalse : props.palette.gray_border_active};
       }
   
       label[data-value='true'] .slider:before {

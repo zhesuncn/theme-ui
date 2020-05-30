@@ -35,5 +35,6 @@ export {
   Label,
   Error,
   H1,
+  H2,
   Tag
 }
