@@ -21,6 +21,8 @@ var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _Field = _interopRequireDefault(require("./Field"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -48,7 +50,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 var defaultContainer = _styledComponents.default.div;
 
 var Uploader = function Uploader(_ref) {
-  var title = _ref.title,
+  var label = _ref.label,
       onFileUpload = _ref.onFileUpload,
       onFileDelete = _ref.onFileDelete,
       onSuccess = _ref.onSuccess,
@@ -58,7 +60,7 @@ var Uploader = function Uploader(_ref) {
       style = _ref.style,
       maxSize = _ref.maxSize,
       theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["title", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize", "theme"]);
+      props = _objectWithoutProperties(_ref, ["label", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize", "theme"]);
 
   // const [error, setError] = useState(null)
   var _useState = (0, _react.useState)(null),
@@ -135,16 +137,16 @@ var Uploader = function Uploader(_ref) {
     };
   }();
 
-  return _react.default.createElement(_ThemeComponent.default, {
+  return _react.default.createElement(_Field.default, {
+    label: label
+  }, _react.default.createElement(_ThemeComponent.default, {
     theme: theme,
     name: "uploader",
     defaultContainer: defaultContainer,
     style: style
   }, _react.default.createElement("div", {
     className: "input"
-  }, title && _react.default.createElement("div", {
-    className: "label"
-  }, title), current ? _react.default.createElement(_Icon.default, {
+  }, current ? _react.default.createElement(_Icon.default, {
     name: myTheme.validate_icon,
     alt: "success"
   }) : loading ? _react.default.createElement(_Icon.default, {
@@ -171,7 +173,7 @@ var Uploader = function Uploader(_ref) {
     name: myTheme.delete_icon,
     onClick: onFileDelete,
     alt: "delete"
-  })));
+  }))));
 };
 
 var _default = Uploader;

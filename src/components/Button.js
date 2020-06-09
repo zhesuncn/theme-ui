@@ -35,11 +35,10 @@ function Button({
     setLoading(false)
   }
 
-  if (href) {
-    if (disabled) {
-      classN += ' disabled'
-    }
+  if (disabled) {
+    classN += ' disabled'
   }
+
   return <ThemeComponent
     name='button'
     className={ classN }

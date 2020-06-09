@@ -111,10 +111,8 @@ function Button(_ref) {
     };
   }();
 
-  if (href) {
-    if (disabled) {
-      classN += ' disabled';
-    }
+  if (disabled) {
+    classN += ' disabled';
   }
 
   return _react.default.createElement(_ThemeComponent.default, _extends({
