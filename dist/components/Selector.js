@@ -67,7 +67,8 @@ var Selector = function Selector(_ref) {
       theme = _ref.theme,
       label = _ref.label,
       direction = _ref.direction,
-      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme", "label", "direction"]);
+      canClean = _ref.canClean,
+      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme", "label", "direction", "canClean"]);
 
   var _useState = (0, _react.useState)(value || ''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -93,37 +94,47 @@ var Selector = function Selector(_ref) {
     onChange && onChange(e.target.value);
   };
 
-  return _react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: classN
-  }, _react.default.createElement(_ThemeComponent.default, _extends({
-    theme: theme,
-    name: "selector",
-    defaultContainer: defaultContainer,
-    onChange: selectChanged,
-    value: current,
-    open_icon: (0, _svg.getSrc)(myTheme.open_icon)
-  }, props), placeholder && _react.default.createElement("option", {
-    value: "",
-    disabled: true,
-    hidden: true
-  }, placeholder), Array.isArray(options) && options.map(function (item, index) {
-    var value, label;
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: classN
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      theme: theme,
+      name: "selector",
+      defaultContainer: defaultContainer,
+      onChange: selectChanged,
+      value: current,
+      open_icon: (0, _svg.getSrc)(myTheme.open_icon)
+    }, props), placeholder &&
+    /*#__PURE__*/
+    _react.default.createElement("option", {
+      value: "",
+      disabled: canClean,
+      hidden: true
+    }, placeholder), Array.isArray(options) && options.map(function (item, index) {
+      var value, label;
 
-    if (item instanceof Object) {
-      value = getValue ? getValue(item) : item.code;
-      label = getLabel ? getLabel(item) : item.name;
-    } else {
-      value = item;
-      label = item;
-    }
+      if (item instanceof Object) {
+        value = getValue ? getValue(item) : item.code;
+        label = getLabel ? getLabel(item) : item.name;
+      } else {
+        value = item;
+        label = item;
+      }
 
-    return _react.default.createElement("option", {
-      key: index,
-      value: value
-    }, label);
-  }), children));
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("option", {
+          key: index,
+          value: value
+        }, label)
+      );
+    }), children))
+  );
 };
 
 var _default = Selector;

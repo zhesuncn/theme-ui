@@ -76,11 +76,15 @@ var Notification = function Notification(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.notification);
-  return isShow ? _react.default.createElement(_ThemeComponent.default, _extends({
+  return isShow ?
+  /*#__PURE__*/
+  _react.default.createElement(_ThemeComponent.default, _extends({
     name: "notification",
     defaultContainer: defaultContainer,
     className: classN
-  }, props), children, myTheme.close_icon && _react.default.createElement(_Icon.default, {
+  }, props), children, myTheme.close_icon &&
+  /*#__PURE__*/
+  _react.default.createElement(_Icon.default, {
     name: myTheme.close_icon,
     onClick: hide
   })) : null;

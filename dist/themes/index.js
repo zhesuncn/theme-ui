@@ -25,6 +25,10 @@ var _field = require("./field");
 
 var _tabpanel = require("./tabpanel");
 
+var _infinitetable = _interopRequireDefault(require("./infinitetable"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var defaultTheme = {
   palette: {
     blue: '#016db8',
@@ -66,7 +70,8 @@ var defaultTheme = {
     h2: _text.h2,
     tag: _text.tag,
     field: _field.field,
-    tabpanel: _tabpanel.tabpanel
+    tabpanel: _tabpanel.tabpanel,
+    infinitetable: _infinitetable.default
   }
 };
 exports.defaultTheme = defaultTheme;

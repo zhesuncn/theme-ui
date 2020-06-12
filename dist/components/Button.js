@@ -60,8 +60,12 @@ function Button(_ref) {
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.button);
 
-  var buttonClicked = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+  var buttonClicked =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
       var result;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -115,14 +119,19 @@ function Button(_ref) {
     classN += ' disabled';
   }
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "button",
-    className: classN,
-    href: disabled || loading ? null : href,
-    onClick: buttonClicked
-  }, props), children, myTheme.loading_icon && loading && _react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon
-  }));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "button",
+      className: classN,
+      href: disabled || loading ? null : href,
+      onClick: buttonClicked
+    }, props), children, myTheme.loading_icon && loading &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.loading_icon
+    }))
+  );
 }
 
 var _default = Button;

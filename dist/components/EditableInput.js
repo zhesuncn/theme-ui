@@ -55,30 +55,38 @@ var EditableInput = function EditableInput(_ref) {
   }, [value]);
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editableInput);
-  return _react.default.createElement(_Editable.default, _extends({
-    value: current,
-    onChanged: function onChanged(v) {
-      setCurrent(v);
-    },
-    editContainerOptions: {
-      component: _DefaultEditionContainer.default,
-      props: {
-        theme: myTheme
-      }
-    },
-    editRender: function editRender(_ref2) {
-      var onChanged = _ref2.onChanged,
-          value = _ref2.value;
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Input.default, {
-        label: label,
-        value: value,
-        onValueChanged: function onValueChanged(formatted, raw) {
-          onChanged(raw);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Editable.default, _extends({
+      value: current,
+      onChanged: function onChanged(v) {
+        setCurrent(v);
+      },
+      editContainerOptions: {
+        component: _DefaultEditionContainer.default,
+        props: {
+          theme: myTheme
         }
-      }));
-    },
-    theme: myTheme
-  }, props), current);
+      },
+      editRender: function editRender(_ref2) {
+        var onChanged = _ref2.onChanged,
+            value = _ref2.value;
+        return (
+          /*#__PURE__*/
+          _react.default.createElement(_react.default.Fragment, null,
+          /*#__PURE__*/
+          _react.default.createElement(_Input.default, {
+            label: label,
+            value: value,
+            onValueChanged: function onValueChanged(formatted, raw) {
+              onChanged(raw);
+            }
+          }))
+        );
+      },
+      theme: myTheme
+    }, props), current)
+  );
 };
 
 var _default = EditableInput;

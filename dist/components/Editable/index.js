@@ -118,7 +118,9 @@ var Editable = function Editable(_ref) {
     };
 
     var containerProps = (0, _lodash.get)(editContainerOptions, 'props', {});
-    editionMode = _react.default.createElement(EditionC, _extends({
+    editionMode =
+    /*#__PURE__*/
+    _react.default.createElement(EditionC, _extends({
       onConfirm: onEditionConfirm,
       onCancel: onEditionCancel,
       label: label
@@ -128,15 +130,23 @@ var Editable = function Editable(_ref) {
   var displayComponent = null;
 
   if (!edition) {
-    displayComponent = _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
+    displayComponent =
+    /*#__PURE__*/
+    _react.default.createElement(_react.default.Fragment, null,
+    /*#__PURE__*/
+    _react.default.createElement("div", {
       className: "btns"
-    }, onChanged && _react.default.createElement(_Icon.default, {
+    }, onChanged &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
       name: myTheme.edit_icon,
       onClick: function onClick() {
         reset();
         setEdition(true);
       }
-    }), onDelete && _react.default.createElement(_Icon.default, {
+    }), onDelete &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
       name: myTheme.delete_icon,
       onClick: function onClick() {
         onDelete(value);
@@ -146,14 +156,19 @@ var Editable = function Editable(_ref) {
     }));
   }
 
-  return _react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: className
-  }, _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "editable",
-    theme: theme
-  }, props), displayComponent, editionMode));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: className
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: "editable",
+      theme: theme
+    }, props), displayComponent, editionMode))
+  );
 };
 
 var _default = Editable;

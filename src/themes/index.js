@@ -8,6 +8,7 @@ import { editable, editableInput } from './editable'
 import { label, error, h1, tag, h2 } from './text'
 import { field } from './field'
 import { tabpanel } from './tabpanel'
+import infinitetable from './infinitetable'
 
 const defaultTheme = {
   palette: {
@@ -51,7 +52,8 @@ const defaultTheme = {
     h2,
     tag,
     field,
-    tabpanel
+    tabpanel,
+    infinitetable
   }
 }
 

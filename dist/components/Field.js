@@ -59,22 +59,34 @@ var Field = function Field(_ref) {
     };
   }
 
-  return label ? _react.default.createElement(_ThemeComponent.default, _extends({
+  return label ?
+  /*#__PURE__*/
+  _react.default.createElement(_ThemeComponent.default, _extends({
     name: "field",
     direction: direction,
     className: "field ".concat(closable ? 'closable' : '', " ").concat(className)
-  }, props), _react.default.createElement(_Text.Label, {
+  }, props),
+  /*#__PURE__*/
+  _react.default.createElement(_Text.Label, {
     onClick: onClickLabel,
     style: {
       cursor: closable ? 'pointer' : 'default'
     }
-  }, closable ? show ? _react.default.createElement("span", {
+  }, closable ? show ?
+  /*#__PURE__*/
+  _react.default.createElement("span", {
     className: "down"
-  }, "\u25BC") : _react.default.createElement("span", {
+  }, "\u25BC") :
+  /*#__PURE__*/
+  _react.default.createElement("span", {
     className: "up"
-  }, "\u25B2") : '', label), direction === 'column' && _react.default.createElement("div", {
+  }, "\u25B2") : '', label), direction === 'column' &&
+  /*#__PURE__*/
+  _react.default.createElement("div", {
     className: "underline"
-  }), closable ? _react.default.createElement("div", {
+  }), closable ?
+  /*#__PURE__*/
+  _react.default.createElement("div", {
     className: "closable-content ".concat(show ? 'show' : 'hide')
   }, children) : children) : children;
 };

@@ -79,8 +79,12 @@ var Uploader = function Uploader(_ref) {
     setCurrent(value);
   }, [value]);
 
-  var onDrop = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(acceptedFiles) {
+  var onDrop =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee(acceptedFiles) {
       var file;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -137,43 +141,67 @@ var Uploader = function Uploader(_ref) {
     };
   }();
 
-  return _react.default.createElement(_Field.default, {
-    label: label
-  }, _react.default.createElement(_ThemeComponent.default, {
-    theme: theme,
-    name: "uploader",
-    defaultContainer: defaultContainer,
-    style: style
-  }, _react.default.createElement("div", {
-    className: "input"
-  }, current ? _react.default.createElement(_Icon.default, {
-    name: myTheme.validate_icon,
-    alt: "success"
-  }) : loading ? _react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon,
-    alt: "loading"
-  }) : _react.default.createElement(_reactDropzone.default, {
-    onDrop: onDrop
-  }, function (_ref3) {
-    var getRootProps = _ref3.getRootProps,
-        getInputProps = _ref3.getInputProps;
-    return _react.default.createElement("div", _extends({}, getRootProps(), {
-      className: "btn"
-    }), _react.default.createElement(_Icon.default, {
-      name: myTheme.add_icon,
-      alt: "add"
-    }), "Ajouter un fichier", _react.default.createElement("input", _extends({}, getInputProps(), {
-      type: "file"
-    }, props, {
-      multiple: false
-    })));
-  })), current && _react.default.createElement("div", {
-    className: "file_name"
-  }, current.name, onFileDelete && _react.default.createElement(_Icon.default, {
-    name: myTheme.delete_icon,
-    onClick: onFileDelete,
-    alt: "delete"
-  }))));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      theme: theme,
+      name: "uploader",
+      defaultContainer: defaultContainer,
+      style: style
+    },
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "input"
+    }, current ?
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.validate_icon,
+      alt: "success"
+    }) : loading ?
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.loading_icon,
+      alt: "loading"
+    }) :
+    /*#__PURE__*/
+    _react.default.createElement(_reactDropzone.default, {
+      onDrop: onDrop
+    }, function (_ref3) {
+      var getRootProps = _ref3.getRootProps,
+          getInputProps = _ref3.getInputProps;
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("div", _extends({}, getRootProps(), {
+          className: "btn"
+        }),
+        /*#__PURE__*/
+        _react.default.createElement(_Icon.default, {
+          name: myTheme.add_icon,
+          alt: "add"
+        }), "Ajouter un fichier",
+        /*#__PURE__*/
+        _react.default.createElement("input", _extends({}, getInputProps(), {
+          type: "file"
+        }, props, {
+          multiple: false
+        })))
+      );
+    })), current &&
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "file_name"
+    }, current.name, onFileDelete &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.delete_icon,
+      onClick: onFileDelete,
+      alt: "delete"
+    }))))
+  );
 };
 
 var _default = Uploader;

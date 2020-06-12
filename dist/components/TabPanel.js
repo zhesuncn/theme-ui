@@ -50,11 +50,14 @@ var TabItem = function TabItem(_ref) {
     classN += ' disabled';
   }
 
-  return _react.default.createElement(_ThemeComponent.default, _extends({
-    name: 'tabpanel.tabitem',
-    className: classN,
-    onClick: onClick
-  }, props), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      name: 'tabpanel.tabitem',
+      className: classN,
+      onClick: onClick
+    }, props), children)
+  );
 };
 
 exports.TabItem = TabItem;
@@ -84,36 +87,39 @@ var TabPanel = function TabPanel(_ref2) {
   }).filter(function (b) {
     return b;
   }).length > 0;
-  return _react.default.createElement(_ThemeComponent.default, {
-    name: "tabpanel",
-    className: "tab-items",
-    style: style,
-    theme: theme
-  }, _react.default.Children.map(children, function (child, index) {
-    var isActive = index === active && isKnownPath;
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      name: "tabpanel",
+      className: "tab-items",
+      style: style,
+      theme: theme
+    }, _react.default.Children.map(children, function (child, index) {
+      var isActive = index === active && isKnownPath;
 
-    if (isActive && location && child.props.path && location.pathname !== child.props.path) {
-      history.push(child.props.path);
-    }
-
-    return _react.default.cloneElement(child, {
-      theme: theme,
-      active: isActive,
-      key: index,
-      onClick: function onClick() {
-        setActive(index);
-        onTabChanged && onTabChanged(child.props.path, index);
-
-        if (history && child.props.path) {
-          history.push(child.props.path);
-        }
-
-        if (child.props.component) {
-          setComponent(child.props.component);
-        }
+      if (isActive && location && child.props.path && location.pathname !== child.props.path) {
+        history.push(child.props.path);
       }
-    });
-  }), component && _react.default.createElement(component, props));
+
+      return _react.default.cloneElement(child, {
+        theme: theme,
+        active: isActive,
+        key: index,
+        onClick: function onClick() {
+          setActive(index);
+          onTabChanged && onTabChanged(child.props.path, index);
+
+          if (history && child.props.path) {
+            history.push(child.props.path);
+          }
+
+          if (child.props.component) {
+            setComponent(child.props.component);
+          }
+        }
+      });
+    }), component && _react.default.createElement(component, props))
+  );
 };
 
 exports.TabPanel = TabPanel;

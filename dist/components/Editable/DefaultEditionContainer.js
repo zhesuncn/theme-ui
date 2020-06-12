@@ -31,16 +31,23 @@ var DefaultEditionContainer = function DefaultEditionContainer(_ref) {
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
-  return _react.default.createElement(_ThemeComponent.default, {
-    name: "editable.edition",
-    className: "default-edition"
-  }, _react.default.createElement(_Icon.default, {
-    name: myTheme.confirm_icon,
-    onClick: onConfirm
-  }), _react.default.createElement(_Icon.default, {
-    name: myTheme.cancel_icon,
-    onClick: onCancel
-  }), children);
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      name: "editable.edition",
+      className: "default-edition"
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.confirm_icon,
+      onClick: onConfirm
+    }),
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: myTheme.cancel_icon,
+      onClick: onCancel
+    }), children)
+  );
 };
 
 var _default = DefaultEditionContainer;

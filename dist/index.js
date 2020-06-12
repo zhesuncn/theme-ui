@@ -149,6 +149,12 @@ Object.defineProperty(exports, "TabItem", {
     return _TabPanel.TabItem;
   }
 });
+Object.defineProperty(exports, "InfiniteTable", {
+  enumerable: true,
+  get: function get() {
+    return _InfiniteTable.default;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./components/Button"));
 
@@ -183,6 +189,8 @@ var _Text = require("./components/Text");
 var _Field = _interopRequireDefault(require("./components/Field"));
 
 var _TabPanel = require("./components/TabPanel");
+
+var _InfiniteTable = _interopRequireDefault(require("./components/InfiniteTable"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
