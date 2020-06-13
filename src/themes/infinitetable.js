@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const infinitetable = {
  container: styled.div`
     > .table {
-      height: calc(100% - 20px);
+      height: calc(100% - 40px);
       overflow-y: auto;
     }
   `,

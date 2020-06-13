@@ -45,7 +45,9 @@ function InfiniteTable(_ref) {
       children = _ref.children,
       id = _ref.id,
       theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["values", "onLoad", "cols", "hasMore", "children", "id", "theme"]);
+      _ref$className = _ref.className,
+      className = _ref$className === void 0 ? '' : _ref$className,
+      props = _objectWithoutProperties(_ref, ["values", "onLoad", "cols", "hasMore", "children", "id", "theme", "className"]);
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.infinitetable);
@@ -53,7 +55,7 @@ function InfiniteTable(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, {
-      className: "infinite-table",
+      className: "infinite-table " + className,
       name: "infinitetable",
       theme: theme
     },

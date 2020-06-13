@@ -7,11 +7,11 @@ import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
 
 
-export default function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, ...props}) {
+export default function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, className = '', ...props}) {
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.infinitetable)
   const targetId = (id ? '-' : '') + 'table'
-  return <ThemeComponent className="infinite-table" name="infinitetable" theme={theme}>
+  return <ThemeComponent className={"infinite-table " + className} name="infinitetable" theme={theme}>
     <Header cols={cols} theme={theme}/>
     <div id={targetId} className="table">
       <InfiniteScroll

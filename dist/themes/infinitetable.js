@@ -40,7 +40,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    > .table {\n      height: calc(100% - 20px);\n      overflow-y: auto;\n    }\n  "]);
+  var data = _taggedTemplateLiteral(["\n    > .table {\n      height: calc(100% - 40px);\n      overflow-y: auto;\n    }\n  "]);
 
   _templateObject = function _templateObject() {
     return data;
