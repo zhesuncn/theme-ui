@@ -3,7 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = InfiniteTable;
+exports.InfiniteTable = InfiniteTable;
+exports.Header = exports.Line = exports.Cell = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -104,6 +105,8 @@ var Cell = _styledComponents.default.div(_templateObject(), function (props) {
   return props.flex || !props.width ? "flex: ".concat(props.flex || 1, ";") : '';
 });
 
+exports.Cell = Cell;
+
 var Line = function Line(_ref2) {
   var item = _ref2.item,
       cols = _ref2.cols,
@@ -129,6 +132,8 @@ var Line = function Line(_ref2) {
   );
 };
 
+exports.Line = Line;
+
 var Header = function Header(_ref3) {
   var cols = _ref3.cols,
       theme = _ref3.theme,
@@ -152,3 +157,5 @@ var Header = function Header(_ref3) {
     }))
   );
 };
+
+exports.Header = Header;

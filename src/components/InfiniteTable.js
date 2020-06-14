@@ -7,7 +7,7 @@ import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
 
 
-export default function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, className = '', ...props}) {
+export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, className = '', ...props}) {
   const themeContext = useTheme()
   let myTheme = getCurrentTheme(theme, themeContext.infinitetable)
   const targetId = (id ? '-' : '') + 'table'
@@ -28,7 +28,7 @@ export default function InfiniteTable ({ values, onLoad, cols, hasMore, children
     </div>
   </ThemeComponent>
 }
-const Cell = styled.div`
+export const Cell = styled.div`
   display: flex;
   ${props => props.width ? `width: ${props.width};` : ''}
   align-items: center;
@@ -36,7 +36,7 @@ const Cell = styled.div`
   ${props => props.flex || !props.width ? `flex: ${props.flex || 1};` : ''}
 `
 
-const Line = ({item, cols, theme, ...props}) => {
+export const Line = ({item, cols, theme, ...props}) => {
   return <ThemeComponent className="row" theme={theme} name={'infinitetable.line'}>
     {
       cols.map((col, i) => <Cell key={i} className={'item' + col.key? '-' + col.key: ''} width={col.width}>
@@ -50,7 +50,7 @@ const Line = ({item, cols, theme, ...props}) => {
   </ThemeComponent>
 }
 
-const Header = ({cols, theme, ...props}) => {
+export const Header = ({cols, theme, ...props}) => {
   return <ThemeComponent className="header" theme={theme} name={'infinitetable.header'}>
     {
       cols.map((col, i) => <Cell key={i} className="header-item" width={col.width}>{col.header || ''}</Cell>)

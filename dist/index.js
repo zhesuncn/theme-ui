@@ -152,7 +152,25 @@ Object.defineProperty(exports, "TabItem", {
 Object.defineProperty(exports, "InfiniteTable", {
   enumerable: true,
   get: function get() {
-    return _InfiniteTable.default;
+    return _InfiniteTable.InfiniteTable;
+  }
+});
+Object.defineProperty(exports, "Line", {
+  enumerable: true,
+  get: function get() {
+    return _InfiniteTable.Line;
+  }
+});
+Object.defineProperty(exports, "Cell", {
+  enumerable: true,
+  get: function get() {
+    return _InfiniteTable.Cell;
+  }
+});
+Object.defineProperty(exports, "Header", {
+  enumerable: true,
+  get: function get() {
+    return _InfiniteTable.Header;
   }
 });
 
@@ -190,7 +208,7 @@ var _Field = _interopRequireDefault(require("./components/Field"));
 
 var _TabPanel = require("./components/TabPanel");
 
-var _InfiniteTable = _interopRequireDefault(require("./components/InfiniteTable"));
+var _InfiniteTable = require("./components/InfiniteTable");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

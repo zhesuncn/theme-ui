@@ -15,7 +15,7 @@ import ModalEditionContainer from './components/Editable/ModalEditionContainer'
 import { Label, Error, H1, H2, Tag } from './components/Text'
 import Field from './components/Field'
 import { TabPanel, TabItem} from './components/TabPanel'
-import InfiniteTable from './components/InfiniteTable'
+import { InfiniteTable, Line, Cell, Header} from './components/InfiniteTable'
 
 export {
   Button,
@@ -40,6 +40,9 @@ export {
   TabPanel,
   TabItem,
   InfiniteTable,
+  Line,
+  Cell,
+  Header,
   ThemeContextProvider,
   useTheme,
   usePalette
