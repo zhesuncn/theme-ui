@@ -53,50 +53,34 @@ function InfiniteTable(_ref) {
   var themeContext = (0, _ThemeContext.useTheme)();
   var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.infinitetable);
   var targetId = (id ? '-' : '') + 'table';
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, {
-      className: "infinite-table " + className,
-      name: "infinitetable",
-      theme: theme
-    },
-    /*#__PURE__*/
-    _react.default.createElement(Header, {
-      cols: cols,
-      theme: theme
-    }),
-    /*#__PURE__*/
-    _react.default.createElement("div", {
-      id: targetId,
-      className: "table"
-    },
-    /*#__PURE__*/
-    _react.default.createElement(_reactInfiniteScrollComponent.default, {
-      dataLength: values ? values.length : 0,
-      next: onLoad,
-      hasMore: hasMore,
-      loader:
-      /*#__PURE__*/
-      _react.default.createElement(_ThemeComponent.default, {
-        name: "infinitetable.loader",
-        key: 0
-      },
-      /*#__PURE__*/
-      _react.default.createElement(_Icon.default, {
-        name: myTheme.loading_icon
-      }), " Chargement en cours ..."),
-      scrollableTarget: targetId
-    }, values && values.map(function (v, i) {
-      return (
-        /*#__PURE__*/
-        _react.default.createElement(Line, {
-          key: i,
-          item: v,
-          cols: cols
-        })
-      );
-    }))))
-  );
+  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
+    className: "infinite-table " + className,
+    name: "infinitetable",
+    theme: theme
+  }, /*#__PURE__*/_react.default.createElement(Header, {
+    cols: cols,
+    theme: theme
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    id: targetId,
+    className: "table"
+  }, /*#__PURE__*/_react.default.createElement(_reactInfiniteScrollComponent.default, {
+    dataLength: values ? values.length : 0,
+    next: onLoad,
+    hasMore: hasMore,
+    loader: /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
+      name: "infinitetable.loader",
+      key: 0
+    }, /*#__PURE__*/_react.default.createElement(_Icon.default, {
+      name: myTheme.loading_icon
+    }), " Chargement en cours ..."),
+    scrollableTarget: targetId
+  }, values && values.map(function (v, i) {
+    return /*#__PURE__*/_react.default.createElement(Line, {
+      key: i,
+      item: v,
+      cols: cols
+    });
+  }))));
 }
 
 var Cell = _styledComponents.default.div(_templateObject(), function (props) {
@@ -113,23 +97,17 @@ var Line = function Line(_ref2) {
       theme = _ref2.theme,
       props = _objectWithoutProperties(_ref2, ["item", "cols", "theme"]);
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, {
-      className: "row",
-      theme: theme,
-      name: 'infinitetable.line'
-    }, cols.map(function (col, i) {
-      return (
-        /*#__PURE__*/
-        _react.default.createElement(Cell, {
-          key: i,
-          className: 'item' + col.key ? '-' + col.key : '',
-          width: col.width
-        }, col.render ? col.render(item) : col.key && item ? item[col.key] : null)
-      );
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
+    className: "row",
+    theme: theme,
+    name: 'infinitetable.line'
+  }, cols.map(function (col, i) {
+    return /*#__PURE__*/_react.default.createElement(Cell, {
+      key: i,
+      className: 'item' + col.key ? '-' + col.key : '',
+      width: col.width
+    }, col.render ? col.render(item) : col.key && item ? item[col.key] : null);
+  }));
 };
 
 exports.Line = Line;
@@ -139,23 +117,17 @@ var Header = function Header(_ref3) {
       theme = _ref3.theme,
       props = _objectWithoutProperties(_ref3, ["cols", "theme"]);
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, {
-      className: "header",
-      theme: theme,
-      name: 'infinitetable.header'
-    }, cols.map(function (col, i) {
-      return (
-        /*#__PURE__*/
-        _react.default.createElement(Cell, {
-          key: i,
-          className: "header-item",
-          width: col.width
-        }, col.header || '')
-      );
-    }))
-  );
+  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
+    className: "header",
+    theme: theme,
+    name: 'infinitetable.header'
+  }, cols.map(function (col, i) {
+    return /*#__PURE__*/_react.default.createElement(Cell, {
+      key: i,
+      className: "header-item",
+      width: col.width
+    }, col.header || '');
+  }));
 };
 
 exports.Header = Header;
