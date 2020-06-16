@@ -40,7 +40,7 @@ const Selector = ({ options, placeholder, onChange, children, value, getValue, g
       value={ current }
       open_icon={ getSrc(myTheme.open_icon) }
       { ...props }>
-      { placeholder && <option value="" disabled={canClean} hidden>{ placeholder }</option> }
+      { placeholder && <option value="" disabled={!canClean} hidden>{ placeholder }</option> }
       { Array.isArray(options) && options.map((item, index) => {
         let value, label
         if (item instanceof Object) {
