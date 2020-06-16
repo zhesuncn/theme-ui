@@ -173,6 +173,18 @@ Object.defineProperty(exports, "Header", {
     return _InfiniteTable.Header;
   }
 });
+Object.defineProperty(exports, "Popup", {
+  enumerable: true,
+  get: function get() {
+    return _Popup.default;
+  }
+});
+Object.defineProperty(exports, "Prompt", {
+  enumerable: true,
+  get: function get() {
+    return _Popup.Prompt;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./components/Button"));
 
@@ -209,6 +221,8 @@ var _Field = _interopRequireDefault(require("./components/Field"));
 var _TabPanel = require("./components/TabPanel");
 
 var _InfiniteTable = require("./components/InfiniteTable");
+
+var _Popup = _interopRequireWildcard(require("./components/Popup"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

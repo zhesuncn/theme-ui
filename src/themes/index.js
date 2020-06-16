@@ -9,6 +9,7 @@ import { label, error, h1, tag, h2 } from './text'
 import { field } from './field'
 import { tabpanel } from './tabpanel'
 import infinitetable from './infinitetable'
+import { popup, prompt } from './popup'
 
 const defaultTheme = {
   palette: {
@@ -53,7 +54,9 @@ const defaultTheme = {
     tag,
     field,
     tabpanel,
-    infinitetable
+    infinitetable,
+    popup,
+    prompt
   }
 }
 

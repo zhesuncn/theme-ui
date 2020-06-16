@@ -27,6 +27,8 @@ var _tabpanel = require("./tabpanel");
 
 var _infinitetable = _interopRequireDefault(require("./infinitetable"));
 
+var _popup = require("./popup");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultTheme = {
@@ -71,7 +73,9 @@ var defaultTheme = {
     tag: _text.tag,
     field: _field.field,
     tabpanel: _tabpanel.tabpanel,
-    infinitetable: _infinitetable.default
+    infinitetable: _infinitetable.default,
+    popup: _popup.popup,
+    prompt: _popup.prompt
   }
 };
 exports.defaultTheme = defaultTheme;

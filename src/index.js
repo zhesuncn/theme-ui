@@ -7,15 +7,16 @@ import Notification from './components/Notification'
 import Selector from './components/Selector'
 import Switcher from './components/Switcher'
 import Uploader from './components/Uploader'
-import ThemeContextProvider, {useTheme, usePalette} from './ThemeContext'
+import ThemeContextProvider, { useTheme, usePalette } from './ThemeContext'
 import Editable from './components/Editable'
 import EditableInput from './components/EditableInput'
 import DefaultEditionContainer from './components/Editable/DefaultEditionContainer'
 import ModalEditionContainer from './components/Editable/ModalEditionContainer'
 import { Label, Error, H1, H2, Tag } from './components/Text'
 import Field from './components/Field'
-import { TabPanel, TabItem} from './components/TabPanel'
-import { InfiniteTable, Line, Cell, Header} from './components/InfiniteTable'
+import { TabPanel, TabItem } from './components/TabPanel'
+import { InfiniteTable, Line, Cell, Header } from './components/InfiniteTable'
+import Popup, { Prompt } from './components/Popup'
 
 export {
   Button,
@@ -43,6 +44,8 @@ export {
   Line,
   Cell,
   Header,
+  Popup,
+  Prompt,
   ThemeContextProvider,
   useTheme,
   usePalette
