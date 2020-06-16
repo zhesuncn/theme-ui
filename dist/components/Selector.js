@@ -111,8 +111,7 @@ var Selector = function Selector(_ref) {
     open_icon: (0, _svg.getSrc)(myTheme.open_icon)
   }, props), placeholder && /*#__PURE__*/_react.default.createElement("option", {
     value: "",
-    disabled: !canClean,
-    hidden: true
+    hidden: !canClean
   }, placeholder), Array.isArray(options) && options.map(function (item, index) {
     var value, label;
 
