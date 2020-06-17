@@ -60,20 +60,15 @@ var TextArea = function TextArea(_ref) {
     onValueChanged && onValueChanged(inputValue);
   };
 
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(_Field.default, {
-      label: label,
-      direction: direction,
-      className: classN
-    },
-    /*#__PURE__*/
-    _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "textarea",
-      defaultContainer: defaultContainer,
-      onChange: valueChanged
-    }, props)))
-  );
+  return /*#__PURE__*/_react.default.createElement(_Field.default, {
+    label: label,
+    direction: direction,
+    className: classN
+  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
+    name: "textarea",
+    defaultContainer: defaultContainer,
+    onChange: valueChanged
+  }, props)));
 };
 
 var _default = TextArea;
