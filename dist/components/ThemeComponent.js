@@ -42,7 +42,8 @@ var ThemeComponent = function ThemeComponent(_ref) {
       children = _ref.children,
       name = _ref.name,
       defaultContainer = _ref.defaultContainer,
-      props = _objectWithoutProperties(_ref, ["theme", "children", "name", "defaultContainer"]);
+      elementRef = _ref.elementRef,
+      props = _objectWithoutProperties(_ref, ["theme", "children", "name", "defaultContainer", "elementRef"]);
 
   var themeContext = (0, _ThemeContext.useTheme)();
   var palette = (0, _ThemeContext.usePalette)();
@@ -52,7 +53,8 @@ var ThemeComponent = function ThemeComponent(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(Container, _extends({
-      palette: palette
+      palette: palette,
+      ref: elementRef
     }, props), children)
   );
 };

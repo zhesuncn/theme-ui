@@ -9,8 +9,6 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _util = require("../util/util");
-
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
@@ -52,41 +50,62 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var defaultContainer = _styledComponents.default.input(_templateObject());
 
 var Input = function Input(_ref) {
-  var format = _ref.format,
-      className = _ref.className,
+  var className = _ref.className,
       value = _ref.value,
       onValueChanged = _ref.onValueChanged,
       error = _ref.error,
       label = _ref.label,
       direction = _ref.direction,
-      props = _objectWithoutProperties(_ref, ["format", "className", "value", "onValueChanged", "error", "label", "direction"]);
+      formatter = _ref.formatter,
+      props = _objectWithoutProperties(_ref, ["className", "value", "onValueChanged", "error", "label", "direction", "formatter"]);
 
-  var _useState = (0, _react.useState)(value),
+  var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
-      current = _useState2[0],
-      setCurrent = _useState2[1];
+      raw = _useState2[0],
+      setRaw = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(format ? (0, _util.formatValue)(value, format).formatted : value),
+  var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      formatted = _useState4[0],
-      setFormatted = _useState4[1];
+      current = _useState4[0],
+      setCurrent = _useState4[1];
 
+  var _useState5 = (0, _react.useState)(0),
+      _useState6 = _slicedToArray(_useState5, 2),
+      cursor = _useState6[0],
+      setCursor = _useState6[1];
+
+  var inputEl = (0, _react.useRef)(null);
   var classN = className || '';
   (0, _react.useEffect)(function () {
-    setCurrent(value);
-    setFormatted(format ? (0, _util.formatValue)(value, format).formatted : value);
-  }, [value]);
+    if (value || value === '') {
+      setRaw(value);
+      var currentValue = formatter ? formatter.format(value) : value;
+      setCurrent(currentValue);
+    }
+  }, [value, formatter]);
+  (0, _react.useEffect)(function () {
+    if (inputEl && formatter) {
+      setSelection(inputEl, cursor);
+    }
+  }, [inputEl, cursor, formatter, current]);
   classN += error ? ' error' : current ? ' validate' : '';
 
-  var valueChanged = function valueChanged(e) {
-    var inputValue = e.target.value;
-    var result = format ? (0, _util.formatValue)(inputValue, format) : {
-      formatted: inputValue,
-      raw: inputValue
-    };
-    setCurrent(result.raw);
-    setFormatted(result.formatted);
-    onValueChanged && onValueChanged(result.formatted, result.raw);
+  var valueChanged = function valueChanged(ev) {
+    var rawValue = ev.target.value;
+
+    if (formatter) {
+      var endPos = ev.target.selectionEnd;
+      var currentValue = ev.target.value;
+      rawValue = formatter.getRawValue(currentValue);
+      endPos = getNextCursorPosition(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
+      ev.target.value = formatter.format(rawValue);
+      setCursor(endPos);
+    }
+
+    if (rawValue !== raw) {
+      setRaw(rawValue);
+      onValueChanged && onValueChanged(rawValue);
+    }
   };
 
   return (
@@ -98,9 +117,10 @@ var Input = function Input(_ref) {
     },
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
+      elementRef: inputEl,
       name: "input",
       defaultContainer: defaultContainer,
-      value: formatted,
+      value: current,
       onChange: valueChanged
     }, props)))
   );

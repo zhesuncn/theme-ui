@@ -17,6 +17,7 @@ import Field from './components/Field'
 import { TabPanel, TabItem } from './components/TabPanel'
 import { InfiniteTable, Line, Cell, Header } from './components/InfiniteTable'
 import Popup, { Prompt } from './components/Popup'
+import { Formatter, PhoneFormatter, NumberFormatter, DecimalFormatter } from './util/util'
 
 export {
   Button,

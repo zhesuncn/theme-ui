@@ -3,93 +3,302 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formatValue = formatValue;
+exports.getDelimiterREByDelimiter = getDelimiterREByDelimiter;
+exports.stripDelimiters = stripDelimiters;
+exports.getNextCursorPosition = getNextCursorPosition;
+exports.setSelection = setSelection;
+exports.getPostDelimiter = getPostDelimiter;
+exports.PhoneFormatter = exports.DecimalFormatter = exports.NumberFormatter = exports.Formatter = void 0;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+function _createSuper(Derived) {
+  function isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function expandFormatRepetitions(format) {
-  return format.reduce(function __reducePatterns(patterns, nextItem) {
-    if (nextItem.repeat > 1) {
-      var expanded = [];
-
-      var copy = _objectSpread({}, nextItem);
-
-      delete copy.repeat;
-
-      for (var i = 0; i < nextItem.repeat; i += 1) {
-        expanded.push(_objectSpread({}, copy));
-      }
-
-      return [].concat(_toConsumableArray(patterns), expanded);
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
     }
-
-    return [].concat(_toConsumableArray(patterns), [nextItem]);
-  }, []);
-}
-
-function formatValue(value) {
-  var formatSpec = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  if (!value) return {
-    formatted: '',
-    raw: null
-  };
-  var format = expandFormatRepetitions(formatSpec);
-
-  if (format.length > 0) {
-    var characters = value.split("");
-    var formattedValue = "",
-        rawValue = "";
-
-    while (format.length > 0 && characters.length > 0) {
-      var pattern = format.shift();
-
-      if (_typeof(pattern.char) === "object") {
-        while (characters.length > 0 && pattern.char.test(characters[0]) !== true) {
-          characters.shift();
-        }
-
-        if (characters.length > 0) {
-          formattedValue += characters[0];
-          rawValue += characters[0];
-          characters.shift();
-        }
-      } else if (typeof pattern.exactly === "string") {
-        if (pattern.exactly.length !== 1) {
-          throw new Error("Unable to format value: 'exactly' value should be of length 1: ".concat(pattern.exactly));
-        }
-
-        formattedValue += pattern.exactly;
-
-        if (pattern.exactly === characters[0]) {
-          characters.shift();
-        }
-      } else {
-        throw new Error("Unable to format value: Invalid format specification: ".concat(JSON.stringify(pattern)));
-      }
-    }
-
-    return {
-      formatted: formattedValue,
-      raw: rawValue
-    };
   }
 
-  return {
-    formatted: value,
-    raw: value
+  return function () {
+    var Super = _getPrototypeOf(Derived),
+        result;
+
+    if (isNativeReflectConstruct()) {
+      var NewTarget = _getPrototypeOf(this).constructor;
+
+      result = Reflect.construct(Super, arguments, NewTarget);
+    } else {
+      result = Super.apply(this, arguments);
+    }
+
+    return _possibleConstructorReturn(this, result);
   };
+}
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function getDelimiterREByDelimiter(delimiter) {
+  return new RegExp(delimiter.replace(/([.?*+^$[\]\\(){}|-])/g, '\\$1'), 'g');
+}
+
+function stripDelimiters(value, delimiter, delimiters) {
+  // single delimiter
+  if (delimiters.length === 0) {
+    var delimiterRE = delimiter ? getDelimiterREByDelimiter(delimiter) : '';
+    return value.replace(delimiterRE, '');
+  } // multiple delimiters
+
+
+  delimiters.forEach(function (current) {
+    current.split('').forEach(function (letter) {
+      value = value.replace(getDelimiterREByDelimiter(letter), '');
+    });
+  });
+  return value;
+}
+
+function getPositionOffset(prevPos, oldValue, newValue, delimiter, delimiters) {
+  var oldRawValue, newRawValue, lengthOffset;
+  oldRawValue = stripDelimiters(oldValue.slice(0, prevPos), delimiter, delimiters);
+  newRawValue = stripDelimiters(newValue.slice(0, prevPos), delimiter, delimiters);
+  lengthOffset = newRawValue.length - oldRawValue.length;
+  return lengthOffset !== 0 ? lengthOffset / Math.abs(lengthOffset) : 0;
+}
+
+function getNextCursorPosition(prevPos, oldValue, newValue, delimiter, delimiters) {
+  // If cursor was at the end of value, just place it back.
+  // Because new value could contain additional chars.
+  if (oldValue.length === prevPos) {
+    return newValue.length;
+  }
+
+  return prevPos + getPositionOffset(prevPos, oldValue, newValue, delimiter, delimiters);
+}
+
+function setSelection(element, position) {
+  if (!element || !element.current) {
+    return;
+  } // cursor is already in the end
+
+
+  if (element.current.value && element.current.value.length <= position) {
+    return;
+  }
+
+  if (element.current.createTextRange) {
+    var range = element.current.createTextRange();
+    range.move('character', position);
+    range.select();
+  } else {
+    try {
+      element.current.setSelectionRange(position, position);
+    } catch (e) {
+      // eslint-disable-next-line
+      console.warn('The input element type does not support selection');
+    }
+  }
+}
+
+var Formatter =
+/*#__PURE__*/
+function () {
+  function Formatter(maxLength) {
+    _classCallCheck(this, Formatter);
+
+    this.delimiter = '';
+    this.prefix = '';
+    this.delimiters = [];
+    this.maxLength = maxLength;
+  }
+
+  _createClass(Formatter, [{
+    key: "init",
+    value: function init() {
+      this.delimiterRE = this.delimiter ? new RegExp('\\' + this.delimiter, 'g') : '';
+    }
+  }, {
+    key: "format",
+    value: function format(raw) {
+      return raw;
+    }
+  }, {
+    key: "getRawValue",
+    value: function getRawValue(value) {
+      var rawValue = value;
+
+      if (this.delimiter || this.delimiters.length > 0) {
+        rawValue = stripDelimiters(rawValue, this.delimiter, this.delimiters);
+      }
+
+      if (this.maxLength) {
+        rawValue = rawValue.substring(0, this.maxLength);
+      }
+
+      return rawValue;
+    }
+  }]);
+
+  return Formatter;
+}();
+
+exports.Formatter = Formatter;
+
+var NumberFormatter =
+/*#__PURE__*/
+function (_Formatter) {
+  _inherits(NumberFormatter, _Formatter);
+
+  var _super = _createSuper(NumberFormatter);
+
+  function NumberFormatter(maxLength) {
+    _classCallCheck(this, NumberFormatter);
+
+    return _super.call(this, maxLength);
+  }
+
+  _createClass(NumberFormatter, [{
+    key: "format",
+    value: function format(raw) {
+      raw = _get(_getPrototypeOf(NumberFormatter.prototype), "format", this).call(this, raw);
+      raw = raw.replace(/[^\d]/g, '');
+      return raw;
+    }
+  }]);
+
+  return NumberFormatter;
+}(Formatter);
+
+exports.NumberFormatter = NumberFormatter;
+
+var DecimalFormatter =
+/*#__PURE__*/
+function (_Formatter2) {
+  _inherits(DecimalFormatter, _Formatter2);
+
+  var _super2 = _createSuper(DecimalFormatter);
+
+  function DecimalFormatter(decimalDelimiter, decimalLength) {
+    var _this;
+
+    _classCallCheck(this, DecimalFormatter);
+
+    _this = _super2.call(this);
+    _this.decimalDelimitter = decimalDelimiter || ',';
+    _this.decimalLength = decimalLength;
+    return _this;
+  }
+
+  _createClass(DecimalFormatter, [{
+    key: "format",
+    value: function format(raw) {
+      raw = _get(_getPrototypeOf(DecimalFormatter.prototype), "format", this).call(this, raw);
+      raw = raw.replace(/[^\d.]/g, '');
+      raw = raw.replace(/[.]/, this.decimalDelimitter);
+      raw = raw.replace(/[.]/g, '');
+      return raw;
+    }
+  }, {
+    key: "getRawValue",
+    value: function getRawValue(value) {
+      var raw = _get(_getPrototypeOf(DecimalFormatter.prototype), "getRawValue", this).call(this, value);
+
+      if (raw[0] === this.decimalDelimitter) {
+        raw = '0' + raw;
+      }
+
+      raw = raw.replace(new RegExp('\\' + this.decimalDelimitter), '.');
+      raw = raw.replace(new RegExp('\\' + this.decimalDelimitter, 'g'), '');
+      return raw;
+    }
+  }]);
+
+  return DecimalFormatter;
+}(Formatter);
+
+exports.DecimalFormatter = DecimalFormatter;
+
+var PhoneFormatter =
+/*#__PURE__*/
+function (_Formatter3) {
+  _inherits(PhoneFormatter, _Formatter3);
+
+  var _super3 = _createSuper(PhoneFormatter);
+
+  function PhoneFormatter(maxLength) {
+    var _this2;
+
+    _classCallCheck(this, PhoneFormatter);
+
+    _this2 = _super3.call(this, maxLength);
+    _this2.delimiter = ' ';
+    return _this2;
+  }
+
+  _createClass(PhoneFormatter, [{
+    key: "format",
+    value: function format(raw) {
+      raw = _get(_getPrototypeOf(PhoneFormatter.prototype), "format", this).call(this, raw);
+      raw = raw.replace(/[^\d]/g, '');
+      raw = raw.substring(0, this.maxLength);
+      var result = '',
+          current = '';
+
+      for (var i = 0, iMax = raw.length; i < iMax; i++) {
+        current = raw.charAt(i);
+
+        if (i % 2 === 0 && i !== 0) {
+          result += this.delimiter;
+        }
+
+        result += current;
+      }
+
+      return result;
+    }
+  }]);
+
+  return PhoneFormatter;
+}(Formatter);
+
+exports.PhoneFormatter = PhoneFormatter;
+
+function getPostDelimiter(value, delimiter, delimiters) {
+  // single delimiter
+  if (delimiters.length === 0) {
+    return value.slice(-delimiter.length) === delimiter ? delimiter : '';
+  } // multiple delimiters
+
+
+  var matchedDelimiter = '';
+  delimiters.forEach(function (current) {
+    if (value.slice(-current.length) === current) {
+      matchedDelimiter = current;
+    }
+  });
+  return matchedDelimiter;
 }

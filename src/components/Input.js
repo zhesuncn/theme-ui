@@ -1,37 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import { formatValue } from '../util/util'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 import Field from './Field'
 
 const defaultContainer = styled.input``
 
-const Input = ({format, className, value, onValueChanged, error, label, direction, ...props}) => {
-  const [current, setCurrent] = useState(value)
-  const [formatted, setFormatted] = useState(format ? formatValue(value, format).formatted: value)
+const Input = ({className, value, onValueChanged, error, label, direction, formatter, ...props}) => {
+  const [raw, setRaw] = useState('')
+  const [current, setCurrent] = useState('')
+  const [cursor, setCursor] = useState(0)
+  const inputEl = useRef(null)
+
   let classN = className || ''
+
   useEffect(() => {
-    setCurrent(value)
-    setFormatted(format ? formatValue(value, format).formatted: value)
-  }, [value])
+    if(value || value === '') {
+      setRaw(value)
+      const currentValue = formatter ? formatter.format(value) : value
+      setCurrent(currentValue)
+    }
+  }, [value, formatter])
+
+  useEffect(() => {
+    if(inputEl && formatter) {
+      setSelection(inputEl, cursor)
+    }
+  }, [inputEl, cursor, formatter, current])
+
 
   classN += error ? ' error': (current ? ' validate': '')
-  const valueChanged = (e) => {
-    const inputValue = e.target.value
-    const result = format ? formatValue(inputValue, format) : { formatted: inputValue, raw: inputValue }
-    setCurrent(result.raw)
-    setFormatted(result.formatted)
-    onValueChanged && onValueChanged(result.formatted, result.raw)
+
+  const valueChanged = (ev) => {
+    let rawValue = ev.target.value
+    if(formatter) {
+      let endPos = ev.target.selectionEnd
+      let currentValue = ev.target.value
+      rawValue = formatter.getRawValue(currentValue)
+      endPos = getNextCursorPosition(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
+      ev.target.value = formatter.format(rawValue)
+      setCursor(endPos)
+    }
+
+    if(rawValue !== raw) {
+      setRaw(rawValue)
+      onValueChanged && onValueChanged(rawValue)
+    }
   }
+
   return <Field
         label={label}
         direction={direction}
         className={classN}
       >
       <ThemeComponent
+        elementRef={inputEl}
         name="input"
         defaultContainer={defaultContainer}
-        value={formatted}
+        value={current}
         onChange={valueChanged}
         {...props}
       />
