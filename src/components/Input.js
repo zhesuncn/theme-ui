@@ -5,7 +5,7 @@ import Field from './Field'
 
 const defaultContainer = styled.input``
 
-const Input = ({className, value, onValueChanged, error, label, direction, formatter, ...props}) => {
+const Input = ({className, value, onValueChanged, error, label, direction, formatter, suffix, ...props}) => {
   const [raw, setRaw] = useState('')
   const [current, setCurrent] = useState('')
   const [cursor, setCursor] = useState(0)
@@ -60,6 +60,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
         onChange={valueChanged}
         {...props}
       />
+    {suffix && <span className={'input-suffix'}>{suffix}</span>}
   </Field>
 }
 

@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react'
 import ThemeComponent from './ThemeComponent'
 
 
-const Switcher = ({children, value, getLabel, onChange, className='', ...props }) => {
+const Switcher = ({children, value, getLabel, onChange, className='', readonly=false, ...props }) => {
   const [current, setCurrent] = useState(value || false)
   useEffect(() => {
     setCurrent(value)
   }, [value])
 
   const onClick = () => {
-    setCurrent(!current)
-    onChange && onChange(!current)
+    if(readonly === false){
+      setCurrent(!current)
+      onChange && onChange(!current)
+    }
   }
   return <ThemeComponent
     name="switcher"

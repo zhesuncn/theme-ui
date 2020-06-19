@@ -4,13 +4,13 @@ export const button = {
   loading_icon: 'loading',
   container: styled.a`
     display: inline-flex;
-    border: 1px solid ${props => props.palette.green};
+    border: 1px solid ${props => props.color || props.palette.green};
     border-radius: 10px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    background: ${props => props.palette.green};
+    background: ${props => props.color || props.palette.green};
     color: ${props => props.palette.white};
     outline: none;
     svg {
@@ -32,10 +32,18 @@ export const button = {
       border-radius: 0;
       display: flex;
       align-items: center;
-      color: ${props => props.palette.green};
+      color: ${props => props.color || props.palette.green};
     }
     &.clear svg{
-      fill: ${props => props.palette.green};
+      fill: ${props => props.color || props.palette.green};
+    }
+    &.invert {
+      background: transparent;
+      color: ${props => props.color || props.palette.green};
+      border-color: ${props => props.color || props.palette.green};
+      svg{
+        fill: ${props => props.color || props.palette.green};
+      }
     }
   `
 }
