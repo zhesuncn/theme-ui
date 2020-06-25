@@ -15,6 +15,8 @@ var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
 var _Field = _interopRequireDefault(require("./Field"));
 
+var _util = require("../util/util");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -90,7 +92,7 @@ var Input = function Input(_ref) {
   }, [value, formatter]);
   (0, _react.useEffect)(function () {
     if (inputEl && formatter) {
-      setSelection(inputEl, cursor);
+      (0, _util.setSelection)(inputEl, cursor);
     }
   }, [inputEl, cursor, formatter, current]);
   classN += error ? ' error' : current ? ' validate' : '';
