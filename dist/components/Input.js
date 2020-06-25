@@ -63,8 +63,9 @@ var Input = function Input(_ref) {
       label = _ref.label,
       direction = _ref.direction,
       formatter = _ref.formatter,
+      prefix = _ref.prefix,
       suffix = _ref.suffix,
-      props = _objectWithoutProperties(_ref, ["className", "value", "onValueChanged", "error", "label", "direction", "formatter", "suffix"]);
+      props = _objectWithoutProperties(_ref, ["className", "value", "onValueChanged", "error", "label", "direction", "formatter", "prefix", "suffix"]);
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -119,7 +120,9 @@ var Input = function Input(_ref) {
     label: label,
     direction: direction,
     className: classN
-  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
+  }, prefix && /*#__PURE__*/_react.default.createElement("span", {
+    className: 'input-prefix'
+  }, prefix), /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
     elementRef: inputEl,
     name: "input",
     defaultContainer: defaultContainer,

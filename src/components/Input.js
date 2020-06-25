@@ -6,7 +6,7 @@ import { getNextCursorPosition, setSelection } from '../util/util'
 
 const defaultContainer = styled.input``
 
-const Input = ({className, value, onValueChanged, error, label, direction, formatter, suffix, ...props}) => {
+const Input = ({className, value, onValueChanged, error, label, direction, formatter, prefix, suffix, ...props}) => {
   const [raw, setRaw] = useState('')
   const [current, setCurrent] = useState('')
   const [cursor, setCursor] = useState(0)
@@ -53,6 +53,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
         direction={direction}
         className={classN}
       >
+    {prefix && <span className={'input-prefix'}>{prefix}</span>}
       <ThemeComponent
         elementRef={inputEl}
         name="input"

@@ -98,6 +98,10 @@ export class NumberFormatter extends Formatter {
     raw = raw.replace(/[^\d]/g, '')
     return raw
   }
+
+  getRawValue(value) {
+    return typeof value === 'string' ? value.replace(/[^\d]/g, '') : ''
+  }
 }
 export class DecimalFormatter extends Formatter {
   constructor(decimalDelimiter, decimalLength) {

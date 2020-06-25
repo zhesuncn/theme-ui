@@ -158,6 +158,11 @@ var NumberFormatter = /*#__PURE__*/function (_Formatter) {
       raw = raw.replace(/[^\d]/g, '');
       return raw;
     }
+  }, {
+    key: "getRawValue",
+    value: function getRawValue(value) {
+      return typeof value === 'string' ? value.replace(/[^\d]/g, '') : '';
+    }
   }]);
 
   return NumberFormatter;
