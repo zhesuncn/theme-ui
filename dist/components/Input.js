@@ -104,7 +104,7 @@ var Input = function Input(_ref) {
       var endPos = ev.target.selectionEnd;
       var currentValue = ev.target.value;
       rawValue = formatter.getRawValue(currentValue);
-      endPos = getNextCursorPosition(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
+      endPos = (0, _util.getNextCursorPosition)(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
       ev.target.value = formatter.format(rawValue);
       setCursor(endPos);
     }

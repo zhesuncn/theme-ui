@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 import Field from './Field'
-import { setSelection } from '../util/util'
+import { getNextCursorPosition, setSelection } from '../util/util'
 
 const defaultContainer = styled.input``
 
