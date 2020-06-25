@@ -49,5 +49,9 @@ export {
   Prompt,
   ThemeContextProvider,
   useTheme,
-  usePalette
+  usePalette,
+  Formatter,
+  PhoneFormatter,
+  NumberFormatter,
+  DecimalFormatter
 }

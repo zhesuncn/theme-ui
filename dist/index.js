@@ -185,6 +185,30 @@ Object.defineProperty(exports, "Prompt", {
     return _Popup.Prompt;
   }
 });
+Object.defineProperty(exports, "Formatter", {
+  enumerable: true,
+  get: function get() {
+    return _util.Formatter;
+  }
+});
+Object.defineProperty(exports, "PhoneFormatter", {
+  enumerable: true,
+  get: function get() {
+    return _util.PhoneFormatter;
+  }
+});
+Object.defineProperty(exports, "NumberFormatter", {
+  enumerable: true,
+  get: function get() {
+    return _util.NumberFormatter;
+  }
+});
+Object.defineProperty(exports, "DecimalFormatter", {
+  enumerable: true,
+  get: function get() {
+    return _util.DecimalFormatter;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./components/Button"));
 
