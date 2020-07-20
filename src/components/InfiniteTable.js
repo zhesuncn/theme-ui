@@ -22,7 +22,7 @@ export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, th
         scrollableTarget={targetId}
       >
         {
-          values && values.map((v,i) => <Line key={ (v ? (v.id || v._id) : i) } item={ v } cols={ cols } />)
+          values && values.map((v,i) => <Line key={ (v ? (v.id || v._id || i) : i) } item={ v } cols={ cols } />)
         }
       </InfiniteScroll>
     </div>
