@@ -209,6 +209,12 @@ Object.defineProperty(exports, "DecimalFormatter", {
     return _util.DecimalFormatter;
   }
 });
+Object.defineProperty(exports, "TagInput", {
+  enumerable: true,
+  get: function get() {
+    return _TagInput.default;
+  }
+});
 
 var _Button = _interopRequireDefault(require("./components/Button"));
 
@@ -249,6 +255,8 @@ var _InfiniteTable = require("./components/InfiniteTable");
 var _Popup = _interopRequireWildcard(require("./components/Popup"));
 
 var _util = require("./util/util");
+
+var _TagInput = _interopRequireDefault(require("./components/TagInput"));
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 

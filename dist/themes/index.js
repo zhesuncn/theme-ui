@@ -75,7 +75,8 @@ var defaultTheme = {
     tabpanel: _tabpanel.tabpanel,
     infinitetable: _infinitetable.default,
     popup: _popup.popup,
-    prompt: _popup.prompt
+    prompt: _popup.prompt,
+    tag_input: _input.tag_input
   }
 };
 exports.defaultTheme = defaultTheme;
