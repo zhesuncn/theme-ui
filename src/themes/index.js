@@ -1,5 +1,5 @@
 import { button } from './button'
-import { input, textarea } from './input'
+import { input, tag_input, textarea } from './input'
 import { uploader } from './uploader'
 import { switcher } from './switcher'
 import { selector } from './selector'
@@ -56,7 +56,8 @@ const defaultTheme = {
     tabpanel,
     infinitetable,
     popup,
-    prompt
+    prompt,
+    tag_input
   }
 }
 

@@ -18,7 +18,7 @@ import { TabPanel, TabItem } from './components/TabPanel'
 import { InfiniteTable, Line, Cell, Header } from './components/InfiniteTable'
 import Popup, { Prompt } from './components/Popup'
 import { Formatter, PhoneFormatter, NumberFormatter, DecimalFormatter } from './util/util'
-
+import TagInput from './components/TagInput'
 export {
   Button,
   Input,
@@ -53,5 +53,6 @@ export {
   Formatter,
   PhoneFormatter,
   NumberFormatter,
-  DecimalFormatter
+  DecimalFormatter,
+  TagInput
 }
