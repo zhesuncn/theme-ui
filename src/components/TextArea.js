@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react'
-import { formatValue } from '../util/util'
+import React from 'react'
 import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'
 import Field from './Field'

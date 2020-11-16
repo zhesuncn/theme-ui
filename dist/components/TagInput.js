@@ -5,11 +5,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = TagInput;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _Field = _interopRequireDefault(require("./Field"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
+
+var _Text = require("./Text");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,6 +24,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -35,46 +49,118 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var Switcher = function Switcher(_ref) {
-  var children = _ref.children,
-      value = _ref.value,
-      getLabel = _ref.getLabel,
-      onChange = _ref.onChange,
-      _ref$className = _ref.className,
-      className = _ref$className === void 0 ? '' : _ref$className,
-      _ref$readonly = _ref.readonly,
-      readonly = _ref$readonly === void 0 ? false : _ref$readonly,
-      props = _objectWithoutProperties(_ref, ["children", "value", "getLabel", "onChange", "className", "readonly"]);
+function _templateObject() {
+  var data = _taggedTemplateLiteral([""]);
 
-  var _useState = (0, _react.useState)(value || false),
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var defaultContainer = _styledComponents.default.div(_templateObject());
+
+function TagInput(_ref) {
+  var label = _ref.label,
+      error = _ref.error,
+      className = _ref.className,
+      direction = _ref.direction,
+      values = _ref.values,
+      onChanged = _ref.onChanged,
+      onInputChanged = _ref.onInputChanged,
+      onInputBlur = _ref.onInputBlur,
+      onTagDelete = _ref.onTagDelete,
+      onTagClick = _ref.onTagClick,
+      checkEnd = _ref.checkEnd,
+      props = _objectWithoutProperties(_ref, ["label", "error", "className", "direction", "values", "onChanged", "onInputChanged", "onInputBlur", "onTagDelete", "onTagClick", "checkEnd"]);
+
+  var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       current = _useState2[0],
       setCurrent = _useState2[1];
 
-  (0, _react.useEffect)(function () {
-    setCurrent(value);
-  }, [value]);
+  var classN = className || '';
+  classN += error ? ' error' : current ? ' validate' : '';
 
-  var onClick = function onClick() {
-    if (readonly === false) {
-      setCurrent(!current);
-      onChange && onChange(!current);
+  var deleteTag = function deleteTag(v, index) {
+    if (onChanged) {
+      var list = _toConsumableArray(values);
+
+      list.splice(index, 1);
+      onChanged && onChanged(list);
+    }
+
+    onTagDelete && onTagDelete(v);
+  };
+
+  var inputChanged = function inputChanged(ev) {
+    var raw = ev.target.value;
+    onInputChanged && onInputChanged(raw);
+
+    if (raw.trim()) {
+      if (checkToAddTag(raw)) {
+        var list = values ? [].concat(_toConsumableArray(values), [raw.trim()]) : [raw.trim()];
+        onChanged && onChanged(list);
+        console.log(list);
+        setCurrent('');
+      } else {
+        setCurrent(raw);
+      }
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    name: "switcher",
-    className: 'switcher ' + className
-  }, props), children && /*#__PURE__*/_react.default.createElement("span", {
-    className: "title"
-  }, children), /*#__PURE__*/_react.default.createElement("label", {
-    "data-print": "hide",
-    "data-value": '' + !!current,
-    onClick: onClick
-  }, /*#__PURE__*/_react.default.createElement("span", {
-    className: "slider round"
-  })), getLabel && /*#__PURE__*/_react.default.createElement("span", null, getLabel(current)));
-};
+  var onKeyPress = function onKeyPress(ev) {};
 
-var _default = Switcher;
-exports.default = _default;
+  var inputFocus = function inputFocus(ev) {};
+
+  var checkToAddTag = function checkToAddTag(text) {
+    if (checkEnd) {
+      return checkEnd(text);
+    }
+
+    return text.match(/.*\s$/g);
+  };
+
+  var inputBlur = function inputBlur() {
+    if (current) {
+      var list = values ? [].concat(_toConsumableArray(values), [current]) : [current];
+      onChanged && onChanged(list);
+      console.log(list);
+      setCurrent('');
+    }
+
+    onInputBlur && onInputBlur();
+  };
+
+  return /*#__PURE__*/_react.default.createElement(_Field.default, {
+    label: label,
+    direction: direction,
+    className: classN
+  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
+    name: "tag_input",
+    defaultContainer: defaultContainer
+  }, props), values && values.length > 0 && /*#__PURE__*/_react.default.createElement("div", {
+    className: 'tags'
+  }, values.map(function (v, index) {
+    if (index !== values) {
+      return /*#__PURE__*/_react.default.createElement(_Text.Tag, {
+        key: index,
+        onClick: function onClick() {
+          return onTagClick(v, index);
+        },
+        onClose: function onClose() {
+          return deleteTag(v, index);
+        }
+      }, v);
+    }
+
+    return null;
+  })), /*#__PURE__*/_react.default.createElement("input", {
+    value: current,
+    onChange: inputChanged,
+    onBlur: inputBlur
+  })));
+}

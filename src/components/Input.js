@@ -58,7 +58,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
         elementRef={inputEl}
         name="input"
         defaultContainer={defaultContainer}
-        value={current}
+        defaultValue={current}
         onChange={valueChanged}
         {...props}
       />

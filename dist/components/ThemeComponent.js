@@ -50,13 +50,10 @@ var ThemeComponent = function ThemeComponent(_ref) {
   var myTheme = (0, _util.getCurrentTheme)(theme, (0, _lodash.get)(themeContext, name));
   var defaultC = defaultContainer ? defaultContainer : defaultDiv;
   var Container = (0, _lodash.get)(myTheme, 'container', defaultC);
-  return (
-    /*#__PURE__*/
-    _react.default.createElement(Container, _extends({
-      palette: palette,
-      ref: elementRef
-    }, props), children)
-  );
+  return /*#__PURE__*/_react.default.createElement(Container, _extends({
+    palette: palette,
+    ref: elementRef
+  }, props), children);
 };
 
 var _default = ThemeComponent;
