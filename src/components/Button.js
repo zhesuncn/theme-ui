@@ -1,22 +1,65 @@
 import React, { useState } from 'react'
 import Icon from './Icon'
 import ThemeComponent from './ThemeComponent'
-import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
+import styled from 'styled-components'
+import { useTheme } from '../index'
+
+const Container = styled.a`
+    display: inline-flex;
+    border: ${props => props.variable.button_border} solid ${props => props.color || props.palette.primary};
+    border-radius: ${props => props.variable.radius};
+    padding: ${props => props.variable.padding.s} ${props => props.variable.padding.m};
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    background: ${props => props.color || props.palette.primary};
+    color: ${props => props.palette.white};
+    outline: none;
+    svg {
+      margin-left: ${props => props.variable.padding.s};
+      fill: ${props => props.palette.white};
+    }
+    &:hover{
+     opacity: 0.8;
+    }
+    &.disabled, &:disabled{
+      opacity: 0.2;
+    }
+    &.clear {
+      height: auto;
+      padding: ${props => props.variable.padding.s} 0;
+      width: auto;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      color: ${props => props.color || props.palette.primary};
+    }
+    &.clear svg{
+      fill: ${props => props.color || props.palette.primary};
+    }
+    &.invert {
+      background: transparent;
+      color: ${props => props.color || props.palette.primary};
+      border-color: ${props => props.palette[props.color] || props.palette.primary};
+      svg{
+        fill: ${props => props.color || props.palette.primary};
+      }
+    }
+  `
 
 function Button({
                   disabled,
                   children,
                   href,
-                  theme,
                   className= '',
                   onClick,
                   ...props
                 }) {
+  const theme = useTheme()
   const [loading, setLoading] = useState(false)
   let classN = 'button ' +  className
-  const themeContext = useTheme()
-  const myTheme = getCurrentTheme(theme, themeContext.button)
   const buttonClicked = async () => {
     if (loading || disabled) {
       return
@@ -40,15 +83,14 @@ function Button({
   }
 
   return <ThemeComponent
-    name='button'
+    container={Container}
     className={ classN }
     href={ disabled || loading ? null : href }
     onClick={ buttonClicked }
     { ...props }>
     { children }
-    { myTheme.loading_icon && loading && <Icon name={ myTheme.loading_icon }/> }
+    { theme.images.loading_icon && loading && <Icon className="button-icon" name={ theme.images.loading_icon }/> }
   </ThemeComponent>
-
 }
 
 export default Button

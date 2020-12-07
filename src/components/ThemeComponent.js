@@ -1,18 +1,13 @@
 import React from 'react'
-import { get } from 'lodash'
-import { usePalette, useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
-import styled from 'styled-components'
+import { useTheme } from '../ThemeContext'
 
-const defaultDiv = styled.div``
-
-const ThemeComponent = ({theme, children, name, defaultContainer, elementRef, ...props}) => {
-  const themeContext = useTheme()
-  const palette = usePalette()
-  let myTheme = getCurrentTheme(theme, get(themeContext, name))
-  const defaultC = defaultContainer ? defaultContainer : defaultDiv
-  const Container = get(myTheme, 'container', defaultC)
-  return <Container palette={palette} ref={elementRef} {...props}>{children}</Container>
+const ThemeComponent = ({children, container, elementRef, color, ...props}) => {
+  const theme = useTheme()
+  const Container = container || <div/>
+  if(color) {
+    props.color = theme.palette[color] || color
+  }
+  return <Container palette={theme.palette} variable={theme.variable} ref={elementRef} {...props}>{children}</Container>
 }
 
 export default ThemeComponent

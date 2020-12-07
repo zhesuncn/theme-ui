@@ -3,15 +3,17 @@ import styled from 'styled-components'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Icon from './Icon'
 import ThemeComponent from './ThemeComponent'
-import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 
+const Table = styled.div`
+    > .table {
+      height: calc(100% - 40px);
+      overflow-y: auto;
+    }
+`
 
 export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, className = '', ...props}) {
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.infinitetable)
   const targetId = (id ? '-' : '') + 'table'
-  return <ThemeComponent className={"infinite-table " + className} name="infinitetable" theme={theme}>
+  return <ThemeComponent container={Table} className={"infinite-table " + className}>
     <Header cols={cols} theme={theme}/>
     <div id={targetId} className="table">
       <InfiniteScroll
@@ -36,8 +38,18 @@ export const Cell = styled.div`
   ${props => props.flex || !props.width ? `flex: ${props.flex || 1};` : ''}
 `
 
+const LineContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin: ${props => props.variable.padding.xs} 0;
+  background-color: ${props => props.palette.white};
+  min-height: 39px;
+  > div:first-child {
+    padding-left: ${props => props.variable.padding.m};
+  }
+`
 export const Line = ({item, cols, theme, ...props}) => {
-  return <ThemeComponent className="row" theme={theme} name={'infinitetable.line'}>
+  return <ThemeComponent container={LineContainer} className="row">
     {
       cols.map((col, i) => <Cell key={i} className={'item' + col.key? '-' + col.key: ''} width={col.width}>
           {
@@ -50,8 +62,18 @@ export const Line = ({item, cols, theme, ...props}) => {
   </ThemeComponent>
 }
 
+const HeaderContainer = styled.div`
+    display: flex;
+    height: 40px;
+    width: 100%;
+    color: ${props => props.palette.primary};
+    font-weight: bold;
+    > div:first-child {
+      padding-left: ${props => props.variable.padding.m};
+    }
+  `
 export const Header = ({cols, theme, ...props}) => {
-  return <ThemeComponent className="header" theme={theme} name={'infinitetable.header'}>
+  return <ThemeComponent container={HeaderContainer} className="table-header">
     {
       cols.map((col, i) => <Cell key={i} className="header-item" width={col.width}>{col.header || ''}</Cell>)
     }

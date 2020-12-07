@@ -4,7 +4,31 @@ import ThemeComponent from './ThemeComponent'
 import Field from './Field'
 import { getNextCursorPosition, setSelection } from '../util/util'
 
-const defaultContainer = styled.input``
+const Container = styled.input`
+  border: 0;
+  border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.border_light};
+  width:'100%';
+  font-size:14px;
+  text-align: left;
+  padding: ${props => props.variable.padding.s} 0;
+  border-radius:0;
+  outline: none;
+  &:focus {
+    border-bottom:${props => props.variable.input_border} solid  ${props => props.palette.border_active};
+  }
+  &::placeholder {
+    font-size: 14px;
+    font-weight: 300;
+    color: ${props => props.palette.black_grey_3};
+    opacity: 0.5;
+  }
+  &.error {
+    border-bottom: 3px solid ${props => props.palette.error};
+  }
+  &.validate {
+    border-bottom: 3px solid ${props => props.palette.success};
+  }
+`
 
 const Input = ({className, value, onValueChanged, error, label, direction, formatter, prefix, suffix, ...props}) => {
   const [raw, setRaw] = useState('')
@@ -55,9 +79,9 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
       >
     {prefix && <span className={'input-prefix'}>{prefix}</span>}
       <ThemeComponent
+        container={Container}
+        className={"input"}
         elementRef={inputEl}
-        name="input"
-        defaultContainer={defaultContainer}
         value={current}
         onChange={valueChanged}
         {...props}

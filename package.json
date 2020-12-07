@@ -2,7 +2,7 @@
   "name": "theme-ui",
   "module": true,
   "version": "0.1.0",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "peerDependencies": {
     "prop-types": "^15.5.4"
   },
@@ -15,7 +15,8 @@
     "react-dropzone": "^10.2.1",
     "react-infinite-scroll-component": "^5.0.5",
     "react-modal": "^3.11.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "react-router": "^5.2.0"
   },
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
