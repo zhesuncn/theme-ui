@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import Icon from './Icon'
 import ThemeComponent from './ThemeComponent'
+import { useTheme } from '../index'
 
 const Table = styled.div`
     > .table {
@@ -11,16 +12,17 @@ const Table = styled.div`
     }
 `
 
-export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, theme, className = '', ...props}) {
+export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, className = '', ...props}) {
   const targetId = (id ? '-' : '') + 'table'
+  const theme = useTheme()
   return <ThemeComponent container={Table} className={"infinite-table " + className}>
-    <Header cols={cols} theme={theme}/>
+    <Header cols={cols}/>
     <div id={targetId} className="table">
       <InfiniteScroll
         dataLength={values ? values.length : 0}
         next={ onLoad }
         hasMore={ hasMore }
-        loader={ <ThemeComponent name="infinitetable.loader" key={ 0 }><Icon name={myTheme.loading_icon}/> Chargement en cours ...</ThemeComponent> }
+        loader={ <ThemeComponent name="infinitetable.loader" key={ 0 }><Icon name={theme.images.loading_icon}/> Chargement en cours ...</ThemeComponent> }
         scrollableTarget={targetId}
       >
         {
