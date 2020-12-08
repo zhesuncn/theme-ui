@@ -15,7 +15,7 @@ const Queue = ({queue, onStop, onFollow, defaultOpen, theme, children, ...props}
   const formateDate = (date) => {
     return moment(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss')
   }
-  return <ThemeComponent name='queue' {...props} theme={theme}>
+  return <ThemeComponent className='queue' {...props} theme={theme}>
     <div class='title'>{queue.name}</div>
     <div>Started at: {formateDate(queue.start)}</div>
     <div className='status'>Status:&nbsp;&nbsp;<span>{queue.status}</span>

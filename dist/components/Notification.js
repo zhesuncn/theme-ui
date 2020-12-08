@@ -27,15 +27,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -43,7 +39,33 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border: ", " solid ", ";\n  border-radius: ", ";\n  padding: ", " ", ";\n  display: flex;\n  justify-content: space-between;\n  img {\n    cursor: pointer;\n    outline: none;\n    width: 12px;\n  }\n  svg {\n    cursor: pointer;\n    outline: none;\n    width: 12px;\n  }\n  &.info{\n    border-color: ", ";\n    color: ", ";\n  }\n  &.error{\n    border-color: error;\n    color: error;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.variable.border;
+}, function (props) {
+  return props.palette.primary;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.xs;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.palette.success;
+}, function (props) {
+  return props.palette.success;
+});
 
 var Notification = function Notification(_ref) {
   var children = _ref.children,
@@ -54,8 +76,7 @@ var Notification = function Notification(_ref) {
       _ref$show = _ref.show,
       show = _ref$show === void 0 ? true : _ref$show,
       onHide = _ref.onHide,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["children", "type", "autohide", "show", "onHide", "theme"]);
+      props = _objectWithoutProperties(_ref, ["children", "type", "autohide", "show", "onHide"]);
 
   var _useState = (0, _react.useState)(show),
       _useState2 = _slicedToArray(_useState, 2),
@@ -78,14 +99,16 @@ var Notification = function Notification(_ref) {
     onHide && onHide();
   };
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.notification);
-  return isShow ? /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    name: "notification",
-    defaultContainer: defaultContainer,
+  var theme = (0, _ThemeContext.useTheme)();
+  return isShow ?
+  /*#__PURE__*/
+  _react.default.createElement(_ThemeComponent.default, _extends({
+    container: Container,
     className: classN
-  }, props), children, myTheme.close_icon && /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.close_icon,
+  }, props), children, theme.images.close_icon &&
+  /*#__PURE__*/
+  _react.default.createElement(_Icon.default, {
+    name: theme.images.close_icon,
     onClick: hide
   })) : null;
 };

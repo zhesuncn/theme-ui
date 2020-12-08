@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import Icon from '../Icon'
 import { useTheme } from '../../ThemeContext'
-import { getCurrentTheme } from '../../themes/util'
 import DefaultEditionContainer from './DefaultEditionContainer'
 import { get } from 'lodash'
 import Field from '../Field'
 import ThemeComponent from '../ThemeComponent'
+import styled from 'styled-components'
 
-
+const Container = styled.div`
+ .btns {
+    display: inline-flex;
+  }
+  .btns svg, .btns img{
+    margin-right: 10px;
+    width: 16px;
+  }
+`
 const Editable = ({className = '', value, defaultEdition = false, onChanged, onDelete, editRender, label, direction,
-                    onCancel, children, editContainerOptions, editComponent, component, theme, ...props}) => {
+                    onCancel, children, editContainerOptions, editComponent, component, ...props}) => {
   const [edition, setEdition] = useState(defaultEdition)
   const [currentValue, setCurrentValue] = useState(value)
   const [current, setCurrent] = useState(value)
 
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.editable)
+  const theme = useTheme()
   const reset = () => {
     if(value) { //Set props.value to currentValue
       setCurrentValue(value)
@@ -55,13 +62,13 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
     displayComponent = <React.Fragment>
       <div className='btns'>
         {
-          onChanged && <Icon name={myTheme.edit_icon} onClick={()=> {
+          onChanged && <Icon name={theme.images.edit_icon} onClick={()=> {
             reset()
             setEdition(true)
           }}/>
         }
         {
-          onDelete && <Icon name={myTheme.delete_icon} onClick={() => {onDelete(value)}}/>
+          onDelete && <Icon name={theme.images.delete_icon} onClick={() => {onDelete(value)}}/>
         }
       </div>
       {children}
@@ -69,8 +76,8 @@ const Editable = ({className = '', value, defaultEdition = false, onChanged, onD
     </React.Fragment>
   }
   return <Field label={label} direction={direction} className={className}>
-    <ThemeComponent name="editable"
-                    theme={theme}
+    <ThemeComponent className="editable"
+                    container={Container}
         {...props}>
       {displayComponent}
       {editionMode}

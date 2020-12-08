@@ -25,15 +25,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -42,7 +38,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n  border: 0;\n  border-bottom: ", " solid ", ";\n  width:'100%';\n  font-size:14px;\n  text-align: left;\n  padding: ", " 0;\n  border-radius:0;\n  outline: none;\n  &:focus {\n    border-bottom:", " solid  ", ";\n  }\n  &::placeholder {\n    font-size: 14px;\n    font-weight: 300;\n    color: ", ";\n    opacity: 0.5;\n  }\n  &.error {\n    border-bottom: 3px solid ", ";\n  }\n  &.validate {\n    border-bottom: 3px solid ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -53,7 +49,23 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultContainer = _styledComponents.default.input(_templateObject());
+var Container = _styledComponents.default.input(_templateObject(), function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_light;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_active;
+}, function (props) {
+  return props.palette.black_grey_3;
+}, function (props) {
+  return props.palette.error;
+}, function (props) {
+  return props.palette.success;
+});
 
 var Input = function Input(_ref) {
   var className = _ref.className,
@@ -92,14 +104,13 @@ var Input = function Input(_ref) {
     }
   }, [value, formatter]);
   (0, _react.useEffect)(function () {
-    if (inputEl && (formatter || cursor > -1)) {
+    if (inputEl && formatter) {
       (0, _util.setSelection)(inputEl, cursor);
     }
   }, [inputEl, cursor, formatter, current]);
   classN += error ? ' error' : current ? ' validate' : '';
 
   var valueChanged = function valueChanged(ev) {
-    var cursor = ev.target.selectionStart;
     var rawValue = ev.target.value;
 
     if (formatter) {
@@ -109,8 +120,6 @@ var Input = function Input(_ref) {
       endPos = (0, _util.getNextCursorPosition)(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
       ev.target.value = formatter.format(rawValue);
       setCursor(endPos);
-    } else {
-      setCursor(Math.min(cursor, (rawValue || '').length));
     }
 
     if (rawValue !== raw) {
@@ -119,21 +128,30 @@ var Input = function Input(_ref) {
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: classN
-  }, prefix && /*#__PURE__*/_react.default.createElement("span", {
-    className: 'input-prefix'
-  }, prefix), /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    elementRef: inputEl,
-    name: "input",
-    defaultContainer: defaultContainer,
-    value: current,
-    onChange: valueChanged
-  }, props)), suffix && /*#__PURE__*/_react.default.createElement("span", {
-    className: 'input-suffix'
-  }, suffix));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: classN
+    }, prefix &&
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      className: 'input-prefix'
+    }, prefix),
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      container: Container,
+      className: "input",
+      elementRef: inputEl,
+      value: current,
+      onChange: valueChanged
+    }, props)), suffix &&
+    /*#__PURE__*/
+    _react.default.createElement("span", {
+      className: 'input-suffix'
+    }, suffix))
+  );
 };
 
 var _default = Input;

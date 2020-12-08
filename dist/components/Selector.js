@@ -29,15 +29,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -46,7 +42,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral([" \n  padding:  ", " ", " ", " 0;\n  border: 0;\n  border-radius: 0;\n  border-bottom: ", " solid ", ";\n  background-color: ", ";\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background-position: right 5px bottom 16px;\n  background-repeat: no-repeat;\n  font-size:14px;\n  color: ", ";\n  white-space: normal;\n  outline: none;\n  &.validate {\n    border-bottom: 3px solid ", ";\n  }\n  &.placeholder {\n    color: ", ";\n  }\n  &:focus {\n    border-bottom: 3px solid  ", ";\n  }\n  &::-ms-expand {\n    display: none;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -57,7 +53,27 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultContainer = _styledComponents.default.select(_templateObject());
+var Container = _styledComponents.default.select(_templateObject(), function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_light;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.palette.success;
+}, function (props) {
+  return props.palette.black_grey_3;
+}, function (props) {
+  return props.palette.border_active;
+});
 
 var Selector = function Selector(_ref) {
   var options = _ref.options,
@@ -68,11 +84,10 @@ var Selector = function Selector(_ref) {
       getValue = _ref.getValue,
       getLabel = _ref.getLabel,
       className = _ref.className,
-      theme = _ref.theme,
       label = _ref.label,
       direction = _ref.direction,
       canClean = _ref.canClean,
-      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme", "label", "direction", "canClean"]);
+      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "label", "direction", "canClean"]);
 
   var _useState = (0, _react.useState)(value || ''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -90,44 +105,52 @@ var Selector = function Selector(_ref) {
     classN += ' validate';
   }
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.selector);
+  var theme = (0, _ThemeContext.useTheme)();
 
   var selectChanged = function selectChanged(e) {
     setCurrent(e.target.value);
     onChange && onChange(e.target.value);
   };
 
-  return /*#__PURE__*/_react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: classN
-  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    theme: theme,
-    name: "selector",
-    defaultContainer: defaultContainer,
-    onChange: selectChanged,
-    value: current,
-    open_icon: (0, _svg.getSrc)(myTheme.open_icon)
-  }, props), placeholder && /*#__PURE__*/_react.default.createElement("option", {
-    value: "",
-    hidden: !canClean
-  }, placeholder), Array.isArray(options) && options.map(function (item, index) {
-    var value, label;
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: classN
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      className: "selector",
+      container: Container,
+      onChange: selectChanged,
+      value: current,
+      open_icon: (0, _svg.getSrc)(theme.images.open_icon)
+    }, props), placeholder &&
+    /*#__PURE__*/
+    _react.default.createElement("option", {
+      value: "",
+      hidden: !canClean
+    }, placeholder), Array.isArray(options) && options.map(function (item, index) {
+      var value, label;
 
-    if (item instanceof Object) {
-      value = getValue ? getValue(item) : item.code;
-      label = getLabel ? getLabel(item) : item.name;
-    } else {
-      value = item;
-      label = item;
-    }
+      if (item instanceof Object) {
+        value = getValue ? getValue(item) : item.code;
+        label = getLabel ? getLabel(item) : item.name;
+      } else {
+        value = item;
+        label = item;
+      }
 
-    return /*#__PURE__*/_react.default.createElement("option", {
-      key: index,
-      value: value
-    }, label);
-  }), children));
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("option", {
+          key: index,
+          value: value
+        }, label)
+      );
+    }), children))
+  );
 };
 
 var _default = Selector;

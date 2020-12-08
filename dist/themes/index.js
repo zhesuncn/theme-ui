@@ -4,79 +4,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.defaultTheme = void 0;
-
-var _button = require("./button");
-
-var _input = require("./input");
-
-var _uploader = require("./uploader");
-
-var _switcher = require("./switcher");
-
-var _selector = require("./selector");
-
-var _notification = require("./notification");
-
-var _editable = require("./editable");
-
-var _text = require("./text");
-
-var _field = require("./field");
-
-var _tabpanel = require("./tabpanel");
-
-var _infinitetable = _interopRequireDefault(require("./infinitetable"));
-
-var _popup = require("./popup");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 var defaultTheme = {
   palette: {
     blue: '#016db8',
     blue_dark: '#14489f',
     white: '#FFFFFF',
     grey_light: '#d0d0d0',
-    green: '#009c67',
-    red: '#ff4646',
-    yellow: '#ffcd00',
     blue_grey: '#555d6c',
     green_jade: '#00b59b',
     black_grey: '#1f1f1f',
     black_grey_3: 'rgb(31,31,31,0.3)',
-    secondary: '#27A893',
-    inverse: '#FFFFFF',
     gray_border_light: '#F3F3F3',
     gray_border_active: '#AFAFAF',
     gray_background: '#F0F0F0',
-    gray_background_light: '#F6F6F6'
+    gray_background_light: '#F6F6F6',
+    primary: '#14489f',
+    secondary: '#27A893',
+    inverse: '#FFFFFF',
+    border_light: "#F3F3F3",
+    border_active: '#AFAFAF',
+    success: '#009c67',
+    error: '#ff4646',
+    warn: '#ffcd00',
+    light: '#F3F3F3'
   },
   variable: {
-    padding: 10,
-    radius: 0,
-    border_weight: 1
+    padding: {
+      xs: "5px",
+      s: "10px",
+      m: "20px"
+    },
+    radius: "5px",
+    border: "1px",
+    input_border: "3px",
+    button: {
+      border: "1px",
+      height: '19px'
+    }
   },
-  component: {
-    button: _button.button,
-    input: _input.input,
-    textarea: _input.textarea,
-    uploader: _uploader.uploader,
-    switcher: _switcher.switcher,
-    selector: _selector.selector,
-    notification: _notification.notification,
-    editable: _editable.editable,
-    editableInput: _editable.editableInput,
-    label: _text.label,
-    error: _text.error,
-    h1: _text.h1,
-    h2: _text.h2,
-    tag: _text.tag,
-    field: _field.field,
-    tabpanel: _tabpanel.tabpanel,
-    infinitetable: _infinitetable.default,
-    popup: _popup.popup,
-    prompt: _popup.prompt,
-    tag_input: _input.tag_input
+  images: {
+    loading_icon: 'loading',
+    validate_icon: 'check_circle',
+    add_icon: 'plus_circle',
+    delete_icon: 'trash',
+    confirm_icon: 'check',
+    cancel_icon: 'close',
+    edit_icon: 'edit'
   }
 };
 exports.defaultTheme = defaultTheme;

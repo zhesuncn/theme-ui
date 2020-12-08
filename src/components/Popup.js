@@ -6,6 +6,7 @@ import ThemeComponent from './ThemeComponent'
 import { useTheme } from '../ThemeContext'
 import { getCurrentTheme } from '../themes/util'
 import Button from './Button'
+import styled from 'styled-components'
 
 export default function Popup({ isOpen, onClose, children, styles, theme, ...props }) {
   const themeContext = useTheme()
@@ -24,10 +25,18 @@ export default function Popup({ isOpen, onClose, children, styles, theme, ...pro
 }
 
 
-export function Prompt({ title, onConfirm, onCancel, confirmTxt, cancelTxt, disableConfirm, theme, ...props }) {
+const PromptContainer = styled.div`
+  padding: ${props => props.variable.padding.s} ${props => props.variable.padding.m};
+  display: flex;
+  flex-direction: column;
+  > textarea {
+    margin-top: ${props => props.variable.padding.m};
+  }
+`
+export function Prompt({ title, onConfirm, onCancel, confirmTxt, cancelTxt, disableConfirm, ...props }) {
   const [msg, setMsg] = useState('')
-  return <Popup { ...props } theme={theme}>
-    <ThemeComponent theme={theme} name='prompt'>
+  return <Popup { ...props }>
+    <ThemeComponent className="prompt-context" container={PromptContainer}>
       <div className='title'>{ title }</div>
       <TextArea
         value={ msg }
@@ -35,11 +44,11 @@ export function Prompt({ title, onConfirm, onCancel, confirmTxt, cancelTxt, disa
         rows={ 20 }
       />
       <div className="actions">
-        <Button onClick={ () => onConfirm && onConfirm(msg) } theme={theme}
+        <Button onClick={ () => onConfirm && onConfirm(msg) }
                 disabled={ disableConfirm }>{ confirmTxt }
         </Button>
         { onCancel &&
-        <Button onClick={ onCancel } theme={theme}>{ cancelTxt }</Button> }
+        <Button onClick={ onCancel }>{ cancelTxt }</Button> }
       </div>
     </ThemeComponent>
   </Popup>

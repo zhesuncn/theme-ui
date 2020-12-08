@@ -7,11 +7,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _lodash = require("lodash");
-
 var _ThemeContext = require("../ThemeContext");
-
-var _util = require("../themes/util");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -35,25 +31,30 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultDiv = _styledComponents.default.div(_templateObject());
+var defaultContainer = _styledComponents.default.div(_templateObject());
 
 var ThemeComponent = function ThemeComponent(_ref) {
-  var theme = _ref.theme,
-      children = _ref.children,
-      name = _ref.name,
-      defaultContainer = _ref.defaultContainer,
+  var children = _ref.children,
+      container = _ref.container,
       elementRef = _ref.elementRef,
-      props = _objectWithoutProperties(_ref, ["theme", "children", "name", "defaultContainer", "elementRef"]);
+      color = _ref.color,
+      props = _objectWithoutProperties(_ref, ["children", "container", "elementRef", "color"]);
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var palette = (0, _ThemeContext.usePalette)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, (0, _lodash.get)(themeContext, name));
-  var defaultC = defaultContainer ? defaultContainer : defaultDiv;
-  var Container = (0, _lodash.get)(myTheme, 'container', defaultC);
-  return /*#__PURE__*/_react.default.createElement(Container, _extends({
-    palette: palette,
-    ref: elementRef
-  }, props), children);
+  var theme = (0, _ThemeContext.useTheme)();
+  var Container = container || defaultContainer;
+
+  if (color) {
+    props.color = theme.palette[color] || color;
+  }
+
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(Container, _extends({
+      palette: theme.palette,
+      variable: theme.variable,
+      ref: elementRef
+    }, props), children)
+  );
 };
 
 var _default = ThemeComponent;

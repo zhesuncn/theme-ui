@@ -13,9 +13,9 @@ var _Icon = _interopRequireDefault(require("./Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
-var _ThemeContext = require("../ThemeContext");
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _util = require("../themes/util");
+var _index = require("../index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,15 +29,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -45,15 +41,60 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-flex;\n    border: ", " solid ", ";\n    border-radius: ", ";\n    padding: ", " ", ";\n    height: ", ";\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    font-size: 14px;\n    font-weight: bold;\n    background: ", ";\n    color: ", ";\n    outline: none;\n    .button-icon {\n      position: absolute;\n      fill: ", ";\n    }\n    &:hover{\n     opacity: 0.8;\n    }\n    &.disabled, &:disabled{\n      opacity: 0.2;\n    }\n    &.clear {\n      height: auto;\n      padding: ", " 0;\n      width: auto;\n      border: none;\n      background-color: transparent;\n      border-radius: 0;\n      display: flex;\n      align-items: center;\n      color: ", ";\n    }\n    &.clear .button-icon{\n      fill: ", ";\n    }\n    &.invert {\n      background: transparent;\n      color: ", ";\n      border-color: ", ";\n      .button-icon{\n        fill: ", ";\n      }\n    }\n  "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.a(_templateObject(), function (props) {
+  return props.variable.button.border;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.button.height;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.palette[props.color] || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+});
+
 function Button(_ref) {
   var disabled = _ref.disabled,
       children = _ref.children,
       href = _ref.href,
-      theme = _ref.theme,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
       onClick = _ref.onClick,
-      props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "theme", "className", "onClick"]);
+      props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "className", "onClick"]);
+
+  var theme = (0, _index.useTheme)();
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -61,11 +102,13 @@ function Button(_ref) {
       setLoading = _useState2[1];
 
   var classN = 'button ' + className;
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.button);
 
-  var buttonClicked = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+  var buttonClicked =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
       var result;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -119,14 +162,20 @@ function Button(_ref) {
     classN += ' disabled';
   }
 
-  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    name: "button",
-    className: classN,
-    href: disabled || loading ? null : href,
-    onClick: buttonClicked
-  }, props), children, myTheme.loading_icon && loading && /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon
-  }));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      container: Container,
+      className: classN,
+      href: disabled || loading ? null : href,
+      onClick: buttonClicked
+    }, props), children, theme.images.loading_icon && loading &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      className: "button-icon",
+      name: theme.images.loading_icon
+    }))
+  );
 }
 
 var _default = Button;

@@ -13,8 +13,6 @@ var _reactDropzone = _interopRequireDefault(require("react-dropzone"));
 
 var _ThemeContext = require("../ThemeContext");
 
-var _util = require("../themes/util");
-
 var _Icon = _interopRequireDefault(require("./Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
@@ -35,15 +33,11 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -51,7 +45,37 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    .input {\n      height: 50px;\n      background: ", ";\n      border-radius:  ", ";\n      padding: 0 ", ";\n      color: ", ";\n      font-size: 14px;\n      font-weight: 300;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      outline: none;\n    }\n    .btn {\n      display: flex;\n      align-items: center;\n      font-weight: normal;\n      cursor: pointer;\n      outline: none;\n    }\n    .file_name img, .file_name svg {\n      cursor: pointer;\n    }\n    .btn img, .btn svg {\n      margin-right: ", ";\n    }\n    .file_name {\n      height: 40px;\n      background: ", ";\n      border-radius: ", ";\n      padding: 0 ", ";\n      margin: 0 ", ";\n      color: text_black;\n      font-size: 14px;\n      font-weight: normal;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.palette.gray_background;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.palette.gray_background_light;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.padding.s;
+});
 
 var Uploader = function Uploader(_ref) {
   var label = _ref.label,
@@ -63,8 +87,7 @@ var Uploader = function Uploader(_ref) {
       className = _ref.className,
       style = _ref.style,
       maxSize = _ref.maxSize,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["label", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize", "theme"]);
+      props = _objectWithoutProperties(_ref, ["label", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize"]);
 
   // const [error, setError] = useState(null)
   var _useState = (0, _react.useState)(null),
@@ -77,14 +100,17 @@ var Uploader = function Uploader(_ref) {
       current = _useState4[0],
       setCurrent = _useState4[1];
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.uploader);
+  var theme = (0, _ThemeContext.useTheme)();
   (0, _react.useEffect)(function () {
     setCurrent(value);
   }, [value]);
 
-  var onDrop = /*#__PURE__*/function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(acceptedFiles) {
+  var onDrop =
+  /*#__PURE__*/
+  function () {
+    var _ref2 = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee(acceptedFiles) {
       var file;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -141,43 +167,66 @@ var Uploader = function Uploader(_ref) {
     };
   }();
 
-  return /*#__PURE__*/_react.default.createElement(_Field.default, {
-    label: label
-  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
-    theme: theme,
-    name: "uploader",
-    defaultContainer: defaultContainer,
-    style: style
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "input"
-  }, current ? /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.validate_icon,
-    alt: "success"
-  }) : loading ? /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.loading_icon,
-    alt: "loading"
-  }) : /*#__PURE__*/_react.default.createElement(_reactDropzone.default, {
-    onDrop: onDrop
-  }, function (_ref3) {
-    var getRootProps = _ref3.getRootProps,
-        getInputProps = _ref3.getInputProps;
-    return /*#__PURE__*/_react.default.createElement("div", _extends({}, getRootProps(), {
-      className: "btn"
-    }), /*#__PURE__*/_react.default.createElement(_Icon.default, {
-      name: myTheme.add_icon,
-      alt: "add"
-    }), "Ajouter un fichier", /*#__PURE__*/_react.default.createElement("input", _extends({}, getInputProps(), {
-      type: "file"
-    }, props, {
-      multiple: false
-    })));
-  })), current && /*#__PURE__*/_react.default.createElement("div", {
-    className: "file_name"
-  }, current.name, onFileDelete && /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.delete_icon,
-    onClick: onFileDelete,
-    alt: "delete"
-  }))));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      className: "uploader",
+      container: Container,
+      style: style
+    },
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "input"
+    }, current ?
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.validate_icon,
+      alt: "success"
+    }) : loading ?
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.loading_icon,
+      alt: "loading"
+    }) :
+    /*#__PURE__*/
+    _react.default.createElement(_reactDropzone.default, {
+      onDrop: onDrop
+    }, function (_ref3) {
+      var getRootProps = _ref3.getRootProps,
+          getInputProps = _ref3.getInputProps;
+      return (
+        /*#__PURE__*/
+        _react.default.createElement("div", _extends({}, getRootProps(), {
+          className: "btn"
+        }),
+        /*#__PURE__*/
+        _react.default.createElement(_Icon.default, {
+          name: theme.images.add_icon,
+          alt: "add"
+        }), "Ajouter un fichier",
+        /*#__PURE__*/
+        _react.default.createElement("input", _extends({}, getInputProps(), {
+          type: "file"
+        }, props, {
+          multiple: false
+        })))
+      );
+    })), current &&
+    /*#__PURE__*/
+    _react.default.createElement("div", {
+      className: "file_name"
+    }, current.name, onFileDelete &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.delete_icon,
+      onClick: onFileDelete,
+      alt: "delete"
+    }))))
+  );
 };
 
 var _default = Uploader;

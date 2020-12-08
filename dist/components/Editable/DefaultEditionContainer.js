@@ -11,8 +11,6 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _ThemeContext = require("../../ThemeContext");
 
-var _util = require("../../themes/util");
-
 var _ThemeComponent = _interopRequireDefault(require("../ThemeComponent"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -26,21 +24,25 @@ var DefaultEditionContainer = function DefaultEditionContainer(_ref) {
       label = _ref.label,
       onConfirm = _ref.onConfirm,
       onCancel = _ref.onCancel,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["children", "label", "onConfirm", "onCancel", "theme"]);
+      props = _objectWithoutProperties(_ref, ["children", "label", "onConfirm", "onCancel"]);
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
-  return /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, {
-    name: "editable.edition",
-    className: "default-edition"
-  }, /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.confirm_icon,
-    onClick: onConfirm
-  }), /*#__PURE__*/_react.default.createElement(_Icon.default, {
-    name: myTheme.cancel_icon,
-    onClick: onCancel
-  }), children);
+  var theme = (0, _ThemeContext.useTheme)();
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, {
+      className: "default-edition"
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.confirm_icon,
+      onClick: onConfirm
+    }),
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.cancel_icon,
+      onClick: onCancel
+    }), children)
+  );
 };
 
 var _default = DefaultEditionContainer;

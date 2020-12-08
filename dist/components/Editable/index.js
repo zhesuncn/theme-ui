@@ -13,8 +13,6 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _ThemeContext = require("../../ThemeContext");
 
-var _util = require("../../themes/util");
-
 var _DefaultEditionContainer = _interopRequireDefault(require("./DefaultEditionContainer"));
 
 var _lodash = require("lodash");
@@ -22,6 +20,8 @@ var _lodash = require("lodash");
 var _Field = _interopRequireDefault(require("../Field"));
 
 var _ThemeComponent = _interopRequireDefault(require("../ThemeComponent"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,21 +31,31 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n .btns {\n    display: inline-flex;\n  }\n  .btns svg, .btns img{\n    margin-right: 10px;\n    width: 16px;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject());
 
 var Editable = function Editable(_ref) {
   var _ref$className = _ref.className,
@@ -63,8 +73,7 @@ var Editable = function Editable(_ref) {
       editContainerOptions = _ref.editContainerOptions,
       editComponent = _ref.editComponent,
       component = _ref.component,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "direction", "onCancel", "children", "editContainerOptions", "editComponent", "component", "theme"]);
+      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "direction", "onCancel", "children", "editContainerOptions", "editComponent", "component"]);
 
   var _useState = (0, _react.useState)(defaultEdition),
       _useState2 = _slicedToArray(_useState, 2),
@@ -81,8 +90,7 @@ var Editable = function Editable(_ref) {
       current = _useState6[0],
       setCurrent = _useState6[1];
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
+  var theme = (0, _ThemeContext.useTheme)();
 
   var reset = function reset() {
     if (value) {
@@ -122,7 +130,9 @@ var Editable = function Editable(_ref) {
     };
 
     var containerProps = (0, _lodash.get)(editContainerOptions, 'props', {});
-    editionMode = /*#__PURE__*/_react.default.createElement(EditionC, _extends({
+    editionMode =
+    /*#__PURE__*/
+    _react.default.createElement(EditionC, _extends({
       onConfirm: onEditionConfirm,
       onCancel: onEditionCancel,
       label: label
@@ -132,16 +142,24 @@ var Editable = function Editable(_ref) {
   var displayComponent = null;
 
   if (!edition) {
-    displayComponent = /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    displayComponent =
+    /*#__PURE__*/
+    _react.default.createElement(_react.default.Fragment, null,
+    /*#__PURE__*/
+    _react.default.createElement("div", {
       className: "btns"
-    }, onChanged && /*#__PURE__*/_react.default.createElement(_Icon.default, {
-      name: myTheme.edit_icon,
+    }, onChanged &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.edit_icon,
       onClick: function onClick() {
         reset();
         setEdition(true);
       }
-    }), onDelete && /*#__PURE__*/_react.default.createElement(_Icon.default, {
-      name: myTheme.delete_icon,
+    }), onDelete &&
+    /*#__PURE__*/
+    _react.default.createElement(_Icon.default, {
+      name: theme.images.delete_icon,
       onClick: function onClick() {
         onDelete(value);
       }
@@ -150,14 +168,19 @@ var Editable = function Editable(_ref) {
     }));
   }
 
-  return /*#__PURE__*/_react.default.createElement(_Field.default, {
-    label: label,
-    direction: direction,
-    className: className
-  }, /*#__PURE__*/_react.default.createElement(_ThemeComponent.default, _extends({
-    name: "editable",
-    theme: theme
-  }, props), displayComponent, editionMode));
+  return (
+    /*#__PURE__*/
+    _react.default.createElement(_Field.default, {
+      label: label,
+      direction: direction,
+      className: className
+    },
+    /*#__PURE__*/
+    _react.default.createElement(_ThemeComponent.default, _extends({
+      className: "editable",
+      container: Container
+    }, props), displayComponent, editionMode))
+  );
 };
 
 var _default = Editable;

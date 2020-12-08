@@ -1,63 +1,50 @@
-import { button } from './button'
-import { input, tag_input, textarea } from './input'
-import { uploader } from './uploader'
-import { switcher } from './switcher'
-import { selector } from './selector'
-import { notification } from './notification'
-import { editable, editableInput } from './editable'
-import { label, error, h1, tag, h2 } from './text'
-import { field } from './field'
-import { tabpanel } from './tabpanel'
-import infinitetable from './infinitetable'
-import { popup, prompt } from './popup'
-
 const defaultTheme = {
   palette: {
     blue: '#016db8',
     blue_dark: '#14489f',
     white: '#FFFFFF',
     grey_light: '#d0d0d0',
-    green: '#009c67',
-    red: '#ff4646',
-    yellow: '#ffcd00',
     blue_grey: '#555d6c',
     green_jade: '#00b59b',
     black_grey: '#1f1f1f',
     black_grey_3: 'rgb(31,31,31,0.3)',
 
-    secondary: '#27A893',
-    inverse: '#FFFFFF',
     gray_border_light: '#F3F3F3',
     gray_border_active: '#AFAFAF',
     gray_background: '#F0F0F0',
     gray_background_light: '#F6F6F6',
+    primary: '#14489f',
+    secondary: '#27A893',
+    inverse: '#FFFFFF',
+    border_light: "#F3F3F3",
+    border_active: '#AFAFAF',
+    success: '#009c67',
+    error: '#ff4646',
+    warn: '#ffcd00',
+    light: '#F3F3F3'
   },
   variable: {
-    padding: 10,
-    radius: 0,
-    border_weight: 1
+    padding: {
+      xs: "5px",
+      s: "10px",
+      m: "20px"
+    },
+    radius: "5px",
+    border: "1px",
+    input_border: "3px",
+    button:{
+      border: "1px",
+      height: '19px'
+    }
   },
-  component: {
-    button,
-    input,
-    textarea,
-    uploader,
-    switcher,
-    selector,
-    notification,
-    editable,
-    editableInput,
-    label,
-    error,
-    h1,
-    h2,
-    tag,
-    field,
-    tabpanel,
-    infinitetable,
-    popup,
-    prompt,
-    tag_input
+  images: {
+    loading_icon: 'loading',
+    validate_icon: 'check_circle',
+    add_icon: 'plus_circle',
+    delete_icon: 'trash',
+    confirm_icon: 'check',
+    cancel_icon: 'close',
+    edit_icon: 'edit',
   }
 }
 
