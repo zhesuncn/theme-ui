@@ -23,6 +23,10 @@ var _close = require("./close.svg");
 
 var _edit = require("./edit.svg");
 
+var _chevronLeft = require("./chevron-left.svg");
+
+var _chevronRight = require("./chevron-right.svg");
+
 var svgs = {
   check: _check.ReactComponent,
   plus_circle: _plusCircle.ReactComponent,
@@ -32,7 +36,9 @@ var svgs = {
   check_circle: _checkCircle.ReactComponent,
   arrow: _arrow.ReactComponent,
   close: _close.ReactComponent,
-  edit: _edit.ReactComponent
+  edit: _edit.ReactComponent,
+  chevron_left: _chevronLeft.ReactComponent,
+  chevron_right: _chevronRight.ReactComponent
 };
 
 var getSrc = function getSrc(key) {

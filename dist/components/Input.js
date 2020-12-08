@@ -104,13 +104,14 @@ var Input = function Input(_ref) {
     }
   }, [value, formatter]);
   (0, _react.useEffect)(function () {
-    if (inputEl && formatter) {
+    if (inputEl && (formatter || cursor > -1)) {
       (0, _util.setSelection)(inputEl, cursor);
     }
   }, [inputEl, cursor, formatter, current]);
   classN += error ? ' error' : current ? ' validate' : '';
 
   var valueChanged = function valueChanged(ev) {
+    var cursor = ev.target.selectionStart;
     var rawValue = ev.target.value;
 
     if (formatter) {
@@ -120,6 +121,8 @@ var Input = function Input(_ref) {
       endPos = (0, _util.getNextCursorPosition)(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
       ev.target.value = formatter.format(rawValue);
       setCursor(endPos);
+    } else {
+      setCursor(Math.min(cursor, (rawValue || '').length));
     }
 
     if (rawValue !== raw) {

@@ -12,15 +12,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactModal = _interopRequireDefault(require("react-modal"));
 
-var _lodash = require("lodash");
-
 var _TextArea = _interopRequireDefault(require("./TextArea"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
 var _ThemeContext = require("../ThemeContext");
-
-var _util = require("../themes/util");
 
 var _Button = _interopRequireDefault(require("./Button"));
 
@@ -63,12 +59,27 @@ function Popup(_ref) {
       onClose = _ref.onClose,
       children = _ref.children,
       styles = _ref.styles,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["isOpen", "onClose", "children", "styles", "theme"]);
+      props = _objectWithoutProperties(_ref, ["isOpen", "onClose", "children", "styles"]);
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, (0, _lodash.get)(themeContext, 'popup'));
-  var style = myTheme.style;
+  var theme = (0, _ThemeContext.useTheme)();
+  var style = {
+    style: {
+      overlay: {
+        zIndex: 100,
+        backgroundColor: 'rgba(63,63,63,0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      content: {
+        minWidth: '500px',
+        maxHeight: '80%',
+        overflowY: 'auto',
+        zIndex: 100,
+        background: '#FFFFFF'
+      }
+    }
+  };
   return (
     /*#__PURE__*/
     _react.default.createElement(_reactModal.default, _extends({

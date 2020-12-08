@@ -21,7 +21,7 @@ var defaultTheme = {
     primary: '#14489f',
     secondary: '#27A893',
     inverse: '#FFFFFF',
-    border_light: "#F3F3F3",
+    border_light: "#D0D0D0",
     border_active: '#AFAFAF',
     success: '#009c67',
     error: '#ff4646',
@@ -36,10 +36,14 @@ var defaultTheme = {
     },
     radius: "5px",
     border: "1px",
-    input_border: "3px",
+    input_border: "1px",
     button: {
       border: "1px",
       height: '19px'
+    },
+    table: {
+      maxPager: 10,
+      rowBorder: '1px'
     }
   },
   images: {

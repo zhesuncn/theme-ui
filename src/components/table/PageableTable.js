@@ -7,7 +7,7 @@ import Table from './Table'
 
 const Container = styled.div`
 `
-export default function PageableTable({ onLoad, values, page, maxPage, className, cols, size, pagerPosition, ...props }) {
+export default function PageableTable({ onLoad, values, page, maxPage, className='', cols, size, pagerPosition, ...props }) {
   const [currentPage, setCurrentPage] = useState(1)
   const [currentMaxPage, setCurrentMaxPage] = useState(1)
   const [currentValues, setCurrentValues] = useState([])
@@ -58,7 +58,7 @@ const PagerContainer = styled.div`
   }
 `
 
-function Pager({ page, maxPage, onLoad, className, ...props }) {
+function Pager({ page, maxPage, onLoad, className='', ...props }) {
   const theme = useTheme()
   const maxShow = theme.variable.table.maxPager
   const start = (maxPage <= maxShow || page < 2) ? 1 : Math.min(maxPage - maxShow, page - 1)

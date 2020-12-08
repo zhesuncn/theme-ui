@@ -15,9 +15,9 @@ const LineContainer = styled.div`
   }
 `
 const TableRow = ({item, cols, theme, ...props}) => {
-  return <ThemeComponent container={LineContainer} className="row">
+  return <ThemeComponent container={LineContainer} className="table-row">
     {
-      cols.map((col, i) => <Cell key={i} className={'item' + col.key? '-' + col.key: ''} width={col.width}>
+      cols.map((col, i) => <Cell key={i} className={'table-cell' + (col.key? '-' + col.key: '')} width={col.width}>
         {
           col.render ? col.render(item) : (
             col.key && item ? item[col.key] : null

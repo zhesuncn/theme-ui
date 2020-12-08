@@ -15,8 +15,6 @@ var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _ThemeContext = require("../ThemeContext");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -54,13 +52,13 @@ var Container = _styledComponents.default.div(_templateObject(), function (props
 }, function (props) {
   return props.direction === 'column' ? '' : 'align-items: center;';
 }, function (props) {
-  return props.direction === 'column' ? "margin-bottom: ".concat(props.variable.padding.xs, ";") : "margin-right: ".concat(props.variable.padding.s, ";");
+  return props.direction === 'column' ? "" : "margin-right: ".concat(props.variable.padding.s, ";");
 }, function (props) {
   return props.variable.padding.xs;
 }, function (props) {
   return props.palette.primary;
 }, function (props) {
-  return props.variable.padding.s;
+  return props.variable.padding.xs;
 });
 
 var Field = function Field(_ref) {

@@ -11,7 +11,7 @@ const Container = styled.div`
       overflow-y: auto;
     }
 `
-export default function Table({ className, values, cols, loading, ...props }) {
+export default function Table({ className='', values, cols, loading, ...props }) {
 
   return <ThemeComponent container={ Container } className={ 'simple-table ' + className }>
     <TableHeader cols={ cols }/>

@@ -15,8 +15,6 @@ var _moment = _interopRequireDefault(require("moment"));
 
 var _ThemeContext = require("../ThemeContext");
 
-var _util = require("../themes/util");
-
 var _Icon = _interopRequireDefault(require("../components/Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("../components/ThemeComponent"));
@@ -46,17 +44,15 @@ var Queue = function Queue(_ref) {
       onStop = _ref.onStop,
       onFollow = _ref.onFollow,
       defaultOpen = _ref.defaultOpen,
-      theme = _ref.theme,
       children = _ref.children,
-      props = _objectWithoutProperties(_ref, ["queue", "onStop", "onFollow", "defaultOpen", "theme", "children"]);
+      props = _objectWithoutProperties(_ref, ["queue", "onStop", "onFollow", "defaultOpen", "children"]);
 
   var _useState = (0, _react.useState)(defaultOpen),
       _useState2 = _slicedToArray(_useState, 2),
       open = _useState2[0],
       setOpen = _useState2[1];
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.queue);
+  var theme = (0, _ThemeContext.useTheme)();
 
   var formateDate = function formateDate(date) {
     return (0, _moment.default)(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss');
@@ -66,9 +62,7 @@ var Queue = function Queue(_ref) {
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
       className: "queue"
-    }, props, {
-      theme: theme
-    }),
+    }, props),
     /*#__PURE__*/
     _react.default.createElement("div", {
       class: "title"
@@ -83,7 +77,7 @@ var Queue = function Queue(_ref) {
     _react.default.createElement("span", null, queue.status), queue.status === "RUNNING" &&
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon
+      name: theme.images.loading_icon
     })),
     /*#__PURE__*/
     _react.default.createElement(_Button.default, {

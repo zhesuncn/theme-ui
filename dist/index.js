@@ -152,25 +152,31 @@ Object.defineProperty(exports, "TabItem", {
 Object.defineProperty(exports, "InfiniteTable", {
   enumerable: true,
   get: function get() {
-    return _InfiniteTable.InfiniteTable;
+    return _InfiniteTable.default;
   }
 });
-Object.defineProperty(exports, "Line", {
+Object.defineProperty(exports, "TableHeader", {
   enumerable: true,
   get: function get() {
-    return _InfiniteTable.Line;
+    return _TableHeader.default;
+  }
+});
+Object.defineProperty(exports, "TableRow", {
+  enumerable: true,
+  get: function get() {
+    return _TableRow.default;
   }
 });
 Object.defineProperty(exports, "Cell", {
   enumerable: true,
   get: function get() {
-    return _InfiniteTable.Cell;
+    return _Cell.default;
   }
 });
-Object.defineProperty(exports, "Header", {
+Object.defineProperty(exports, "Table", {
   enumerable: true,
   get: function get() {
-    return _InfiniteTable.Header;
+    return _Table.default;
   }
 });
 Object.defineProperty(exports, "Popup", {
@@ -250,7 +256,15 @@ var _Field = _interopRequireDefault(require("./components/Field"));
 
 var _TabPanel = require("./components/TabPanel");
 
-var _InfiniteTable = require("./components/InfiniteTable");
+var _InfiniteTable = _interopRequireDefault(require("./components/table/InfiniteTable"));
+
+var _TableHeader = _interopRequireDefault(require("./components/table/TableHeader"));
+
+var _TableRow = _interopRequireDefault(require("./components/table/TableRow"));
+
+var _Cell = _interopRequireDefault(require("./components/table/Cell"));
+
+var _Table = _interopRequireDefault(require("./components/table/Table"));
 
 var _Popup = _interopRequireWildcard(require("./components/Popup"));
 

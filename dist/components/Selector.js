@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ThemeContext = require("../ThemeContext");
 
-var _util = require("../themes/util");
-
 var _svg = require("../svg");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));

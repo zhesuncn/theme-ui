@@ -11,8 +11,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ThemeContext = require("../ThemeContext");
 
-var _util = require("../themes/util");
-
 var _Icon = _interopRequireDefault(require("./Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
