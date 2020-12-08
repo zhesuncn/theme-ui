@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
 import Modal from 'react-modal'
-import { get } from 'lodash'
 import TextArea from './TextArea'
 import ThemeComponent from './ThemeComponent'
 import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 import Button from './Button'
 import styled from 'styled-components'
 
-export default function Popup({ isOpen, onClose, children, styles, theme, ...props }) {
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, get(themeContext, 'popup'))
-  const style = myTheme.style
+export default function Popup({ isOpen, onClose, children, styles, ...props }) {
+  const theme = useTheme()
+  const style =  {
+    style: {
+      overlay: {
+        zIndex: 100,
+        backgroundColor: 'rgba(63,63,63,0.5)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      content: {
+        minWidth: '500px',
+        maxHeight: '80%',
+        overflowY: 'auto',
+        zIndex: 100,
+        background: '#FFFFFF'
+      }
+    }
+  }
   return <Modal
     isOpen={ isOpen }
     style={ style }

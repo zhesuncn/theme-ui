@@ -1,8 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Label } from './Text'
 import ThemeComponent from './ThemeComponent'
 import styled from 'styled-components'
-import { useTheme } from '../ThemeContext'
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +13,7 @@ const Container = styled.div`
   }
   
   & > .label {
-    ${ props => props.direction === 'column' ? `margin-bottom: ${props.variable.padding.xs};` : `margin-right: ${props.variable.padding.s};` }
+    ${ props => props.direction === 'column' ? `` : `margin-right: ${props.variable.padding.s};` }
     > .field-up, > .field-down {
       font-size:.8em;
       padding-right: ${ props => props.variable.padding.xs };
@@ -25,7 +24,7 @@ const Container = styled.div`
     width: 62px;
     height: 2px;
     background-color: ${ props => props.palette.primary };
-    margin-bottom: ${ props => props.variable.padding.s };
+    margin-bottom: ${ props => props.variable.padding.xs };
   }
   
   > .closable-content.hide{

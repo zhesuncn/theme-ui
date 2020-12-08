@@ -7,6 +7,8 @@ import { ReactComponent as LoadingWhite } from './loading-white.svg'
 import { ReactComponent as Arrow } from './arrow.svg'
 import { ReactComponent as Close } from './close.svg'
 import { ReactComponent as Edit } from './edit.svg'
+import { ReactComponent as ChevronLeft } from './chevron-left.svg'
+import { ReactComponent as ChevronRight} from './chevron-right.svg'
 
 const svgs = {
   check: Check,
@@ -17,7 +19,9 @@ const svgs = {
   check_circle: CheckCircle,
   arrow: Arrow,
   close: Close,
-  edit: Edit
+  edit: Edit,
+  chevron_left: ChevronLeft,
+  chevron_right: ChevronRight
 }
 
 const getSrc = (key) => {

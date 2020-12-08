@@ -4,17 +4,13 @@ import Editable from './Editable'
 import Input from './Input'
 import DefaultEditionContainer from './Editable/DefaultEditionContainer'
 import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 
 
-const EditableInput = ({value, label, theme, ...props}) => {
+const EditableInput = ({value, label, ...props}) => {
   const [current, setCurrent] = useState('')
   useEffect(() => {
     setCurrent(value)
   }, [value])
-
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.editableInput)
 
   return <Editable
     value={current}
@@ -33,7 +29,6 @@ const EditableInput = ({value, label, theme, ...props}) => {
           onChanged(raw)}}/>
       </React.Fragment>
     }}
-    theme={myTheme}
     {...props}
   >
     {current}

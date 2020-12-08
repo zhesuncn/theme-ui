@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 import Icon from './Icon'
 import ThemeComponent from './ThemeComponent'
 import styled from 'styled-components'

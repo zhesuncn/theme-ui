@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 import { getSrc } from '../svg'
 import styled from 'styled-components'
 import ThemeComponent from './ThemeComponent'

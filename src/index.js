@@ -15,7 +15,11 @@ import ModalEditionContainer from './components/Editable/ModalEditionContainer'
 import { Label, Error, H1, H2, Tag } from './components/Text'
 import Field from './components/Field'
 import { TabPanel, TabItem } from './components/TabPanel'
-import { InfiniteTable, Line, Cell, Header } from './components/InfiniteTable'
+import InfiniteTable from './components/table/InfiniteTable'
+import TableHeader from './components/table/TableHeader'
+import TableRow from './components/table/TableRow'
+import Cell from './components/table/Cell'
+import Table from './components/table/Table'
 import Popup, { Prompt } from './components/Popup'
 import { Formatter, PhoneFormatter, NumberFormatter, DecimalFormatter } from './util/util'
 import TagInput from './components/TagInput'
@@ -42,9 +46,10 @@ export {
   TabPanel,
   TabItem,
   InfiniteTable,
-  Line,
+  TableRow,
   Cell,
-  Header,
+  TableHeader,
+  Table,
   Popup,
   Prompt,
   ThemeContextProvider,

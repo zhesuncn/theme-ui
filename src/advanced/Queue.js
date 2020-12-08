@@ -2,26 +2,24 @@ import Button from '../../src/components/Button'
 import React, { useState } from 'react'
 import moment from 'moment'
 import { useTheme } from '../ThemeContext'
-import { getCurrentTheme } from '../themes/util'
 import Icon from '../components/Icon'
 import ThemeComponent from '../components/ThemeComponent'
 
 
-const Queue = ({queue, onStop, onFollow, defaultOpen, theme, children, ...props}) => {
+const Queue = ({queue, onStop, onFollow, defaultOpen, children, ...props}) => {
   const [open, setOpen] = useState(defaultOpen)
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.queue)
+  const theme = useTheme()
 
   const formateDate = (date) => {
     return moment(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss')
   }
-  return <ThemeComponent className='queue' {...props} theme={theme}>
+  return <ThemeComponent className='queue' {...props}>
     <div class='title'>{queue.name}</div>
     <div>Started at: {formateDate(queue.start)}</div>
     <div className='status'>Status:&nbsp;&nbsp;<span>{queue.status}</span>
       {
         queue.status === "RUNNING" &&
-        <Icon name={myTheme.loading_icon}/>
+        <Icon name={theme.images.loading_icon}/>
       }
     </div>
     <Button size={150} className= 'underline' color='text'
