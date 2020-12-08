@@ -13,9 +13,9 @@ var _Icon = _interopRequireDefault(require("./Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
-var _ThemeContext = require("../ThemeContext");
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
-var _util = require("../themes/util");
+var _index = require("../index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -41,15 +41,60 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-flex;\n    border: ", " solid ", ";\n    border-radius: ", ";\n    padding: ", " ", ";\n    height: ", ";\n    align-items: center;\n    justify-content: center;\n    cursor: pointer;\n    font-size: 14px;\n    font-weight: bold;\n    background: ", ";\n    color: ", ";\n    outline: none;\n    .button-icon {\n      position: absolute;\n      fill: ", ";\n    }\n    &:hover{\n     opacity: 0.8;\n    }\n    &.disabled, &:disabled{\n      opacity: 0.2;\n    }\n    &.clear {\n      height: auto;\n      padding: ", " 0;\n      width: auto;\n      border: none;\n      background-color: transparent;\n      border-radius: 0;\n      display: flex;\n      align-items: center;\n      color: ", ";\n    }\n    &.clear .button-icon{\n      fill: ", ";\n    }\n    &.invert {\n      background: transparent;\n      color: ", ";\n      border-color: ", ";\n      .button-icon{\n        fill: ", ";\n      }\n    }\n  "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.a(_templateObject(), function (props) {
+  return props.variable.button.border;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.button.height;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+}, function (props) {
+  return props.palette[props.color] || props.palette.primary;
+}, function (props) {
+  return props.color || props.palette.primary;
+});
+
 function Button(_ref) {
   var disabled = _ref.disabled,
       children = _ref.children,
       href = _ref.href,
-      theme = _ref.theme,
       _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
       onClick = _ref.onClick,
-      props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "theme", "className", "onClick"]);
+      props = _objectWithoutProperties(_ref, ["disabled", "children", "href", "className", "onClick"]);
+
+  var theme = (0, _index.useTheme)();
 
   var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -57,8 +102,6 @@ function Button(_ref) {
       setLoading = _useState2[1];
 
   var classN = 'button ' + className;
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.button);
 
   var buttonClicked =
   /*#__PURE__*/
@@ -122,14 +165,15 @@ function Button(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "button",
+      container: Container,
       className: classN,
       href: disabled || loading ? null : href,
       onClick: buttonClicked
-    }, props), children, myTheme.loading_icon && loading &&
+    }, props), children, theme.images.loading_icon && loading &&
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon
+      className: "button-icon",
+      name: theme.images.loading_icon
     }))
   );
 }

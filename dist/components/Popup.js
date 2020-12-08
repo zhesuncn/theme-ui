@@ -24,6 +24,8 @@ var _util = require("../themes/util");
 
 var _Button = _interopRequireDefault(require("./Button"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -37,6 +39,18 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  padding: ", " ", ";\n  display: flex;\n  flex-direction: column;\n  > textarea {\n    margin-top: ", ";\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
@@ -67,6 +81,14 @@ function Popup(_ref) {
   );
 }
 
+var PromptContainer = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.padding.m;
+});
+
 function Prompt(_ref2) {
   var title = _ref2.title,
       onConfirm = _ref2.onConfirm,
@@ -74,8 +96,7 @@ function Prompt(_ref2) {
       confirmTxt = _ref2.confirmTxt,
       cancelTxt = _ref2.cancelTxt,
       disableConfirm = _ref2.disableConfirm,
-      theme = _ref2.theme,
-      props = _objectWithoutProperties(_ref2, ["title", "onConfirm", "onCancel", "confirmTxt", "cancelTxt", "disableConfirm", "theme"]);
+      props = _objectWithoutProperties(_ref2, ["title", "onConfirm", "onCancel", "confirmTxt", "cancelTxt", "disableConfirm"]);
 
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -84,13 +105,11 @@ function Prompt(_ref2) {
 
   return (
     /*#__PURE__*/
-    _react.default.createElement(Popup, _extends({}, props, {
-      theme: theme
-    }),
+    _react.default.createElement(Popup, props,
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, {
-      theme: theme,
-      name: "prompt"
+      className: "prompt-context",
+      container: PromptContainer
     },
     /*#__PURE__*/
     _react.default.createElement("div", {
@@ -111,13 +130,11 @@ function Prompt(_ref2) {
       onClick: function onClick() {
         return onConfirm && onConfirm(msg);
       },
-      theme: theme,
       disabled: disableConfirm
     }, confirmTxt), onCancel &&
     /*#__PURE__*/
     _react.default.createElement(_Button.default, {
-      onClick: onCancel,
-      theme: theme
+      onClick: onCancel
     }, cancelTxt))))
   );
 }

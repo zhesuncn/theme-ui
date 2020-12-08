@@ -39,7 +39,33 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border: ", " solid ", ";\n  border-radius: ", ";\n  padding: ", " ", ";\n  display: flex;\n  justify-content: space-between;\n  img {\n    cursor: pointer;\n    outline: none;\n    width: 12px;\n  }\n  svg {\n    cursor: pointer;\n    outline: none;\n    width: 12px;\n  }\n  &.info{\n    border-color: ", ";\n    color: ", ";\n  }\n  &.error{\n    border-color: error;\n    color: error;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.variable.border;
+}, function (props) {
+  return props.palette.primary;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.xs;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.palette.success;
+}, function (props) {
+  return props.palette.success;
+});
 
 var Notification = function Notification(_ref) {
   var children = _ref.children,
@@ -50,8 +76,7 @@ var Notification = function Notification(_ref) {
       _ref$show = _ref.show,
       show = _ref$show === void 0 ? true : _ref$show,
       onHide = _ref.onHide,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["children", "type", "autohide", "show", "onHide", "theme"]);
+      props = _objectWithoutProperties(_ref, ["children", "type", "autohide", "show", "onHide"]);
 
   var _useState = (0, _react.useState)(show),
       _useState2 = _slicedToArray(_useState, 2),
@@ -74,18 +99,16 @@ var Notification = function Notification(_ref) {
     onHide && onHide();
   };
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.notification);
+  var theme = (0, _ThemeContext.useTheme)();
   return isShow ?
   /*#__PURE__*/
   _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "notification",
-    defaultContainer: defaultContainer,
+    container: Container,
     className: classN
-  }, props), children, myTheme.close_icon &&
+  }, props), children, theme.images.close_icon &&
   /*#__PURE__*/
   _react.default.createElement(_Icon.default, {
-    name: myTheme.close_icon,
+    name: theme.images.close_icon,
     onClick: hide
   })) : null;
 };

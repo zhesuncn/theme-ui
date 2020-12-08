@@ -38,7 +38,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n  border: 0;\n  border-bottom: ", " solid ", ";\n  width:'100%';\n  font-size:14px;\n  text-align: left;\n  padding: ", " 0;\n  border-radius:0;\n  outline: none;\n  &:focus {\n    border-bottom:", " solid  ", ";\n  }\n  &::placeholder {\n    font-size: 14px;\n    font-weight: 300;\n    color: ", ";\n    opacity: 0.5;\n  }\n  &.error {\n    border-bottom: 3px solid ", ";\n  }\n  &.validate {\n    border-bottom: 3px solid ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -49,7 +49,23 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultContainer = _styledComponents.default.input(_templateObject());
+var Container = _styledComponents.default.input(_templateObject(), function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_light;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_active;
+}, function (props) {
+  return props.palette.black_grey_3;
+}, function (props) {
+  return props.palette.error;
+}, function (props) {
+  return props.palette.success;
+});
 
 var Input = function Input(_ref) {
   var className = _ref.className,
@@ -125,9 +141,9 @@ var Input = function Input(_ref) {
     }, prefix),
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
+      container: Container,
+      className: "input",
       elementRef: inputEl,
-      name: "input",
-      defaultContainer: defaultContainer,
       value: current,
       onChange: valueChanged
     }, props)), suffix &&

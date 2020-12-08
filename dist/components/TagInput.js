@@ -46,7 +46,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n  border: 0;\n  border-bottom: 3px solid ", ";\n  width:'100%';\n  font-size:14px;\n  text-align: left;\n  padding: 8px 0;\n  border-radius:0;\n  outline: none;\n  display: flex;\n  .tag {\n    margin-right: 5px;\n  }\n  &:focus {\n    border-bottom: 3px solid  ", ";\n  }\n  &::placeholder {\n    font-size: 14px;\n    font-weight: 300;\n    color: ", ";\n    opacity: 0.5;\n  }\n  &.error {\n    border-bottom: 3px solid ", ";\n  }\n  &.validate {\n    border-bottom: 3px solid ", ";\n  }\n  input {\n    border: 0;\n    background: transparent;\n    outline: none;\n    flex: 1;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -57,7 +57,17 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultContainer = _styledComponents.default.div(_templateObject());
+var defaultContainer = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.palette.gray_border_light;
+}, function (props) {
+  return props.palette.gray_border_active;
+}, function (props) {
+  return props.palette.black_grey_3;
+}, function (props) {
+  return props.palette.red;
+}, function (props) {
+  return props.palette.green;
+});
 
 function TagInput(_ref) {
   var label = _ref.label,
@@ -140,8 +150,8 @@ function TagInput(_ref) {
     },
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "tag_input",
-      defaultContainer: defaultContainer
+      className: "tag-input",
+      container: defaultContainer
     }, props), values && values.length > 0 &&
     /*#__PURE__*/
     _react.default.createElement("div", {

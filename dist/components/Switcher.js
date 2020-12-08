@@ -11,6 +11,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -30,6 +32,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  .switch-title {\n    margin-right: ", ";\n  }\n  label {\n    position: relative;\n    display: inline-block;\n    width: 52px;\n    height: 26px;\n    vertical-align: middle;\n    margin-right: ", ";\n  }\n\n  label .slider {\n      position: absolute;\n      cursor: pointer;\n      top: 0;\n      left: 0;\n      right: 0;\n      bottom: 0;\n      background-color: ", ";\n      -webkit-transition: 0.4s;\n      transition: 0.4s;\n  }\n\n  label .slider:before {\n      position: absolute;\n      content: '';\n      height: 20px;\n      width: 20px;\n      left: 4px;\n      bottom: 3px;\n      background-color: ", ";\n      -webkit-transition: 0.4s;\n      transition: 0.4s;\n  }\n\n  label[data-value='true'] .slider {\n      background-color: ", ";\n  }\n  \n  label[data-value='false'] .slider {\n      background-color: ", ";\n  }\n\n  label[data-value='true'] .slider:before {\n      -webkit-transform: translateX(25px);\n      -ms-transform: translateX(25px);\n      transform: translateX(25px);\n  }\n\n  label .slider.round {\n      border-radius: 26px;\n  }\n\n  label .slider.round:before {\n      border-radius: 50%;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.colorTrue ? props.colorTrue : props.palette.success;
+}, function (props) {
+  return props.colorFalse ? props.colorFalse : props.palette.border_active;
+});
 
 var Switcher = function Switcher(_ref) {
   var children = _ref.children,
@@ -61,12 +89,12 @@ var Switcher = function Switcher(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "switcher",
+      container: Container,
       className: 'switcher ' + className
     }, props), children &&
     /*#__PURE__*/
     _react.default.createElement("span", {
-      className: "title"
+      className: "switch-title"
     }, children),
     /*#__PURE__*/
     _react.default.createElement("label", {

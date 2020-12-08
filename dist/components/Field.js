@@ -13,6 +13,10 @@ var _Text = require("./Text");
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _ThemeContext = require("../ThemeContext");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -32,6 +36,32 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  flex-direction: ", ";\n  ", "\n  \n  &.field-closable > .label{\n    cursor: pointer;  \n  }\n  \n  & > .label {\n    ", "\n    > .field-up, > .field-down {\n      font-size:.8em;\n      padding-right: ", ";\n    }\n  }\n  \n  & > .field-underline {\n    width: 62px;\n    height: 2px;\n    background-color: ", ";\n    margin-bottom: ", ";\n  }\n  \n  > .closable-content.hide{\n    display: none;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.direction || 'column';
+}, function (props) {
+  return props.direction === 'column' ? '' : 'align-items: center;';
+}, function (props) {
+  return props.direction === 'column' ? "margin-bottom: ".concat(props.variable.padding.xs, ";") : "margin-right: ".concat(props.variable.padding.s, ";");
+}, function (props) {
+  return props.variable.padding.xs;
+}, function (props) {
+  return props.palette.primary;
+}, function (props) {
+  return props.variable.padding.s;
+});
 
 var Field = function Field(_ref) {
   var label = _ref.label,
@@ -62,7 +92,7 @@ var Field = function Field(_ref) {
   return label ?
   /*#__PURE__*/
   _react.default.createElement(_ThemeComponent.default, _extends({
-    name: "field",
+    container: Container,
     direction: direction,
     className: "field ".concat(closable ? 'closable' : '', " ").concat(className)
   }, props),
@@ -75,19 +105,19 @@ var Field = function Field(_ref) {
   }, closable ? show ?
   /*#__PURE__*/
   _react.default.createElement("span", {
-    className: "down"
+    className: "field-down"
   }, "\u25BC") :
   /*#__PURE__*/
   _react.default.createElement("span", {
-    className: "up"
+    className: "field-up"
   }, "\u25B2") : '', label), direction === 'column' &&
   /*#__PURE__*/
   _react.default.createElement("div", {
-    className: "underline"
+    className: "field-underline"
   }), closable ?
   /*#__PURE__*/
   _react.default.createElement("div", {
-    className: "closable-content ".concat(show ? 'show' : 'hide')
+    className: "field-closable-content ".concat(show ? 'show' : 'hide')
   }, children) : children) : children;
 };
 

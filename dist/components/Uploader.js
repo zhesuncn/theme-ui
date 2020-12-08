@@ -13,8 +13,6 @@ var _reactDropzone = _interopRequireDefault(require("react-dropzone"));
 
 var _ThemeContext = require("../ThemeContext");
 
-var _util = require("../themes/util");
-
 var _Icon = _interopRequireDefault(require("./Icon"));
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
@@ -47,7 +45,37 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-var defaultContainer = _styledComponents.default.div;
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    .input {\n      height: 50px;\n      background: ", ";\n      border-radius:  ", ";\n      padding: 0 ", ";\n      color: ", ";\n      font-size: 14px;\n      font-weight: 300;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n      outline: none;\n    }\n    .btn {\n      display: flex;\n      align-items: center;\n      font-weight: normal;\n      cursor: pointer;\n      outline: none;\n    }\n    .file_name img, .file_name svg {\n      cursor: pointer;\n    }\n    .btn img, .btn svg {\n      margin-right: ", ";\n    }\n    .file_name {\n      height: 40px;\n      background: ", ";\n      border-radius: ", ";\n      padding: 0 ", ";\n      margin: 0 ", ";\n      color: text_black;\n      font-size: 14px;\n      font-weight: normal;\n      display: flex;\n      justify-content: space-between;\n      align-items: center;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.palette.gray_background;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.palette.gray_background_light;
+}, function (props) {
+  return props.variable.radius;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.padding.s;
+});
 
 var Uploader = function Uploader(_ref) {
   var label = _ref.label,
@@ -59,8 +87,7 @@ var Uploader = function Uploader(_ref) {
       className = _ref.className,
       style = _ref.style,
       maxSize = _ref.maxSize,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["label", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize", "theme"]);
+      props = _objectWithoutProperties(_ref, ["label", "onFileUpload", "onFileDelete", "onSuccess", "onError", "value", "className", "style", "maxSize"]);
 
   // const [error, setError] = useState(null)
   var _useState = (0, _react.useState)(null),
@@ -73,8 +100,7 @@ var Uploader = function Uploader(_ref) {
       current = _useState4[0],
       setCurrent = _useState4[1];
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.uploader);
+  var theme = (0, _ThemeContext.useTheme)();
   (0, _react.useEffect)(function () {
     setCurrent(value);
   }, [value]);
@@ -148,9 +174,8 @@ var Uploader = function Uploader(_ref) {
     },
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, {
-      theme: theme,
-      name: "uploader",
-      defaultContainer: defaultContainer,
+      className: "uploader",
+      container: Container,
       style: style
     },
     /*#__PURE__*/
@@ -159,12 +184,12 @@ var Uploader = function Uploader(_ref) {
     }, current ?
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.validate_icon,
+      name: theme.images.validate_icon,
       alt: "success"
     }) : loading ?
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.loading_icon,
+      name: theme.images.loading_icon,
       alt: "loading"
     }) :
     /*#__PURE__*/
@@ -180,7 +205,7 @@ var Uploader = function Uploader(_ref) {
         }),
         /*#__PURE__*/
         _react.default.createElement(_Icon.default, {
-          name: myTheme.add_icon,
+          name: theme.images.add_icon,
           alt: "add"
         }), "Ajouter un fichier",
         /*#__PURE__*/
@@ -197,7 +222,7 @@ var Uploader = function Uploader(_ref) {
     }, current.name, onFileDelete &&
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.delete_icon,
+      name: theme.images.delete_icon,
       onClick: onFileDelete,
       alt: "delete"
     }))))

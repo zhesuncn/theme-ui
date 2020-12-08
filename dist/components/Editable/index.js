@@ -13,8 +13,6 @@ var _Icon = _interopRequireDefault(require("../Icon"));
 
 var _ThemeContext = require("../../ThemeContext");
 
-var _util = require("../../themes/util");
-
 var _DefaultEditionContainer = _interopRequireDefault(require("./DefaultEditionContainer"));
 
 var _lodash = require("lodash");
@@ -22,6 +20,8 @@ var _lodash = require("lodash");
 var _Field = _interopRequireDefault(require("../Field"));
 
 var _ThemeComponent = _interopRequireDefault(require("../ThemeComponent"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43,6 +43,20 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n .btns {\n    display: inline-flex;\n  }\n  .btns svg, .btns img{\n    margin-right: 10px;\n    width: 16px;\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Container = _styledComponents.default.div(_templateObject());
+
 var Editable = function Editable(_ref) {
   var _ref$className = _ref.className,
       className = _ref$className === void 0 ? '' : _ref$className,
@@ -59,8 +73,7 @@ var Editable = function Editable(_ref) {
       editContainerOptions = _ref.editContainerOptions,
       editComponent = _ref.editComponent,
       component = _ref.component,
-      theme = _ref.theme,
-      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "direction", "onCancel", "children", "editContainerOptions", "editComponent", "component", "theme"]);
+      props = _objectWithoutProperties(_ref, ["className", "value", "defaultEdition", "onChanged", "onDelete", "editRender", "label", "direction", "onCancel", "children", "editContainerOptions", "editComponent", "component"]);
 
   var _useState = (0, _react.useState)(defaultEdition),
       _useState2 = _slicedToArray(_useState, 2),
@@ -77,8 +90,7 @@ var Editable = function Editable(_ref) {
       current = _useState6[0],
       setCurrent = _useState6[1];
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.editable);
+  var theme = (0, _ThemeContext.useTheme)();
 
   var reset = function reset() {
     if (value) {
@@ -139,7 +151,7 @@ var Editable = function Editable(_ref) {
     }, onChanged &&
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.edit_icon,
+      name: theme.images.edit_icon,
       onClick: function onClick() {
         reset();
         setEdition(true);
@@ -147,7 +159,7 @@ var Editable = function Editable(_ref) {
     }), onDelete &&
     /*#__PURE__*/
     _react.default.createElement(_Icon.default, {
-      name: myTheme.delete_icon,
+      name: theme.images.delete_icon,
       onClick: function onClick() {
         onDelete(value);
       }
@@ -165,8 +177,8 @@ var Editable = function Editable(_ref) {
     },
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "editable",
-      theme: theme
+      className: "editable",
+      container: Container
     }, props), displayComponent, editionMode))
   );
 };

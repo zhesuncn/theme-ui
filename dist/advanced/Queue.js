@@ -65,7 +65,7 @@ var Queue = function Queue(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: "queue"
+      className: "queue"
     }, props, {
       theme: theme
     }),

@@ -13,6 +13,8 @@ var _reactRouter = require("react-router");
 
 var _ThemeComponent = _interopRequireDefault(require("./ThemeComponent"));
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
@@ -27,11 +29,45 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border-bottom: 2px solid ", ";\n  color: ", ";\n  padding: 10px 20px;\n  cursor: pointer;\n  font-weight: 600;\n  &.active{\n    border-bottom: 2px solid ", ";\n    color: ", ";\n  }\n  &.disable{\n    color: ", ";\n  }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var ItemContainer = _styledComponents.default.div(_templateObject(), function (props) {
+  return props.palette.gray_border_light;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.palette.blue_dark;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.palette.black_grey_3;
+});
 
 var TabItem = function TabItem(_ref) {
   var children = _ref.children,
@@ -53,7 +89,7 @@ var TabItem = function TabItem(_ref) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      name: 'tabpanel.tabitem',
+      container: ItemContainer,
       className: classN,
       onClick: onClick
     }, props), children)
@@ -62,13 +98,14 @@ var TabItem = function TabItem(_ref) {
 
 exports.TabItem = TabItem;
 
+var TabPanelContainer = _styledComponents.default.div(_templateObject2());
+
 var TabPanel = function TabPanel(_ref2) {
   var defaultIndex = _ref2.defaultIndex,
       onTabChanged = _ref2.onTabChanged,
       children = _ref2.children,
       style = _ref2.style,
-      theme = _ref2.theme,
-      props = _objectWithoutProperties(_ref2, ["defaultIndex", "onTabChanged", "children", "style", "theme"]);
+      props = _objectWithoutProperties(_ref2, ["defaultIndex", "onTabChanged", "children", "style"]);
 
   var _useState = (0, _react.useState)(defaultIndex ? defaultIndex : 0),
       _useState2 = _slicedToArray(_useState, 2),
@@ -90,10 +127,9 @@ var TabPanel = function TabPanel(_ref2) {
   return (
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, {
-      name: "tabpanel",
+      container: TabPanelContainer,
       className: "tab-items",
-      style: style,
-      theme: theme
+      style: style
     }, _react.default.Children.map(children, function (child, index) {
       var isActive = index === active && isKnownPath;
 

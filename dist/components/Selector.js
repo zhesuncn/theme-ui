@@ -42,7 +42,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral([" \n  padding:  ", " ", " ", " 0;\n  border: 0;\n  border-radius: 0;\n  border-bottom: ", " solid ", ";\n  background-color: ", ";\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  background-position: right 5px bottom 16px;\n  background-repeat: no-repeat;\n  font-size:14px;\n  color: ", ";\n  white-space: normal;\n  outline: none;\n  &.validate {\n    border-bottom: 3px solid ", ";\n  }\n  &.placeholder {\n    color: ", ";\n  }\n  &:focus {\n    border-bottom: 3px solid  ", ";\n  }\n  &::-ms-expand {\n    display: none;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -53,7 +53,27 @@ function _templateObject() {
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var defaultContainer = _styledComponents.default.select(_templateObject());
+var Container = _styledComponents.default.select(_templateObject(), function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.padding.m;
+}, function (props) {
+  return props.variable.padding.s;
+}, function (props) {
+  return props.variable.input_border;
+}, function (props) {
+  return props.palette.border_light;
+}, function (props) {
+  return props.palette.white;
+}, function (props) {
+  return props.palette.black_grey;
+}, function (props) {
+  return props.palette.success;
+}, function (props) {
+  return props.palette.black_grey_3;
+}, function (props) {
+  return props.palette.border_active;
+});
 
 var Selector = function Selector(_ref) {
   var options = _ref.options,
@@ -64,11 +84,10 @@ var Selector = function Selector(_ref) {
       getValue = _ref.getValue,
       getLabel = _ref.getLabel,
       className = _ref.className,
-      theme = _ref.theme,
       label = _ref.label,
       direction = _ref.direction,
       canClean = _ref.canClean,
-      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "theme", "label", "direction", "canClean"]);
+      props = _objectWithoutProperties(_ref, ["options", "placeholder", "onChange", "children", "value", "getValue", "getLabel", "className", "label", "direction", "canClean"]);
 
   var _useState = (0, _react.useState)(value || ''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -86,8 +105,7 @@ var Selector = function Selector(_ref) {
     classN += ' validate';
   }
 
-  var themeContext = (0, _ThemeContext.useTheme)();
-  var myTheme = (0, _util.getCurrentTheme)(theme, themeContext.selector);
+  var theme = (0, _ThemeContext.useTheme)();
 
   var selectChanged = function selectChanged(e) {
     setCurrent(e.target.value);
@@ -103,12 +121,11 @@ var Selector = function Selector(_ref) {
     },
     /*#__PURE__*/
     _react.default.createElement(_ThemeComponent.default, _extends({
-      theme: theme,
-      name: "selector",
-      defaultContainer: defaultContainer,
+      className: "selector",
+      container: Container,
       onChange: selectChanged,
       value: current,
-      open_icon: (0, _svg.getSrc)(myTheme.open_icon)
+      open_icon: (0, _svg.getSrc)(theme.images.open_icon)
     }, props), placeholder &&
     /*#__PURE__*/
     _react.default.createElement("option", {
