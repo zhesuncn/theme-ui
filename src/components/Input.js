@@ -47,7 +47,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
   }, [value, formatter])
 
   useEffect(() => {
-    if(inputEl && formatter) {
+    if(inputEl && (formatter || cursor > -1)) {
       setSelection(inputEl, cursor)
     }
   }, [inputEl, cursor, formatter, current])
@@ -56,6 +56,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
   classN += error ? ' error': (current ? ' validate': '')
 
   const valueChanged = (ev) => {
+    const cursor = ev.target.selectionStart;          
     let rawValue = ev.target.value
     if(formatter) {
       let endPos = ev.target.selectionEnd
@@ -64,6 +65,8 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
       endPos = getNextCursorPosition(endPos, current, currentValue, formatter.delimiter, formatter.delimiters);
       ev.target.value = formatter.format(rawValue)
       setCursor(endPos)
+    } else {
+      setCursor(Math.min(cursor, (rawValue||'').length))
     }
 
     if(rawValue !== raw) {
