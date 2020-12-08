@@ -4,9 +4,6 @@ const defaultTheme = {
     blue_dark: '#14489f',
     white: '#FFFFFF',
     grey_light: '#d0d0d0',
-    green: '#009c67',
-    red: '#ff4646',
-    yellow: '#ffcd00',
     blue_grey: '#555d6c',
     green_jade: '#00b59b',
     black_grey: '#1f1f1f',
@@ -23,7 +20,8 @@ const defaultTheme = {
     border_active: '#AFAFAF',
     success: '#009c67',
     error: '#ff4646',
-    warn: '#ffcd00'
+    warn: '#ffcd00',
+    light: '#F3F3F3'
   },
   variable: {
     padding: {
@@ -33,14 +31,20 @@ const defaultTheme = {
     },
     radius: "5px",
     border: "1px",
-    button_border: "1px",
-    input_border: "3px"
+    input_border: "3px",
+    button:{
+      border: "1px",
+      height: '19px'
+    }
   },
   images: {
     loading_icon: 'loading',
     validate_icon: 'check_circle',
     add_icon: 'plus_circle',
     delete_icon: 'trash',
+    confirm_icon: 'check',
+    cancel_icon: 'close',
+    edit_icon: 'edit',
   }
 }
 

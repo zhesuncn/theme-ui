@@ -6,17 +6,20 @@ import { useTheme } from '../index'
 
 const Container = styled.a`
     display: inline-flex;
-    border: ${props => props.variable.button_border} solid ${props => props.color || props.palette.primary};
+    border: ${props => props.variable.button.border} solid ${props => props.color || props.palette.primary};
     border-radius: ${props => props.variable.radius};
     padding: ${props => props.variable.padding.s} ${props => props.variable.padding.m};
+    height: ${props => props.variable.button.height};
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
     background: ${props => props.color || props.palette.primary};
     color: ${props => props.palette.white};
     outline: none;
-    svg {
-      margin-left: ${props => props.variable.padding.s};
+    .button-icon {
+      position: absolute;
       fill: ${props => props.palette.white};
     }
     &:hover{
@@ -36,14 +39,14 @@ const Container = styled.a`
       align-items: center;
       color: ${props => props.color || props.palette.primary};
     }
-    &.clear svg{
+    &.clear .button-icon{
       fill: ${props => props.color || props.palette.primary};
     }
     &.invert {
       background: transparent;
       color: ${props => props.color || props.palette.primary};
       border-color: ${props => props.palette[props.color] || props.palette.primary};
-      svg{
+      .button-icon{
         fill: ${props => props.color || props.palette.primary};
       }
     }
@@ -81,7 +84,6 @@ function Button({
   if (disabled) {
     classN += ' disabled'
   }
-
   return <ThemeComponent
     container={Container}
     className={ classN }

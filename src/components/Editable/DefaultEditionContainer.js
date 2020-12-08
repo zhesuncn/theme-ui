@@ -1,18 +1,14 @@
 import React from 'react'
 import Icon from '../Icon'
 import { useTheme } from '../../ThemeContext'
-import { getCurrentTheme } from '../../themes/util'
 import ThemeComponent from '../ThemeComponent'
 
-
-const DefaultEditionContainer = ({ children, label, onConfirm, onCancel, theme, ...props }) => {
-  const themeContext = useTheme()
-  let myTheme = getCurrentTheme(theme, themeContext.editable)
+const DefaultEditionContainer = ({ children, label, onConfirm, onCancel, ...props }) => {
+  const theme = useTheme()
   return (
-    <ThemeComponent name="editable.edition"
-                    className='default-edition'>
-      <Icon name={ myTheme.confirm_icon } onClick={ onConfirm }/>
-      <Icon name={ myTheme.cancel_icon } onClick={ onCancel }/>
+    <ThemeComponent className='default-edition'>
+      <Icon name={ theme.images.confirm_icon } onClick={ onConfirm }/>
+      <Icon name={ theme.images.cancel_icon } onClick={ onCancel }/>
       { children }
     </ThemeComponent>)
 }
