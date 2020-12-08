@@ -11,7 +11,18 @@ const Table = styled.div`
       overflow-y: auto;
     }
 `
-
+const LoaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: ${props => props.variable.padding.xs};
+  color: ${props => props.palette.blue_dark};
+  font-weight: bold;
+  > svg {
+    fill: ${props => props.palette.blue_dark};
+    margin-right: ${props => props.variable.padding.m};
+  }
+`
 export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, className = '', ...props}) {
   const targetId = (id ? '-' : '') + 'table'
   const theme = useTheme()
@@ -22,7 +33,7 @@ export function InfiniteTable ({ values, onLoad, cols, hasMore, children, id, cl
         dataLength={values ? values.length : 0}
         next={ onLoad }
         hasMore={ hasMore }
-        loader={ <ThemeComponent name="infinitetable.loader" key={ 0 }><Icon name={theme.images.loading_icon}/> Chargement en cours ...</ThemeComponent> }
+        loader={ <ThemeComponent className="infinitetable-loader" key={ 0 } container={LoaderContainer}><Icon name={theme.images.loading_icon}/> Chargement en cours ...</ThemeComponent> }
         scrollableTarget={targetId}
       >
         {
