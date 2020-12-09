@@ -4,6 +4,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import ThemeComponent from '../ThemeComponent'
 import TableRow from './TableRow'
 import TableLoader from './TableLoader'
+import TableHeader from './TableHeader'
 
 const Container = styled.div`
     > .table {
