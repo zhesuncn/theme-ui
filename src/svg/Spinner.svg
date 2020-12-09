@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     style="margin: auto; background: none; display: block; shape-rendering: auto; animation-play-state: running; animation-delay: 0s;"
-     width="364px" height="364px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" fill="currentColor">
+     style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s;"
+     viewBox="23 23 55 55" preserveAspectRatio="xMidYMid" fill="currentColor">
     <g transform="rotate(0 50 50)" style="animation-play-state: running; animation-delay: 0s;">
         <rect x="47.5" y="24" rx="2.5" ry="2.88" width="5" height="12"
               style="animation-play-state: running; animation-delay: 0s;">

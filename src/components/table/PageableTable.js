@@ -44,6 +44,7 @@ const PagerContainer = styled.div`
     margin: 0 ${props => props.variable.padding.xs};
     cursor: pointer;
     color: ${props => props.palette.primary};
+    height: 14px
   }
   > .pager-page {
     cursor: pointer;
