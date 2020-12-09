@@ -49,7 +49,7 @@ const TabPanel = ({ defaultIndex, onTabChanged, children, style, ...props }) => 
             history.push(child.props.path)
           }
           return React.cloneElement(child, {
-            theme, active: isActive, key: index, onClick: () => {
+            active: isActive, key: index, onClick: () => {
               setActive(index)
               onTabChanged && onTabChanged(child.props.path, index)
               if (history && child.props.path) {
