@@ -31,11 +31,9 @@ const Container = styled.a`
     &.clear {
       height: auto;
       padding: ${props => props.variable.padding.s} 0;
-      width: auto;
       border: none;
       background-color: transparent;
       border-radius: 0;
-      display: flex;
       align-items: center;
       color: ${props => props.color || props.palette.primary};
     }
@@ -45,7 +43,7 @@ const Container = styled.a`
     &.invert {
       background: transparent;
       color: ${props => props.color || props.palette.primary};
-      border-color: ${props => props.palette[props.color] || props.palette.primary};
+      border-color: ${props =>  props.color || props.palette.primary};
       .button-icon{
         fill: ${props => props.color || props.palette.primary};
       }

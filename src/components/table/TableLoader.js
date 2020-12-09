@@ -9,10 +9,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   padding: ${props => props.variable.padding.xs};
-  color: ${props => props.palette.blue_dark};
+  color: ${props => props.palette.primary};
   font-weight: bold;
   > svg {
-    fill: ${props => props.palette.blue_dark};
+    fill: ${props =>props.palette.primary};
     margin-right: ${props => props.variable.padding.m};
   }
 `

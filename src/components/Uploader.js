@@ -32,6 +32,7 @@ const Container = styled.div`
     }
     .btn img, .btn svg {
       margin-right: ${props => props.variable.padding.s};
+      color: ${props =>props.palette.primary};
     }
     .file_name {
       height: 40px;

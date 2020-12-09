@@ -6,7 +6,7 @@ import { getNextCursorPosition, setSelection } from '../util/util'
 
 const Container = styled.input`
   border: 0;
-  border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.border_light};
+  border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.border_light};
   width:'100%';
   font-size:14px;
   text-align: left;
@@ -14,7 +14,7 @@ const Container = styled.input`
   border-radius:0;
   outline: none;
   &:focus {
-    border-bottom:${props => props.variable.input_border} solid  ${props => props.palette.border_active};
+    border-bottom:${props => props.variable.input.border} solid  ${props => props.palette.border_active};
   }
   &::placeholder {
     font-size: 14px;
@@ -56,7 +56,7 @@ const Input = ({className, value, onValueChanged, error, label, direction, forma
   classN += error ? ' error': (current ? ' validate': '')
 
   const valueChanged = (ev) => {
-    const cursor = ev.target.selectionStart;          
+    const cursor = ev.target.selectionStart;
     let rawValue = ev.target.value
     if(formatter) {
       let endPos = ev.target.selectionEnd

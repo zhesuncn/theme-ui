@@ -1,6 +1,7 @@
 import React from 'react'
 import ThemeComponent from './ThemeComponent'
 import styled from 'styled-components'
+import Icon from './Icon'
 
 const LabelContainer = styled.span`
   font-weight: bold;
@@ -39,22 +40,25 @@ const H2 = ({ children, className = '', ...props }) => {
 const TagContainer =  styled.div`
   font-size: 14px;
   background: ${props => props.color || props.palette.grey_light};
+  color: ${props =>props.palette.inverse};
   padding: ${props => props.variable.padding.xs} ${props => props.variable.padding.s};
   display: inline-block;
-  font-weight: 600;
   border-radius: ${props => props.variable.radius};
-  & > .tag-btn {
+  > .tag-btn{
     margin-left: ${props => props.variable.padding.xs};
     cursor: pointer;
+    height: 10px;
+    width:10px;
+    color: ${props =>props.palette.inverse};
   }
-  & > .tag-btn:hover {
+  > .tag-btn:hover{
     opacity: 0.5;
   }
 `
 const Tag = ({ children, onClose, onClick, className = '', ...props }) => {
   return <ThemeComponent className={ className + ' tag' } container={TagContainer} { ...props }>
     <span onClick={ onClick }>{ children }</span>
-    { onClose && <span className='tab-btn' onClick={ onClose }> x</span> }
+    { onClose && <Icon className='tag-btn' onClick={ onClose } name="close"/> }
   </ThemeComponent>
 }
 

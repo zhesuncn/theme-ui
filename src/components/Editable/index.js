@@ -14,6 +14,7 @@ const Container = styled.div`
   .btns svg, .btns img{
     margin-right: 10px;
     width: 16px;
+    color: ${props =>props.palette.primary};
   }
 `
 const Editable = ({className = '', value, defaultEdition = false, onChanged, onDelete, editRender, label, direction,

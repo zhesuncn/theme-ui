@@ -6,11 +6,12 @@ import { Tag } from './Text'
 
 const defaultContainer = styled.div `
   border: 0;
-  border-bottom: 3px solid ${props => props.palette.gray_border_light};
+  border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.border_light};
   width:'100%';
   font-size:14px;
   text-align: left;
-  padding: 8px 0;
+  padding: ${props => props.variable.padding.xs} 0;
+  height: 26px;
   border-radius:0;
   outline: none;
   display: flex;
@@ -18,7 +19,7 @@ const defaultContainer = styled.div `
     margin-right: 5px;
   }
   &:focus {
-    border-bottom: 3px solid  ${props => props.palette.gray_border_active};
+    border-bottom: 3px solid  ${props => props.palette.border_active};
   }
   &::placeholder {
     font-size: 14px;
@@ -27,10 +28,10 @@ const defaultContainer = styled.div `
     opacity: 0.5;
   }
   &.error {
-    border-bottom: 3px solid ${props => props.palette.red};
+    border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.error};
   }
   &.validate {
-    border-bottom: 3px solid ${props => props.palette.green};
+    border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.success};
   }
   input {
     border: 0;

@@ -14,11 +14,11 @@ const defaultTheme = {
     gray_background: '#F0F0F0',
     gray_background_light: '#F6F6F6',
     primary: '#14489f',
-    secondary: '#27A893',
+    secondary: '#00b59b',
     inverse: '#FFFFFF',
     border_light: "#D0D0D0",
     border_active: '#AFAFAF',
-    success: '#009c67',
+    success: '#27A893',
     error: '#ff4646',
     warn: '#ffcd00',
     light: '#F3F3F3'
@@ -31,7 +31,9 @@ const defaultTheme = {
     },
     radius: "5px",
     border: "1px",
-    input_border: "1px",
+    input: {
+      border: "1px"
+    },
     button:{
       border: "1px",
       height: '19px'

@@ -9,28 +9,20 @@ const Container = styled.select`
   padding:  ${props => props.variable.padding.s} ${props => props.variable.padding.m} ${props => props.variable.padding.s} 0;
   border: 0;
   border-radius: 0;
-  border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.border_light};
+  border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.border_light};
   background-color: ${props => props.palette.white};
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-position: right 5px bottom 16px;
-  background-repeat: no-repeat;
   font-size:14px;
   color: ${props => props.palette.black_grey};
   white-space: normal;
   outline: none;
   &.validate {
-    border-bottom: 3px solid ${props => props.palette.success};
+    border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.success};
   }
   &.placeholder {
     color: ${props => props.palette.black_grey_3};
   }
   &:focus {
-    border-bottom: 3px solid  ${props => props.palette.border_active};
-  }
-  &::-ms-expand {
-    display: none;
+    border-bottom: ${props => props.variable.input.border} solid  ${props => props.palette.border_active};
   }
 `
 
@@ -42,9 +34,9 @@ const Selector = ({ options, placeholder, onChange, children, value, getValue, g
 
   let classN = className || ''
   if (current === '') {
-    classN += ' placeholder'
+    classN += classN ? ' ' : '' + 'placeholder'
   } else if (current) {
-    classN += ' validate'
+    classN += classN ? ' ' : '' + 'validate'
   }
 
   const theme = useTheme()
@@ -58,7 +50,7 @@ const Selector = ({ options, placeholder, onChange, children, value, getValue, g
     className={ classN }
   >
     <ThemeComponent
-      className="selector"
+      className={"selector " + classN}
       container={ Container }
       onChange={ selectChanged }
       value={ current }

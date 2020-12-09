@@ -11,7 +11,7 @@ const Queue = ({queue, onStop, onFollow, defaultOpen, children, ...props}) => {
   const theme = useTheme()
 
   const formateDate = (date) => {
-    return moment(date).format(myTheme.dateFormat || 'DD/MM/YYYY HH:mm:ss')
+    return moment(date).format(theme.variable.dateFormat || 'DD/MM/YYYY HH:mm:ss')
   }
   return <ThemeComponent className='queue' {...props}>
     <div class='title'>{queue.name}</div>

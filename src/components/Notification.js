@@ -19,6 +19,7 @@ const Container = styled.div`
     cursor: pointer;
     outline: none;
     width: 12px;
+    color: ${props =>props.palette.primary};
   }
   &.info{
     border-color: ${props => props.palette.success};

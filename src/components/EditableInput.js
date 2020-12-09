@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Editable from './Editable'
 import Input from './Input'
 import DefaultEditionContainer from './Editable/DefaultEditionContainer'
-import { useTheme } from '../ThemeContext'
 
 
 const EditableInput = ({value, label, ...props}) => {
@@ -18,9 +17,6 @@ const EditableInput = ({value, label, ...props}) => {
     editContainerOptions={
       {
         component: DefaultEditionContainer,
-        props: {
-          theme: myTheme
-        }
       }
     }
     editRender={({onChanged, value}) => {

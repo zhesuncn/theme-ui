@@ -5,10 +5,16 @@ import TagInput from '../src/components/TagInput'
 
 export default { title: 'Input'}
 
-export const input = () => <ThemeContextProvider><Input/></ThemeContextProvider>
+export const input = () => {
+  const [value, setValue] = useState('')
+  return <ThemeContextProvider><Input value={value} onValueChanged={setValue}/></ThemeContextProvider>
+}
 
 
-export const labelInput = () => <ThemeContextProvider><Input label='name'/></ThemeContextProvider>
+export const labelInput = () => {
+  const [value, setValue] = useState('')
+  return <ThemeContextProvider><Input value={value} label='name' onValueChanged={setValue}/></ThemeContextProvider>
+}
 
 export const tagInput = () => {
   const [values, setValues] = useState([])

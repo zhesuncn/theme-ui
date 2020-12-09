@@ -5,7 +5,7 @@ import Field from './Field'
 
 const Container = styled.textarea`
   border: 0;
-  border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.border_light};
+  border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.border_light};
   width:'100%';
   font-size:14px;
   text-align: left;
@@ -13,7 +13,7 @@ const Container = styled.textarea`
   border-radius:0;
   outline: none;
   &:focus {
-    border-bottom:${props => props.variable.input_border} solid  ${props => props.palette.border_active};
+    border-bottom:${props => props.variable.input.border} solid  ${props => props.palette.border_active};
   }
   &::placeholder {
     font-size: 14px;
@@ -22,10 +22,10 @@ const Container = styled.textarea`
     opacity: 0.5;
   }
   &.error {
-    border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.error};
+    border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.error};
   }
   &.validate {
-    border-bottom: ${props => props.variable.input_border} solid ${props => props.palette.success};
+    border-bottom: ${props => props.variable.input.border} solid ${props => props.palette.success};
   }
 `
 
